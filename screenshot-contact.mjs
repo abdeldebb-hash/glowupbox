@@ -1,0 +1,13 @@
+import puppeteer from 'puppeteer';
+const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+const page = await browser.newPage();
+await page.setViewport({ width: 1440, height: 900 });
+await page.goto('http://localhost:3001/contact.html', { waitUntil: 'networkidle2', timeout: 15000 });
+await new Promise(r => setTimeout(r, 2000));
+await page.screenshot({ path: 'screen-contact-desktop.png', fullPage: true });
+await page.setViewport({ width: 390, height: 844 });
+await page.goto('http://localhost:3001/contact.html', { waitUntil: 'networkidle2', timeout: 10000 });
+await new Promise(r => setTimeout(r, 1500));
+await page.screenshot({ path: 'screen-contact-mobile.png', fullPage: true });
+await browser.close();
+console.log('OK');

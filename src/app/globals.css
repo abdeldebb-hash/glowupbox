@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --fuchsia:    #E91E8C;
+  --coral:      #FF6B9D;
+  --peach:      #FFB347;
+  --black:      #1A1A2E;
+  --purple:     #2D1B4E;
+  --soft-pink:  #FDF0F5;
+  --gray:       #4A4A6A;
+  --nude:       #F5E6D3;
+  --grad:       linear-gradient(135deg,#E91E8C 0%,#FF6B9D 50%,#FFB347 100%);
+  --grad-dark:  linear-gradient(135deg,#1A1A2E 0%,#2D1B4E 100%);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+
+.gradient-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg { background: var(--grad); }
+.dark-gradient-bg { background: var(--grad-dark); }
+
+/* Focus visible — accessibilité clavier */
+:focus-visible {
+  outline: 2px solid #E91E8C;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

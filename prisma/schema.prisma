@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("TURSO_DATABASE_URL")
+}
+
+model Box {
+  id          Int      @id @default(autoincrement())
+  name        String
+  slug        String   @unique
+  description String
+  skinType    String
+  skinLabel   String   @default("")
+  tag         String   @default("")
+  accroche    String   @default("")
+  products    String   // JSON: ["Nettoyant Centella", ...]
+  image       String?
+  active      Boolean  @default(true)
+  order       Int      @default(0)
+  waMessage   String   @default("")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  slug        String   @unique
+  description String
+  tagline     String   @default("")
+  category    String
+  catLabel    String   @default("")
+  price       Float
+  oldPrice    Float?
+  stock       Int      @default(0)
+  stockStatus String   @default("ok")
+  image       String?
+  benefits    String   // JSON: ["Dégonfle", "Pores", ...]
+  badge       String?
+  featured    Boolean  @default(false)
+  active      Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Article {
+  id          Int       @id @default(autoincrement())
+  title       String
+  slug        String    @unique
+  excerpt     String
+  content     String
+  category    String
+  catLabel    String    @default("")
+  image       String?
+  published   Boolean   @default(false)
+  publishedAt DateTime?
+  readTime    String    @default("5 min")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Option {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+model Contact {
+  id        Int      @id @default(autoincrement())
+  prenom    String
+  phone     String
+  typePeau  String
+  problemes String
+  routine   String
+  kbeauty   String
+  objectif  String
+  createdAt DateTime @default(now())
+}

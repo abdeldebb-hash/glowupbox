@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bilan Peau Gratuit & Personnalisé — Glow Up Box ✦ | Rabat</title>
+<meta name="description" content="Faites votre bilan peau gratuit en 2 minutes. Recevez une recommandation personnalisée sur WhatsApp sous 24h. Sans engagement, 100% gratuit.">
+<meta property="og:title" content="Bilan Peau Gratuit — Glow Up Box ✦">
+<meta property="og:description" content="6 questions pour trouver la box soin exactement adaptée à votre peau. Conseil gratuit, réponse sous 24h.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
+<style>
+:root{
+  --fuchsia:#E91E8C;--coral:#FF6B9D;--peach:#FFB347;
+  --black:#1A1A2E;--purple:#2D1B4E;--soft-pink:#FDF0F5;
+  --gray:#4A4A6A;--nude:#F5E6D3;
+  --grad:linear-gradient(135deg,#E91E8C 0%,#FF6B9D 50%,#FFB347 100%);
+  --grad-dark:linear-gradient(135deg,#1A1A2E 0%,#2D1B4E 100%);
+  --err:#E53935;--ok:#43A047;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;color:var(--gray);background:#fff;overflow-x:hidden;font-weight:300;cursor:none}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;color:var(--black)}
+h1{font-size:clamp(2.6rem,6vw,5.5rem);font-weight:600;font-style:italic;line-height:1.04;letter-spacing:-0.02em}
+h2{font-size:clamp(2rem,4.5vw,4rem);font-weight:600;line-height:1.06;letter-spacing:-0.01em}
+p{line-height:1.8;font-weight:300;font-size:1rem;font-family:'Jost',sans-serif}
+.g-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* CURSOR */
+#cr{width:36px;height:36px;border:1.5px solid var(--fuchsia);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s}
+#cd{width:6px;height:6px;background:var(--fuchsia);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+@media(max-width:768px){#cr,#cd{display:none}body{cursor:auto}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:50px;font-family:'Jost',sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;cursor:pointer;border:none;position:relative;overflow:hidden;white-space:nowrap}
+.btn-grad{background:var(--grad);color:#fff;box-shadow:0 4px 20px rgba(233,30,140,.3)}
+.btn-grad::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#FF6B9D,#FFB347,#E91E8C);opacity:0;transition:opacity .3s}
+.btn-grad:hover::after{opacity:1}
+.btn-grad:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(233,30,140,.4)}
+.btn-grad span,.btn-grad svg{position:relative;z-index:1}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.3);backdrop-filter:blur(8px)}
+.btn-ghost:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+.btn-sm{padding:10px 22px;font-size:11px}
+
+/* NAVBAR */
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:1000;width:calc(100% - 48px);max-width:1200px;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;border-radius:999px;background:rgba(26,26,46,.5);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);transition:all .35s ease}
+.nav.scrolled{background:rgba(255,255,255,.95);border-color:rgba(0,0,0,.06);box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.nav.scrolled .nav-logo{color:var(--black)}
+.nav.scrolled .nav-link{color:var(--gray)}
+.nav.scrolled .nav-link:hover{color:var(--fuchsia)}
+.nav.scrolled .hamburger{color:var(--black)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.3rem;color:#fff;text-decoration:none;letter-spacing:.08em;transition:color .35s}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-link{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;transition:color .3s}
+.nav-link:hover,.nav-link.active{color:var(--coral)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;color:#fff}
+.hamburger span{width:22px;height:1.5px;background:currentColor;display:block;transition:all .3s}
+@media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}
+@media(max-width:640px){.nav{width:calc(100% - 24px);top:10px;padding:12px 18px}}
+
+/* MOBILE MENU */
+.mobile-menu{position:fixed;inset:0;background:var(--grad-dark);z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{color:#fff;font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:500;font-style:italic;text-decoration:none;opacity:.7;transition:opacity .3s}
+.mobile-menu a:hover{opacity:1}
+.mobile-close{position:absolute;top:28px;right:28px;color:#fff;cursor:pointer}
+
+/* BREADCRUMB */
+.breadcrumb{display:flex;align-items:center;gap:8px;font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:20px}
+.breadcrumb a{color:rgba(255,255,255,.4);text-decoration:none;transition:color .3s}
+.breadcrumb a:hover{color:var(--coral)}
+.breadcrumb span{color:rgba(255,255,255,.2)}
+
+/* ────────────────────────────────────────
+   HERO
+   ──────────────────────────────────────── */
+.hero{background:var(--grad-dark);padding:140px 40px 96px;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;min-height:80vh}
+.hero::before{content:'';position:absolute;top:-15%;right:-5%;width:550px;height:550px;background:radial-gradient(circle,rgba(233,30,140,.16) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-left{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(233,30,140,.15);border:1px solid rgba(233,30,140,.28);color:var(--coral);padding:7px 18px;border-radius:50px;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:22px}
+.hero-guarantees{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.hero-guarantee{display:flex;align-items:center;gap:12px;font-family:'Jost',sans-serif;font-size:.88rem;font-weight:300;color:rgba(255,255,255,.72)}
+.hero-guarantee-check{width:20px;height:20px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+/* Glassmorphism card */
+.hero-right{position:relative;z-index:2}
+.glass-card{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:36px}
+.glass-card h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;font-style:italic;color:#fff;margin-bottom:24px}
+.how-step{display:flex;gap:14px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.how-step:last-child{border-bottom:none}
+.how-num{width:28px;height:28px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:.9rem;color:#fff;flex-shrink:0}
+.how-title{font-family:'Jost',sans-serif;font-size:.85rem;font-weight:600;color:#fff;margin-bottom:2px}
+.how-sub{font-family:'Jost',sans-serif;font-size:.76rem;font-weight:300;color:rgba(255,255,255,.48)}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding:110px 24px 64px;min-height:auto}.hero-right{display:none}}
+
+/* ────────────────────────────────────────
+   MAIN LAYOUT
+   ──────────────────────────────────────── */
+.main-layout{max-width:1200px;margin:0 auto;padding:64px 40px 96px;display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:start}
+@media(max-width:1024px){.main-layout{grid-template-columns:1fr;padding:48px 20px 64px}}
+
+/* ────────────────────────────────────────
+   PROGRESS BAR
+   ──────────────────────────────────────── */
+.progress-wrap{margin-bottom:36px}
+.progress-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.progress-pct{font-family:'Jost',sans-serif;font-size:.8rem;font-weight:600;color:var(--fuchsia)}
+.progress-label{font-family:'Jost',sans-serif;font-size:.78rem;font-weight:400;color:var(--gray);opacity:.65}
+.progress-track{height:6px;background:#F0E0E8;border-radius:50px;overflow:hidden}
+.progress-fill{height:100%;background:var(--grad);border-radius:50px;width:16.67%;transition:width .4s cubic-bezier(.34,1.56,.64,1)}
+
+/* ────────────────────────────────────────
+   FORM CONTAINER
+   ──────────────────────────────────────── */
+.form-container{background:#fff;border-radius:28px;padding:44px 40px;border:1px solid #F0E0E8;box-shadow:0 8px 40px rgba(233,30,140,.06);position:relative;overflow:hidden}
+.form-container::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+.step{display:none}
+.step.active{display:block}
+.step-emoji{font-size:2.2rem;display:block;margin-bottom:14px}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;font-style:italic;color:var(--black);margin-bottom:6px}
+.step-sub{font-family:'Jost',sans-serif;font-size:.88rem;font-weight:300;color:var(--gray);margin-bottom:28px;line-height:1.6}
+
+/* Input fields */
+.field-group{margin-bottom:20px}
+.field-label{display:block;font-family:'Jost',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--black);margin-bottom:8px}
+.field-label .req{color:var(--fuchsia)}
+.field-input{width:100%;padding:14px 18px;border:1.5px solid #E8D0DC;border-radius:14px;font-family:'Jost',sans-serif;font-size:.95rem;font-weight:300;color:var(--black);background:#fff;outline:none;transition:border-color .25s,box-shadow .25s;appearance:none}
+.field-input:focus{border-color:var(--fuchsia);box-shadow:0 0 0 3px rgba(233,30,140,.1)}
+.field-input.valid{border-color:var(--ok)}
+.field-input.error{border-color:var(--err)}
+.field-note{font-family:'Jost',sans-serif;font-size:.75rem;font-weight:300;color:var(--gray);opacity:.65;margin-top:5px}
+.field-error{font-family:'Jost',sans-serif;font-size:.76rem;font-weight:500;color:var(--err);margin-top:5px;display:none}
+.field-error.show{display:block}
+
+/* Option cards grid */
+.options-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:4px}
+.options-list{display:flex;flex-direction:column;gap:10px;margin-bottom:4px}
+.option-card{border:1.5px solid #E8D0DC;border-radius:14px;padding:14px 16px;cursor:pointer;transition:border-color .22s,background .22s,transform .2s,box-shadow .2s;display:flex;align-items:center;gap:12px;user-select:none;position:relative;min-height:56px}
+.option-card:hover{border-color:var(--coral);background:rgba(233,30,140,.03);transform:translateY(-1px)}
+.option-card.selected{border-color:var(--fuchsia);background:linear-gradient(135deg,rgba(233,30,140,.06),rgba(255,179,71,.04))}
+.option-icon{font-size:1.3rem;flex-shrink:0;width:28px;text-align:center}
+.option-label{font-family:'Jost',sans-serif;font-size:.88rem;font-weight:500;color:var(--black);line-height:1.3}
+.option-check{width:20px;height:20px;border-radius:50%;border:1.5px solid #E8D0DC;margin-left:auto;flex-shrink:0;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.option-card.selected .option-check{background:var(--grad);border-color:transparent}
+/* Large option cards */
+.option-card.large{padding:18px 20px;min-height:68px}
+.option-card.large .option-label{font-size:.92rem}
+.option-sublabel{font-family:'Jost',sans-serif;font-size:.75rem;font-weight:300;color:var(--gray);margin-top:2px}
+
+/* Textarea */
+.textarea-wrap{position:relative}
+.field-textarea{width:100%;padding:14px 18px;border:1.5px solid #E8D0DC;border-radius:14px;font-family:'Jost',sans-serif;font-size:.95rem;font-weight:300;color:var(--black);background:#fff;outline:none;transition:border-color .25s,box-shadow .25s;resize:vertical;min-height:110px;line-height:1.6}
+.field-textarea:focus{border-color:var(--fuchsia);box-shadow:0 0 0 3px rgba(233,30,140,.1)}
+.char-counter{position:absolute;bottom:10px;right:14px;font-family:'Jost',sans-serif;font-size:.72rem;font-weight:400;color:var(--gray);opacity:.5}
+
+/* Navigation buttons */
+.form-nav{display:flex;gap:12px;align-items:center;margin-top:32px;justify-content:space-between}
+.btn-back{display:flex;align-items:center;gap:8px;background:none;border:1.5px solid #E8D0DC;border-radius:50px;padding:12px 22px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);cursor:pointer;transition:all .25s}
+.btn-back:hover{border-color:var(--fuchsia);color:var(--fuchsia)}
+.btn-back:disabled{opacity:.35;pointer-events:none}
+.btn-next{flex:1}
+.btn-submit{width:100%;padding:16px;font-size:13px;justify-content:center}
+
+/* ────────────────────────────────────────
+   SUCCESS SCREEN
+   ──────────────────────────────────────── */
+.success-screen{display:none;text-align:center;padding:20px 0}
+.success-circle{width:90px;height:90px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;box-shadow:0 16px 40px rgba(233,30,140,.35)}
+.success-circle svg{color:#fff}
+.success-screen h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;font-style:italic;color:var(--black);margin-bottom:14px}
+.success-screen p{font-size:.92rem;font-weight:300;color:var(--gray);line-height:1.8;max-width:400px;margin:0 auto 28px}
+.success-actions{display:flex;flex-direction:column;gap:10px;max-width:280px;margin:0 auto}
+.success-actions .btn{justify-content:center}
+.success-link{font-family:'Jost',sans-serif;font-size:.82rem;font-weight:400;color:var(--fuchsia);text-decoration:none;transition:opacity .2s}
+.success-link:hover{opacity:.7}
+
+/* ────────────────────────────────────────
+   SIDEBAR
+   ──────────────────────────────────────── */
+.sidebar{position:sticky;top:108px;height:fit-content;display:flex;flex-direction:column;gap:20px}
+@media(max-width:1024px){.sidebar{display:none}}
+.sb-card{border-radius:20px;padding:24px;border:1px solid #F0E0E8;background:#fff}
+.sb-title{font-family:'Jost',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fuchsia);margin-bottom:16px}
+.sb-guarantee{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F8EEF4;font-family:'Jost',sans-serif;font-size:.82rem;font-weight:300;color:var(--gray)}
+.sb-guarantee:last-child{border-bottom:none}
+.sb-card.dark{background:var(--grad-dark);border-color:transparent;position:relative;overflow:hidden}
+.sb-card.dark::before{content:'"';position:absolute;top:-15px;left:10px;font-family:'Cormorant Garamond',serif;font-size:8rem;font-weight:700;color:rgba(255,255,255,.07);line-height:1;pointer-events:none}
+.sb-quote{font-family:'Jost',sans-serif;font-size:.82rem;font-style:italic;font-weight:300;color:rgba(255,255,255,.7);line-height:1.75;margin-bottom:16px;position:relative;z-index:1}
+.sb-author{display:flex;align-items:center;gap:10px;position:relative;z-index:1}
+.sb-avatar{width:36px;height:36px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.sb-author-name{font-family:'Jost',sans-serif;font-size:.8rem;font-weight:600;color:#fff}
+.sb-author-meta{font-family:'Jost',sans-serif;font-size:.72rem;font-weight:300;color:rgba(255,255,255,.45)}
+.sb-profile{display:flex;align-items:center;gap:10px;padding:7px 0;font-family:'Jost',sans-serif;font-size:.8rem;font-weight:300;color:var(--gray)}
+.sb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ────────────────────────────────────────
+   REASSURANCE
+   ──────────────────────────────────────── */
+.reassurance{background:var(--soft-pink);padding:48px 40px;text-align:center}
+.reassurance-inner{max-width:600px;margin:0 auto;display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
+.reassurance-item{display:flex;align-items:center;gap:10px;font-family:'Jost',sans-serif;font-size:.88rem;font-weight:400;color:var(--gray)}
+.reassurance-check{width:24px;height:24px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* FOOTER */
+footer{background:var(--black);color:rgba(255,255,255,.55);padding:60px 40px 28px}
+.footer-in{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:40px}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.06em;color:#fff;display:block;margin-bottom:14px;text-decoration:none}
+.f-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.45);font-weight:300}
+.fsocials{display:flex;gap:10px;margin-top:22px}
+.fsoc{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .3s,transform .3s}
+.fsoc:hover{background:var(--fuchsia);transform:translateY(-3px)}
+.f-col h4{color:#fff;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.f-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:13.5px;transition:color .3s;font-weight:300}
+.f-links a:hover{color:var(--coral)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-wrap:wrap;gap:8px}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:640px){.footer-grid{grid-template-columns:1fr;gap:28px}.footer-bottom{flex-direction:column;gap:10px;text-align:center}.reassurance{padding:40px 20px}}
+
+/* WA FLOAT */
+.wa{position:fixed;bottom:28px;right:28px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:900;box-shadow:0 8px 24px rgba(37,211,102,.4);text-decoration:none;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.wa:hover{transform:scale(1.12)}
+.wa::before,.wa::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid rgba(37,211,102,.4);animation:waP 2.2s ease-out infinite}
+.wa::after{animation-delay:.5s;border-color:rgba(37,211,102,.2)}
+@keyframes waP{0%{transform:scale(1);opacity:1}100%{transform:scale(1.7);opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+<div id="cr"></div><div id="cd"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-close" id="mobileClose"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+  <a href="coffrets.html">Boxs</a>
+  <a href="accessoires.html">Boutique</a>
+  <a href="conseil-peau.html">Bilan peau</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contacter nous</a>
+</div>
+
+<!-- NAVBAR -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">GLOW UP BOX ✦</a>
+  <ul class="nav-links">
+    <li><a href="coffrets.html" class="nav-link">Boxs</a></li>
+    <li><a href="accessoires.html" class="nav-link">Boutique</a></li>
+    <li><a href="conseil-peau.html" class="nav-link">Bilan peau</a></li>
+    <li><a href="blog.html" class="nav-link">Blog</a></li>
+    <li><a href="contact.html" class="nav-link">Contacter nous</a></li>
+  </ul>
+  <a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="btn btn-grad btn-sm" target="_blank" rel="noopener">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="heroSection">
+  <div class="hero-left">
+    <div class="breadcrumb" id="heroBc"><a href="index.html">Accueil</a><span>›</span><span style="color:rgba(255,255,255,.65)">Bilan Peau</span></div>
+    <div class="hero-badge" id="heroBadge">100% Gratuit · Sans engagement</div>
+    <h1 id="heroTitle" style="color:#fff">Votre bilan peau<br><em class="g-text">personnalisé</em></h1>
+    <p id="heroSub" style="color:rgba(255,255,255,.6);max-width:460px;margin-top:16px;font-size:1.02rem">Répondez à 6 questions. On analyse votre profil et on vous recommande la box exactement adaptée à votre peau.</p>
+    <div class="hero-guarantees" id="heroGuarantees">
+      <div class="hero-guarantee"><div class="hero-guarantee-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Conseil 100% gratuit, aucune obligation d'achat</div>
+      <div class="hero-guarantee"><div class="hero-guarantee-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Réponse personnalisée sous 24h sur WhatsApp</div>
+      <div class="hero-guarantee"><div class="hero-guarantee-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Une vraie personne lit votre profil et vous répond</div>
+    </div>
+  </div>
+  <div class="hero-right" id="heroRight">
+    <div class="glass-card">
+      <h4>Comment ça marche ?</h4>
+      <div class="how-step"><div class="how-num">1</div><div><div class="how-title">Vous remplissez le bilan</div><div class="how-sub">6 questions, 2 minutes max</div></div></div>
+      <div class="how-step"><div class="how-num">2</div><div><div class="how-title">Votre profil est envoyé</div><div class="how-sub">Directement sur notre WhatsApp</div></div></div>
+      <div class="how-step"><div class="how-num">3</div><div><div class="how-title">On analyse</div><div class="how-sub">Une vraie personne lit votre profil</div></div></div>
+      <div class="how-step"><div class="how-num">4</div><div><div class="how-title">On vous répond</div><div class="how-sub">Recommandation personnalisée sous 24h</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN : FORM + SIDEBAR -->
+<div class="main-layout">
+
+  <!-- FORM -->
+  <div>
+    <!-- Progress bar -->
+    <div class="progress-wrap">
+      <div class="progress-header">
+        <span class="progress-pct" id="progressPct">17%</span>
+        <span class="progress-label" id="progressLabel">Étape 1 / 6</span>
+      </div>
+      <div class="progress-track" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="6" id="progressBar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- Form container -->
+    <div class="form-container" id="formContainer">
+
+      <!-- STEP 1 — Infos -->
+      <div class="step active" data-step="1" id="step1">
+        <span class="step-emoji">👋</span>
+        <div class="step-title">Commençons par vous</div>
+        <div class="step-sub">Comment puis-je vous appeler ?</div>
+        <div class="field-group">
+          <label class="field-label" for="inputPrenom">Prénom <span class="req">*</span></label>
+          <input class="field-input" type="text" id="inputPrenom" placeholder="Ex : Salma" autocomplete="given-name" aria-required="true">
+          <div class="field-error" id="errPrenom">Veuillez entrer votre prénom 🌸</div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="inputWA">Numéro WhatsApp <span class="req">*</span></label>
+          <input class="field-input" type="tel" id="inputWA" placeholder="Ex : 06 12 34 56 78" autocomplete="tel" aria-required="true">
+          <div class="field-note">Pour recevoir votre recommandation personnalisée</div>
+          <div class="field-error" id="errWA">Veuillez entrer votre numéro WhatsApp 💬</div>
+        </div>
+      </div>
+
+      <!-- STEP 2 — Type de peau -->
+      <div class="step" data-step="2" id="step2">
+        <span class="step-emoji">🌿</span>
+        <div class="step-title">Votre type de peau</div>
+        <div class="step-sub">Choisissez le profil qui vous ressemble le plus</div>
+        <div class="options-grid" id="typePeauGrid">
+          <div class="option-card" data-value="Normale" onclick="selectOption(this,'typePeau')"><span class="option-icon">😊</span><span class="option-label">Normale</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card" data-value="Grasse" onclick="selectOption(this,'typePeau')"><span class="option-icon">✨</span><span class="option-label">Grasse</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card" data-value="Sèche" onclick="selectOption(this,'typePeau')"><span class="option-icon">💧</span><span class="option-label">Sèche</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card" data-value="Mixte" onclick="selectOption(this,'typePeau')"><span class="option-icon">⚖️</span><span class="option-label">Mixte</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card" data-value="Sensible" onclick="selectOption(this,'typePeau')"><span class="option-icon">🌸</span><span class="option-label">Sensible</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card" data-value="Je ne sais pas" onclick="selectOption(this,'typePeau')"><span class="option-icon">🤷</span><span class="option-label">Je ne sais pas</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        </div>
+        <div class="field-error" id="errTypePeau" style="margin-top:8px">Veuillez sélectionner votre type de peau 🌿</div>
+      </div>
+
+      <!-- STEP 3 — Problèmes -->
+      <div class="step" data-step="3" id="step3">
+        <span class="step-emoji">⚠️</span>
+        <div class="step-title">Vos problèmes principaux</div>
+        <div class="step-sub">Sélectionnez tout ce qui vous concerne (plusieurs choix possibles)</div>
+        <div class="options-list" id="problemesGrid">
+          <div class="option-card" data-value="Acné / Boutons" onclick="toggleOption(this,'problemes')"><span class="option-icon">🔴</span><span class="option-label">Acné / Boutons</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card" data-value="Taches / Hyperpigmentation" onclick="toggleOption(this,'problemes')"><span class="option-icon">🟤</span><span class="option-label">Taches / Hyperpigmentation</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card" data-value="Manque d'éclat" onclick="toggleOption(this,'problemes')"><span class="option-icon">✨</span><span class="option-label">Manque d'éclat</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card" data-value="Déshydratation / Tiraillements" onclick="toggleOption(this,'problemes')"><span class="option-icon">💧</span><span class="option-label">Déshydratation / Tiraillements</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card" data-value="Pores dilatés" onclick="toggleOption(this,'problemes')"><span class="option-icon">🔍</span><span class="option-label">Pores dilatés</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card" data-value="Rides / Anti-âge" onclick="toggleOption(this,'problemes')"><span class="option-icon">⏰</span><span class="option-label">Rides / Anti-âge</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card" data-value="Rougeurs / Irritations" onclick="toggleOption(this,'problemes')"><span class="option-icon">🌸</span><span class="option-label">Rougeurs / Irritations</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        </div>
+        <div class="field-error" id="errProblemes" style="margin-top:8px">Sélectionnez au moins un problème ⚠️</div>
+      </div>
+
+      <!-- STEP 4 — Routine -->
+      <div class="step" data-step="4" id="step4">
+        <span class="step-emoji">💆</span>
+        <div class="step-title">Votre routine actuelle</div>
+        <div class="step-sub">Où en êtes-vous avec votre skincare ?</div>
+        <div class="options-list" id="routineGrid">
+          <div class="option-card large" data-value="Aucune routine" onclick="selectOption(this,'routine')"><span class="option-icon">🆕</span><div><span class="option-label">Aucune routine</span><div class="option-sublabel">Je commence de zéro</div></div><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card large" data-value="Routine basique" onclick="selectOption(this,'routine')"><span class="option-icon">🌱</span><div><span class="option-label">Basique</span><div class="option-sublabel">Nettoyant + crème, c'est tout</div></div><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card large" data-value="Routine complète" onclick="selectOption(this,'routine')"><span class="option-icon">✨</span><div><span class="option-label">Complète</span><div class="option-sublabel">Toner, sérum, crème et plus</div></div><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        </div>
+        <div class="field-error" id="errRoutine" style="margin-top:8px">Veuillez sélectionner votre routine actuelle 💆</div>
+      </div>
+
+      <!-- STEP 5 — Expérience -->
+      <div class="step" data-step="5" id="step5">
+        <span class="step-emoji">🎯</span>
+        <div class="step-title">Votre expérience soins</div>
+        <div class="step-sub">Avez-vous déjà utilisé des soins spécialisés ?</div>
+        <div class="options-list" id="experienceGrid">
+          <div class="option-card large" data-value="Oui, j'en utilise régulièrement" onclick="selectOption(this,'experience')"><span class="option-icon">🌟</span><span class="option-label">Oui, j'en utilise régulièrement</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card large" data-value="Oui, j'en ai déjà essayé" onclick="selectOption(this,'experience')"><span class="option-icon">👍</span><span class="option-label">Oui, j'en ai déjà essayé</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          <div class="option-card large" data-value="Non, c'est ma première fois" onclick="selectOption(this,'experience')"><span class="option-icon">🆕</span><span class="option-label">Non, c'est ma première fois</span><div class="option-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="opt-checkmark" style="opacity:0"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        </div>
+        <div class="field-error" id="errExperience" style="margin-top:8px">Veuillez sélectionner votre expérience 🎯</div>
+      </div>
+
+      <!-- STEP 6 — Objectif -->
+      <div class="step" data-step="6" id="step6">
+        <span class="step-emoji">💫</span>
+        <div class="step-title">Votre objectif beauté</div>
+        <div class="step-sub">En une phrase, qu'est-ce que vous souhaitez améliorer ?</div>
+        <div class="field-group">
+          <label class="field-label" for="objectifTextarea">Décrivez votre objectif</label>
+          <div class="textarea-wrap">
+            <textarea class="field-textarea" id="objectifTextarea" placeholder="Ex : Je veux une peau plus lumineuse et hydratée, sans brillance..." maxlength="200" aria-label="Objectif beauté"></textarea>
+            <span class="char-counter" id="charCounter">0 / 200</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="form-nav" id="formNav">
+        <button class="btn-back" id="btnBack" disabled onclick="prevStep()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Retour
+        </button>
+        <button class="btn btn-grad btn-next" id="btnNext" onclick="nextStep()">
+          <span id="btnNextText">Suivant</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" id="btnNextIcon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span id="btnNextLoader" style="display:none">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="animation:spin .8s linear infinite">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div><!-- /form-container -->
+
+    <!-- SUCCESS SCREEN -->
+    <div id="successScreen" class="form-container success-screen">
+      <div class="success-circle" id="successCircle">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>🎉 Bilan envoyé avec succès !</h3>
+      <p>Votre profil peau a été envoyé sur notre WhatsApp. Nous allons l'analyser et vous contacter sous 24h avec votre recommandation personnalisée.</p>
+      <div class="success-actions">
+        <a href="https://wa.me/212600000000" class="btn btn-grad" target="_blank" rel="noopener" id="successWALink">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span>Suivre sur WhatsApp</span>
+        </a>
+        <a href="coffrets.html" class="success-link">Voir nos boxs →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-card">
+      <div class="sb-title">✦ Vos garanties</div>
+      <div class="sb-guarantee"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fuchsia)" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Informations confidentielles</div>
+      <div class="sb-guarantee"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fuchsia)" stroke-width="2" stroke-linecap="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/></svg>Conseil 100% gratuit</div>
+      <div class="sb-guarantee"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fuchsia)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Réponse sous 24h</div>
+      <div class="sb-guarantee"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fuchsia)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>Aucune vente forcée</div>
+      <div class="sb-guarantee"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fuchsia)" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Échange humain, pas un robot</div>
+    </div>
+    <div class="sb-card dark">
+      <div class="sb-title" style="color:var(--coral)">Témoignage</div>
+      <p class="sb-quote">"J'avais peur de commander sans conseil. Le bilan m'a permis de trouver exactement ce qu'il me fallait. Ma peau n'a jamais été aussi belle !"</p>
+      <div class="sb-author">
+        <div class="sb-avatar">N</div>
+        <div>
+          <div class="sb-author-name">Nadia K.</div>
+          <div class="sb-author-meta">Rabat · Peau sensible</div>
+        </div>
+      </div>
+    </div>
+    <div class="sb-card">
+      <div class="sb-title">🌿 Nos types de peau</div>
+      <div class="sb-profile"><div class="sb-dot" style="background:#E53935"></div>Peau sensible / réactive</div>
+      <div class="sb-profile"><div class="sb-dot" style="background:#1976D2"></div>Peau grasse / mixte</div>
+      <div class="sb-profile"><div class="sb-dot" style="background:#F57C00"></div>Peau sèche / déshydratée</div>
+      <div class="sb-profile"><div class="sb-dot" style="background:#388E3C"></div>Teint terne / manque d'éclat</div>
+      <div class="sb-profile"><div class="sb-dot" style="background:#7B1FA2"></div>Peau mixte / zone T</div>
+    </div>
+  </aside>
+
+</div><!-- /main-layout -->
+
+<!-- REASSURANCE -->
+<div class="reassurance">
+  <div class="reassurance-inner">
+    <div class="reassurance-item"><div class="reassurance-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Conseil 100% gratuit</div>
+    <div class="reassurance-item"><div class="reassurance-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Sans engagement</div>
+    <div class="reassurance-item"><div class="reassurance-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Réponse sous 24h</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-in">
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="index.html" class="f-logo">GLOW UP BOX ✦</a>
+        <p>Boxs soins personnalisées après bilan peau gratuit. Livraison partout au Maroc.</p>
+        <div class="fsocials">
+          <a href="#" class="fsoc" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://wa.me/212600000000" class="fsoc" aria-label="WhatsApp" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Navigation</h4><ul class="f-links"><li><a href="coffrets.html">Boxs</a></li><li><a href="accessoires.html">Boutique</a></li><li><a href="conseil-peau.html">Bilan peau</a>
+  <a href="blog.html">Blog</a></li><li><a href="b2b.html">B2B</a></li></ul></div>
+      <div class="f-col"><h4>Informations</h4><ul class="f-links"><li><a href="a-propos.html">À Propos</a></li><li><a href="contact.html">Contacter nous</a></li><li><a href="conseil-peau.html">Bilan gratuit</a></li><li><a href="#">Mentions légales</a></li></ul></div>
+      <div class="f-col"><h4>Contact</h4><ul class="f-links"><li><a href="https://wa.me/212600000000" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="#">Instagram</a></li><li><span style="color:rgba(255,255,255,.3);font-size:13px">Rabat · Livraison Maroc</span></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Glow Up Box ✦ — Tous droits réservés</span><span style="color:rgba(255,255,255,.3)">K-Beauty authentique · Fait au Maroc</span></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+
+<script>
+// ── Motion UMD ──
+const { animate, stagger, inView } = Motion;
+
+// ── Cursor ──
+const cr=document.getElementById('cr'),cd=document.getElementById('cd');
+if(window.matchMedia('(pointer:fine)').matches){
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px'});
+  (function loop(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(loop)})();
+}
+
+// ── Navbar ──
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+const ham=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu'),mc=document.getElementById('mobileClose');
+ham.addEventListener('click',()=>mm.classList.add('open'));
+mc.addEventListener('click',()=>mm.classList.remove('open'));
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+
+// ── Hero entrance ──
+animate(['#heroBc','#heroBadge','#heroTitle','#heroSub','#heroGuarantees'],
+  {opacity:[0,1],x:[-28,0]},{duration:.7,delay:stagger(.11),easing:[.34,1.56,.64,1]});
+animate('#heroRight',{opacity:[0,1],x:[28,0]},{duration:.7,delay:.25,easing:[.34,1.56,.64,1]});
+
+// ── Form state ──
+const formData = { prenom:'', whatsapp:'', typePeau:'', problemes:[], routine:'', experience:'', objectif:'' };
+let currentStep = 1;
+const TOTAL = 6;
+
+// ── Progress ──
+function updateProgress(){
+  const pct = Math.round((currentStep/TOTAL)*100);
+  animate('#progressFill',{width:`${pct}%`},{duration:.45,easing:[.34,1.56,.64,1]});
+  document.getElementById('progressPct').textContent = pct+'%';
+  document.getElementById('progressLabel').textContent = `Étape ${currentStep} / ${TOTAL}`;
+  document.getElementById('progressBar').setAttribute('aria-valuenow',currentStep);
+  document.getElementById('btnBack').disabled = currentStep===1;
+  const isLast = currentStep===TOTAL;
+  document.getElementById('btnNextText').textContent = isLast ? '✦ Envoyer mon bilan 💬' : 'Suivant';
+  document.getElementById('btnNextIcon').style.display = isLast?'none':'';
+}
+
+// ── Transition entre étapes ──
+function goToStep(next, dir='forward'){
+  const curEl = document.getElementById(`step${currentStep}`);
+  const nextEl = document.getElementById(`step${next}`);
+  const xOut = dir==='forward' ? -30 : 30;
+  const xIn  = dir==='forward' ?  30 : -30;
+
+  animate(curEl,{x:[0,xOut],opacity:[1,0]},{duration:.25,easing:'ease-out'}).then(()=>{
+    curEl.classList.remove('active');
+    curEl.style.transform='';
+    nextEl.classList.add('active');
+    nextEl.style.opacity='0';
+    nextEl.style.transform=`translateX(${xIn}px)`;
+    animate(nextEl,{x:[xIn,0],opacity:[0,1]},{duration:.28,easing:'ease-out'});
+    // Stagger options
+    const opts = nextEl.querySelectorAll('.option-card');
+    if(opts.length) animate(opts,{opacity:[0,1],y:[8,0]},{delay:stagger(.05),duration:.22,easing:'ease-out'});
+    currentStep=next;
+    updateProgress();
+    // Scroll top of form
+    document.querySelector('.progress-wrap').scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+}
+
+// ── Validation ──
+function validateStep(){
+  if(currentStep===1){
+    const p=document.getElementById('inputPrenom').value.trim();
+    const w=document.getElementById('inputWA').value.trim();
+    let ok=true;
+    if(!p){showError('errPrenom','inputPrenom');ok=false;}
+    if(!w){showError('errWA','inputWA');ok=false;}
+    if(ok){formData.prenom=p;formData.whatsapp=w;}
+    return ok;
+  }
+  if(currentStep===2){
+    if(!formData.typePeau){showError('errTypePeau');return false;}
+    return true;
+  }
+  if(currentStep===3){
+    if(!formData.problemes.length){showError('errProblemes');return false;}
+    return true;
+  }
+  if(currentStep===4){
+    if(!formData.routine){showError('errRoutine');return false;}
+    return true;
+  }
+  if(currentStep===5){
+    if(!formData.experience){showError('errExperience');return false;}
+    return true;
+  }
+  if(currentStep===6){
+    formData.objectif=document.getElementById('objectifTextarea').value.trim()||'Non précisé';
+    return true;
+  }
+  return true;
+}
+
+function showError(id, inputId){
+  const el=document.getElementById(id);
+  el.classList.add('show');
+  if(inputId){
+    const input=document.getElementById(inputId);
+    input.classList.add('error');
+    animate(input,{x:[0,-8,8,-8,8,0]},{duration:.4});
+  }
+  setTimeout(()=>{
+    el.classList.remove('show');
+    if(inputId)document.getElementById(inputId).classList.remove('error');
+  },3000);
+}
+
+// ── Next / Prev ──
+function nextStep(){
+  if(!validateStep())return;
+  if(currentStep<TOTAL){goToStep(currentStep+1,'forward');}
+  else{submitForm();}
+}
+function prevStep(){
+  if(currentStep>1)goToStep(currentStep-1,'back');
+}
+
+// ── Option selection (radio) ──
+function selectOption(card,field){
+  const grid=card.closest('.options-grid,.options-list');
+  grid.querySelectorAll('.option-card').forEach(c=>{
+    c.classList.remove('selected');
+    const cm=c.querySelector('.opt-checkmark');
+    if(cm)cm.style.opacity='0';
+  });
+  card.classList.add('selected');
+  formData[field]=card.dataset.value;
+  const cm=card.querySelector('.opt-checkmark');
+  if(cm){
+    cm.style.opacity='1';
+    animate(card.querySelector('.option-check'),{scale:[0.8,1.15,1]},{duration:.3,easing:[.34,1.56,.64,1]});
+  }
+  animate(card,{scale:[1,1.02,1]},{duration:.2});
+}
+
+// ── Toggle option (checkbox) ──
+function toggleOption(card,field){
+  card.classList.toggle('selected');
+  const val=card.dataset.value;
+  const cm=card.querySelector('.opt-checkmark');
+  if(card.classList.contains('selected')){
+    if(!formData[field].includes(val))formData[field].push(val);
+    if(cm)cm.style.opacity='1';
+    animate(card.querySelector('.option-check'),{scale:[0.8,1.15,1]},{duration:.3,easing:[.34,1.56,.64,1]});
+    animate(card,{scale:[1,1.02,1]},{duration:.2});
+  } else {
+    formData[field]=formData[field].filter(v=>v!==val);
+    if(cm)cm.style.opacity='0';
+  }
+}
+
+// ── Textarea counter ──
+const ta=document.getElementById('objectifTextarea');
+const cc=document.getElementById('charCounter');
+ta.addEventListener('input',()=>{
+  cc.textContent=`${ta.value.length} / 200`;
+  if(ta.value.length>=190)cc.style.color='var(--err)';
+  else cc.style.color='';
+});
+
+// ── Real-time validation on inputs ──
+['inputPrenom','inputWA'].forEach(id=>{
+  const el=document.getElementById(id);
+  el.addEventListener('input',()=>{
+    if(el.value.trim()){el.classList.remove('error');el.classList.add('valid');}
+    else{el.classList.remove('valid');}
+  });
+});
+
+// ── Submit ──
+function submitForm(){
+  const msg = `Bonjour Glow Up Box ! 👋
+
+Voici mon bilan peau :
+
+👤 Prénom : ${formData.prenom}
+📱 Mon numéro : ${formData.whatsapp}
+🌿 Type de peau : ${formData.typePeau}
+⚠️ Problèmes : ${formData.problemes.join(', ')||'Non précisé'}
+💆 Routine actuelle : ${formData.routine}
+🎯 Expérience soins : ${formData.experience}
+✨ Mon objectif : ${formData.objectif}
+
+Merci de me conseiller ! 😊`;
+
+  const waUrl = `https://wa.me/212600000000?text=${encodeURIComponent(msg)}`;
+  document.getElementById('successWALink').href = waUrl;
+
+  // Button animation
+  const btn=document.getElementById('btnNext');
+  animate(btn,{scale:[1,0.97,1.03,1]},{duration:.35});
+  btn.disabled=true;
+  document.getElementById('btnNextText').textContent='Préparation...';
+  document.getElementById('btnNextLoader').style.display='';
+  document.getElementById('btnNextIcon').style.display='none';
+
+  setTimeout(()=>{
+    const fc=document.getElementById('formContainer');
+    const ss=document.getElementById('successScreen');
+    animate(fc,{opacity:[1,0],scale:[1,0.96]},{duration:.3}).then(()=>{
+      fc.style.display='none';
+      document.getElementById('progressBar').parentElement.style.display='none';
+      ss.style.display='block';
+      animate(ss,{opacity:[0,1],scale:[0.85,1]},{duration:.5,easing:[.34,1.56,.64,1]});
+      animate('#successCircle',{scale:[0.5,1.1,1]},{duration:.6,delay:.2,easing:[.34,1.56,.64,1]});
+      // Pulse success circle
+      setTimeout(()=>{
+        animate('#successCircle',{scale:[1,1.06,1]},{duration:1.5,repeat:Infinity,easing:'ease-in-out'});
+      },800);
+    });
+    // Open WhatsApp
+    window.open(waUrl,'_blank');
+  },900);
+}
+
+updateProgress();
+</script>
+</body>
+</html>

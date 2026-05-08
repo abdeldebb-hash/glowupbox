@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pure Skin Box — Glow Up Box ✦ | K-Beauty Maroc</title>
+<meta name="description" content="Pure Skin Box : nettoyer en profondeur sans abîmer ta peau. Box soins K-Beauty pour peaux grasses et mixtes. Conseil gratuit, livraison Maroc.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{
+  --fuchsia:#E91E8C;--coral:#FF6B9D;--peach:#FFB347;
+  --black:#1A1A2E;--purple:#2D1B4E;--soft-pink:#FDF0F5;
+  --gray:#4A4A6A;--nude:#F5E6D3;
+  --grad:linear-gradient(135deg,#E91E8C 0%,#FF6B9D 50%,#FFB347 100%);
+  --grad-dark:linear-gradient(135deg,#1A1A2E 0%,#2D1B4E 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;color:var(--gray);background:#fff;overflow-x:hidden;font-weight:300}
+
+h1,h2,h3{font-family:'Cormorant Garamond',serif;color:var(--black)}
+h1{font-size:clamp(2.8rem,6vw,5.5rem);font-weight:600;font-style:italic;line-height:1.04;letter-spacing:-0.02em}
+h2{font-size:clamp(2.4rem,5vw,4.5rem);font-weight:600;line-height:1.06;letter-spacing:-0.02em}
+h3{font-size:clamp(1.2rem,2vw,1.7rem);font-weight:500}
+p{line-height:1.8;font-weight:300;font-size:1rem;font-family:'Jost',sans-serif}
+.g-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* CURSOR */
+#cr{width:36px;height:36px;border:1.5px solid var(--fuchsia);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s}
+#cd{width:6px;height:6px;background:var(--fuchsia);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+@media(max-width:768px){#cr,#cd{display:none}body{cursor:auto}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:50px;font-family:'Jost',sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;cursor:pointer;border:none;position:relative;overflow:hidden}
+.btn-grad{background:var(--grad);color:#fff}
+.btn-grad::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#FF6B9D,#FFB347,#E91E8C);opacity:0;transition:opacity .3s}
+.btn-grad:hover::after{opacity:1}
+.btn-grad:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(233,30,140,.35)}
+.btn-grad span,.btn-grad svg{position:relative;z-index:1}
+.btn-outline-dark{background:transparent;color:var(--black);border:1.5px solid rgba(26,26,46,.2);font-family:'Jost',sans-serif;font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:14px 30px;border-radius:50px;text-decoration:none;transition:all .3s}
+.btn-outline-dark:hover{border-color:var(--fuchsia);color:var(--fuchsia)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.35);backdrop-filter:blur(8px)}
+.btn-ghost:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+.btn-sm{padding:10px 22px;font-size:11px}
+
+/* NAVBAR */
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 48px);max-width:1200px;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;border-radius:999px;background:rgba(255,255,255,.9);backdrop-filter:blur(24px);border:1px solid rgba(0,0,0,.06);box-shadow:0 8px 32px rgba(0,0,0,.07);transition:all .4s}
+.nav.dark{background:rgba(26,26,46,.5);border-color:rgba(255,255,255,.1)}
+.nav.dark .nav-logo{color:#fff}
+.nav.dark .nav-link{color:rgba(255,255,255,.8)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.3rem;color:var(--black);text-decoration:none;letter-spacing:.08em;transition:color .3s}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-link{color:var(--gray);text-decoration:none;font-size:12px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;transition:color .3s}
+.nav-link:hover{color:var(--fuchsia)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:currentColor;display:block;transition:all .3s}
+@media(max-width:900px){.nav-links{display:none}.hamburger{display:flex;color:var(--black)}.nav.dark .hamburger{color:#fff}}
+@media(max-width:640px){.nav{width:calc(100% - 24px);top:10px;padding:12px 18px}}
+
+/* MOBILE MENU */
+.mobile-menu{position:fixed;inset:0;background:var(--grad-dark);z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{color:#fff;font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:500;font-style:italic;text-decoration:none;opacity:.7;transition:opacity .3s}
+.mobile-menu a:hover{opacity:1}
+.mobile-close{position:absolute;top:28px;right:28px;color:#fff;cursor:pointer}
+
+/* BREADCRUMB */
+.breadcrumb{display:flex;align-items:center;gap:8px;font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);opacity:.6;margin-bottom:28px}
+.breadcrumb a{color:var(--gray);text-decoration:none;transition:color .3s}
+.breadcrumb a:hover{color:var(--fuchsia)}
+
+/* ① BLOC 1 — HERO TITRE SEUL */
+.hero-title-block{background:var(--grad-dark);padding:150px 40px 100px;position:relative;overflow:hidden;text-align:center;min-height:55vh;display:flex;align-items:center}
+.hero-title-block::before{content:'';position:absolute;top:-20%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(233,30,140,.18) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-title-block::after{content:'';position:absolute;bottom:-10%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,179,71,.08) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-title-inner{max-width:900px;margin:0 auto;position:relative;z-index:2}
+.hero-title-tag{display:inline-flex;align-items:center;background:rgba(233,30,140,.15);border:1px solid rgba(233,30,140,.28);color:var(--coral);padding:6px 22px;border-radius:50px;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;margin-bottom:24px}
+
+/* ② BLOC 2 — SHOWCASE IMAGE + CARD 2 COLONNES */
+.showcase{padding:80px 40px 96px;background:#fff}
+.showcase-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:52px;align-items:start}
+.showcase-img{border-radius:28px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 24px 72px rgba(26,26,46,.1);position:relative}
+.showcase-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block}
+.showcase-img:hover img{transform:scale(1.04)}
+.showcase-img-badge{position:absolute;top:20px;left:20px;background:var(--grad);color:#fff;padding:6px 16px;border-radius:50px;font-family:'Jost',sans-serif;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;z-index:2}
+/* Card divisée en 2 */
+.showcase-card{border-radius:28px;overflow:hidden;border:1px solid rgba(233,30,140,.08);box-shadow:0 12px 40px rgba(26,26,46,.06)}
+.showcase-card-top{padding:24px 32px 20px;background:var(--black);display:flex;align-items:center;justify-content:space-between}
+.showcase-card-top h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;font-style:italic;color:#fff;margin:0}
+.showcase-card-top-tag{font-family:'Jost',sans-serif;font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);background:rgba(233,30,140,.15);padding:4px 12px;border-radius:20px}
+/* Corps divisé en 2 colonnes */
+.showcase-card-body{display:grid;grid-template-columns:1fr 1fr;min-height:380px}
+.sc-left{padding:32px;background:#fff;border-right:1px solid rgba(233,30,140,.07)}
+.sc-right{padding:32px;background:var(--soft-pink)}
+.sc-section-label{font-family:'Jost',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fuchsia);margin-bottom:10px;opacity:.7}
+.sc-accroche{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;font-style:italic;color:var(--black);line-height:1.25;margin-bottom:10px}
+.sc-desc{font-family:'Jost',sans-serif;font-size:.82rem;font-weight:300;color:var(--gray);line-height:1.75;margin-bottom:14px}
+.sc-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px}
+.sc-pill{background:rgba(233,30,140,.07);color:var(--fuchsia);padding:4px 11px;border-radius:20px;font-family:'Jost',sans-serif;font-size:9px;font-weight:600;letter-spacing:.08em}
+.sc-quick{display:flex;flex-direction:column;gap:6px}
+.sc-quick-item{display:flex;align-items:center;gap:8px;font-family:'Jost',sans-serif;font-size:.8rem;font-weight:300;color:var(--gray)}
+.sc-quick-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--grad);flex-shrink:0}
+/* Colonne droite */
+.sc-produits{display:flex;flex-direction:column;gap:0;margin-bottom:16px}
+.sc-produit{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid rgba(233,30,140,.08)}
+.sc-produit:last-child{border-bottom:none}
+.sc-produit::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--grad);flex-shrink:0;margin-top:7px}
+.sc-produit span{font-family:'Jost',sans-serif;font-size:.8rem;font-weight:400;color:var(--black);line-height:1.45}
+.sc-price-block{background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:16px;border:1px solid rgba(233,30,140,.08)}
+.sc-price-val{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sc-price-note{font-family:'Jost',sans-serif;font-size:.72rem;font-weight:300;color:var(--gray);margin-top:3px}
+.sc-ctas{display:flex;flex-direction:column;gap:8px}
+.sc-ctas .btn{width:100%;justify-content:center}
+.btn-outline-dark{background:transparent;color:var(--black);border:1.5px solid rgba(26,26,46,.2);font-family:'Jost',sans-serif;font-weight:500;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:12px 20px;border-radius:50px;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;gap:8px;justify-content:center;cursor:pointer}
+.btn-outline-dark:hover{border-color:var(--fuchsia);color:var(--fuchsia)}
+@media(max-width:1024px){.showcase-inner{grid-template-columns:1fr}.showcase-img{aspect-ratio:16/9}}
+@media(max-width:768px){
+  .hero-title-block{padding:110px 24px 72px;min-height:auto}
+  .showcase{padding:48px 20px 64px}
+  .showcase-card-body{grid-template-columns:1fr}
+  .sc-left{border-right:none;border-bottom:1px solid rgba(233,30,140,.08)}
+}
+
+/* ② BANDE INCLUS */
+.inclus-band{background:var(--black);padding:0}
+.inclus-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.07)}
+.inclus-item{padding:48px 40px;border-right:1px solid rgba(255,255,255,.07);position:relative}
+.inclus-item:last-child{border-right:none}
+.inclus-icon{width:48px;height:48px;border-radius:14px;background:rgba(233,30,140,.15);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.inclus-title{font-family:'Jost',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px}
+.inclus-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.inclus-list li{font-family:'Jost',sans-serif;font-size:.88rem;font-weight:300;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:8px}
+.inclus-list li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--grad);flex-shrink:0}
+@media(max-width:768px){.inclus-grid{grid-template-columns:1fr}.inclus-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.07)}}
+
+/* SECTIONS */
+section{padding:96px 40px}
+.si{max-width:1200px;margin:0 auto}
+.sbadge{display:inline-flex;align-items:center;gap:10px;color:var(--fuchsia);font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
+.sbadge::before{content:'';width:22px;height:1.5px;background:var(--grad);display:block;flex-shrink:0}
+
+/* ③ PRODUITS — alternating */
+.produit-row{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:64px 0;border-bottom:1px solid rgba(233,30,140,.07)}
+.produit-row:first-child{padding-top:0}
+.produit-row:last-child{border-bottom:none;padding-bottom:0}
+.produit-row.reverse{direction:rtl}
+.produit-row.reverse > *{direction:ltr}
+.produit-img{border-radius:24px;overflow:hidden;aspect-ratio:4/3;position:relative}
+.produit-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.produit-img:hover img{transform:scale(1.05)}
+.produit-img-placeholder{width:100%;height:100%;background:var(--soft-pink);display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;border-radius:24px}
+.produit-num{font-family:'Jost',sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fuchsia);margin-bottom:10px}
+.produit-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:600;font-style:italic;color:var(--black);margin-bottom:16px;line-height:1.2}
+.produit-benefits{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.produit-benefit{display:flex;align-items:flex-start;gap:12px;font-family:'Jost',sans-serif;font-size:.9rem;font-weight:300;color:var(--gray);line-height:1.6}
+.benefit-dot{width:20px;height:20px;border-radius:50%;background:rgba(233,30,140,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+@media(max-width:768px){.produit-row{grid-template-columns:1fr;gap:32px}.produit-row.reverse{direction:ltr}}
+
+/* ④ POURQUOI CETTE BOX */
+.why-bg{background:var(--grad-dark);position:relative;overflow:hidden}
+.why-bg::before{content:'';position:absolute;top:-30%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(233,30,140,.18) 0%,transparent 70%);border-radius:50%}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.why-img{border-radius:24px;overflow:hidden;aspect-ratio:3/4}
+.why-img img{width:100%;height:100%;object-fit:cover}
+.why-points{display:flex;flex-direction:column;gap:28px;margin-top:36px}
+.why-point{display:flex;gap:20px;align-items:flex-start}
+.why-point-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;flex-shrink:0;width:36px}
+.why-point h4{font-family:'Jost',sans-serif;font-size:.95rem;font-weight:600;color:#fff;margin-bottom:5px}
+.why-point p{font-family:'Jost',sans-serif;font-size:.85rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.7}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr}.why-img{display:none}}
+
+/* ⑤ SUIVI 1 MOIS */
+.suivi-bg{background:var(--soft-pink)}
+.suivi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.suivi-card{background:#fff;border-radius:24px;padding:32px;border:1px solid rgba(233,30,140,.08);transition:transform .3s,box-shadow .3s}
+.suivi-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(233,30,140,.1)}
+.suivi-card-icon{width:52px;height:52px;border-radius:16px;background:rgba(233,30,140,.08);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.suivi-card h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;font-style:italic;color:var(--black);margin-bottom:10px}
+.suivi-card p{font-size:.88rem;font-family:'Jost',sans-serif;font-weight:300;color:var(--gray);line-height:1.7}
+@media(max-width:768px){.suivi-grid{grid-template-columns:1fr;gap:16px}}
+
+/* ⑥ TÉMOIGNAGES */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.tcard{background:var(--soft-pink);border-radius:22px;padding:28px;border:1px solid rgba(233,30,140,.08);transition:transform .3s}
+.tcard:hover{transform:translateY(-4px)}
+.tstars{display:flex;gap:3px;margin-bottom:14px}
+.tstar{color:var(--peach);font-size:14px}
+.ttext{font-size:.9rem;line-height:1.75;color:var(--gray);margin-bottom:20px;font-style:italic;font-weight:300}
+.tauthor{display:flex;align-items:center;gap:12px}
+.tavatar{width:40px;height:40px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;overflow:hidden}
+.tname{font-family:'Jost',sans-serif;font-weight:600;font-size:13px;color:var(--black)}
+.tmeta{font-family:'Jost',sans-serif;font-size:11px;color:var(--gray);margin-top:2px;font-weight:300}
+@media(max-width:768px){.testi-grid{grid-template-columns:1fr}}
+
+/* ⑦ CROSS-SELL */
+.cross-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.cross-card{background:var(--soft-pink);border-radius:20px;overflow:hidden;transition:transform .3s,box-shadow .3s;text-decoration:none}
+.cross-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(233,30,140,.12)}
+.cross-img{height:140px;display:flex;align-items:center;justify-content:center}
+.cross-img svg{opacity:.5}
+.cross-body{padding:20px}
+.cross-tag{font-family:'Jost',sans-serif;font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--fuchsia);margin-bottom:6px}
+.cross-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;font-style:italic;color:var(--black);margin-bottom:8px}
+.cross-obj{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px}
+.cross-pill{background:rgba(233,30,140,.07);color:var(--fuchsia);padding:3px 10px;border-radius:20px;font-family:'Jost',sans-serif;font-size:9px;font-weight:500}
+@media(max-width:768px){.cross-grid{grid-template-columns:1fr}}
+
+/* ⑧ CTA FINAL */
+.cta-final{background:var(--grad);text-align:center;position:relative;overflow:hidden;padding:96px 40px}
+.cta-final::before,.cta-final::after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.06)}
+.cta-final::before{width:500px;height:500px;top:-200px;left:-100px}
+.cta-final::after{width:300px;height:300px;bottom:-100px;right:-50px}
+.cta-final h2{color:#fff;margin-bottom:14px}
+.cta-final p{color:rgba(255,255,255,.78);font-size:1.05rem;margin-bottom:40px;max-width:520px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+
+/* FOOTER */
+footer{background:var(--black);color:rgba(255,255,255,.55);padding:60px 40px 28px}
+.footer-in{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:40px}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.06em;color:#fff;display:block;margin-bottom:14px}
+.f-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.45);font-weight:300}
+.fsocials{display:flex;gap:10px;margin-top:22px}
+.fsoc{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .3s,transform .3s}
+.fsoc:hover{background:var(--fuchsia);transform:translateY(-3px)}
+.f-col h4{color:#fff;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.f-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:13.5px;transition:color .3s;font-weight:300}
+.f-links a:hover{color:var(--coral)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:640px){.footer-grid{grid-template-columns:1fr;gap:28px}.footer-bottom{flex-direction:column;gap:10px;text-align:center}section{padding:70px 20px}}
+
+/* WA FLOAT */
+.wa{position:fixed;bottom:28px;right:28px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:998;box-shadow:0 8px 24px rgba(37,211,102,.4);text-decoration:none;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.wa:hover{transform:scale(1.12)}
+.wa::before,.wa::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid rgba(37,211,102,.4);animation:waP 2.2s ease-out infinite}
+.wa::after{animation-delay:.5s;border-color:rgba(37,211,102,.2)}
+@keyframes waP{0%{transform:scale(1);opacity:1}100%{transform:scale(1.7);opacity:0}}
+
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+<div id="cr"></div><div id="cd"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-close" id="mobileClose"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+  <a href="coffrets.html">Boxs</a>
+  <a href="accessoires.html">Boutique</a>
+  <a href="conseil-peau.html">Bilan peau</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contacter nous</a>
+  <a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="btn btn-grad btn-sm" target="_blank"><span>WhatsApp</span></a>
+</div>
+
+<!-- NAVBAR -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">GLOW UP BOX ✦</a>
+  <ul class="nav-links">
+    <li><a href="coffrets.html" class="nav-link" style="color:var(--fuchsia)">Boxs</a></li>
+    <li><a href="accessoires.html" class="nav-link">Boutique</a></li>
+    <li><a href="conseil-peau.html" class="nav-link">Bilan peau</a></li>
+    <li><a href="blog.html" class="nav-link">Blog</a></li>
+    <li><a href="contact.html" class="nav-link">Contacter nous</a></li>
+  </ul>
+  <a href="https://wa.me/212600000000?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9e%20par%20la%20Pure%20Skin%20Box" class="btn btn-grad btn-sm" target="_blank" rel="noopener">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>Je veux cette box</span>
+  </a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- BLOC 1 — HERO TITRE -->
+<div class="hero-title-block" id="heroBlock">
+  <div class="hero-title-inner">
+    <div class="breadcrumb" style="justify-content:center;margin-bottom:20px">
+      <a href="index.html">Accueil</a><span>›</span>
+      <a href="coffrets.html">Boxs</a><span>›</span>
+      <span style="color:rgba(255,255,255,.55)">Pure Skin Box</span>
+    </div>
+    <div class="hero-title-tag" id="heroTag">Peau grasse · Peau mixte · Imperfections</div>
+    <h1 id="heroTitle" style="color:#fff;margin-top:8px"><em class="g-text">Pure Skin</em> Box</h1>
+    <p id="heroSub" style="color:rgba(255,255,255,.5);font-size:1.05rem;margin-top:18px;max-width:480px;margin-left:auto;margin-right:auto">Nettoyer en profondeur sans abîmer ta peau — la box K-Beauty pensée pour les peaux grasses et mixtes.</p>
+  </div>
+</div>
+
+<!-- BLOC 2 — IMAGE + CARD DIVISÉE EN 2 -->
+<div class="showcase">
+  <div class="showcase-inner">
+
+    <!-- Gauche : image box -->
+    <div class="showcase-img" id="showcaseImg">
+      <div class="showcase-img-badge">Peau grasse / mixte</div>
+      <img src="assets/images/peau-grasse.jpg" alt="Pure Skin Box — Glow Up Box">
+    </div>
+
+    <!-- Droite : card divisée en 2 colonnes -->
+    <div class="showcase-card" id="showcaseCard">
+      <!-- Header de la card -->
+      <div class="showcase-card-top">
+        <h3>Pure Skin Box</h3>
+        <span class="showcase-card-top-tag">Box soins K-Beauty</span>
+      </div>
+      <!-- Corps : 2 colonnes -->
+      <div class="showcase-card-body">
+        <!-- Colonne gauche : description + objectifs -->
+        <div class="sc-left">
+          <div class="sc-section-label">La box</div>
+          <div class="sc-accroche">Nettoyer en profondeur sans abîmer ta peau</div>
+          <p class="sc-desc">Pour les peaux mixtes à grasses avec pores visibles et imperfections. Purifie sans agresser, rééquilibre sans assécher.</p>
+          <div class="sc-section-label" style="margin-top:14px">Objectifs</div>
+          <div class="sc-pills">
+            <span class="sc-pill">Nettoyer</span>
+            <span class="sc-pill">Purifier</span>
+            <span class="sc-pill">Rééquilibrer</span>
+          </div>
+          <div class="sc-section-label">Inclus dans toutes les boxs</div>
+          <div class="sc-quick">
+            <div class="sc-quick-item">Accessoires offerts</div>
+            <div class="sc-quick-item">Fiche routine personnalisée</div>
+            <div class="sc-quick-item">Suivi WhatsApp 1 mois</div>
+            <div class="sc-quick-item">Livraison partout au Maroc</div>
+          </div>
+        </div>
+        <!-- Colonne droite : produits + prix + CTA -->
+        <div class="sc-right">
+          <div class="sc-section-label">Produits inclus</div>
+          <div class="sc-produits">
+            <div class="sc-produit"><span>Skin1004 Centella Poremizing Clay Stick Mask</span></div>
+            <div class="sc-produit"><span>Dr. Althea 147 Crème hydratante</span></div>
+          </div>
+          <div class="sc-price-block">
+            <div class="sc-price-val">[PRIX] DH</div>
+            <div class="sc-price-note">Prix communiqué après bilan peau gratuit</div>
+          </div>
+          <div class="sc-ctas">
+            <a href="https://wa.me/212600000000?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9e%20par%20la%20Pure%20Skin%20Box%20et%20j%27aimerais%20un%20conseil%20personnalis%C3%A9" class="btn btn-grad btn-sm" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span>Je veux cette box</span>
+            </a>
+            <a href="conseil-peau.html" class="btn-outline-dark btn-sm">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l3.1 6.3L22 9.3l-5 4.9 1.2 6.9L12 18l-6.2 3.1 1.2-6.9L2 9.3l6.9-1z"/></svg>
+              <span>Faire mon bilan d'abord</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ② BANDE CE QUI EST INCLUS -->
+<div class="inclus-band">
+  <div class="inclus-grid">
+    <div class="inclus-item">
+      <div class="inclus-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.5" stroke-linecap="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+      </div>
+      <div class="inclus-title">Produits soins</div>
+      <ul class="inclus-list">
+        <li>Skin1004 Centella Clay Stick Mask</li>
+        <li>Dr. Althea 147 Crème hydratante</li>
+      </ul>
+    </div>
+    <div class="inclus-item">
+      <div class="inclus-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.5" stroke-linecap="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+      </div>
+      <div class="inclus-title">Accessoires offerts</div>
+      <ul class="inclus-list">
+        <li>Bandeau skincare</li>
+        <li>Manchettes</li>
+        <li>Pince + Pinceau</li>
+        <li>Patch yeux (selon dispo)</li>
+      </ul>
+    </div>
+    <div class="inclus-item">
+      <div class="inclus-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.5" stroke-linecap="round"><path d="M12 2l3.1 6.3L22 9.3l-5 4.9 1.2 6.9L12 18l-6.2 3.1 1.2-6.9L2 9.3l6.9-1z"/></svg>
+      </div>
+      <div class="inclus-title">Bonus inclus</div>
+      <ul class="inclus-list">
+        <li>Fiche routine personnalisée</li>
+        <li>Suivi WhatsApp 1 mois</li>
+        <li>Conseil d'utilisation détaillé</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ③ DÉTAIL PRODUITS -->
+<section style="background:#fff">
+  <div class="si">
+    <div class="sbadge">Les produits</div>
+    <h2>Ce que contient<br>ta <em class="g-text">Pure Skin Box</em></h2>
+
+    <div style="margin-top:56px">
+
+      <!-- Produit 1 -->
+      <div class="produit-row">
+        <div class="produit-img">
+          <img src="assets/images/acc-brosse.jpg" alt="Skin1004 Centella Clay Stick Mask">
+        </div>
+        <div>
+          <div class="produit-num">Produit 01</div>
+          <div class="produit-name">Skin1004 Centella<br>Poremizing Clay Stick Mask</div>
+          <p style="font-size:.9rem;color:var(--gray);font-weight:300">Un masque purifiant en format stick innovant, enrichi en Centella Asiatica — l'ingrédient star de la K-Beauty pour les peaux sensibilisées et grasses.</p>
+          <div class="produit-benefits">
+            <div class="produit-benefit">
+              <div class="benefit-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              Nettoie les pores en profondeur sans agresser
+            </div>
+            <div class="produit-benefit">
+              <div class="benefit-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              Absorbe l'excès de sébum durablement
+            </div>
+            <div class="produit-benefit">
+              <div class="benefit-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              Apaise les rougeurs grâce à la Centella
+            </div>
+            <div class="produit-benefit">
+              <div class="benefit-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              Format pratique — application précise et sans gâchis
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produit 2 -->
+      <div class="produit-row reverse">
+        <div class="produit-img">
+          <img src="assets/images/acc-bandeau.jpg" alt="Dr. Althea 147 Crème hydratante">
+        </div>
+        <div>
+          <div class="produit-num">Produit 02</div>
+          <div class="produit-name">Dr. Althea 147<br>Crème hydratante</div>
+          <p style="font-size:.9rem;color:var(--gray);font-weight:300">Une crème légère et apaisante formulée pour restaurer l'équilibre de la peau après la purification. Texture gel-crème qui fond sur la peau sans effet gras.</p>
+          <div class="produit-benefits">
+            <div class="produit-benefit">
+              <div class="benefit-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              Hydrate sans alourdir — idéale peaux mixtes
+            </div>
+            <div class="produit-benefit">
+              <div class="benefit-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              Répare la barrière cutanée fragilisée
+            </div>
+            <div class="produit-benefit">
+              <div class="benefit-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              Apaise les irritations post-nettoyage
+            </div>
+            <div class="produit-benefit">
+              <div class="benefit-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              Absorption rapide — finish mat naturel
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ POURQUOI CETTE BOX -->
+<section class="why-bg">
+  <div class="si" style="position:relative;z-index:1">
+    <div class="why-grid">
+      <div>
+        <div class="sbadge" style="color:var(--coral)">Positionnement</div>
+        <h2 style="color:#fff">Pourquoi la<br><em class="g-text">Pure Skin Box</em> ?</h2>
+        <p style="color:rgba(255,255,255,.55);margin-top:16px;max-width:440px">Les peaux grasses et mixtes ont souvent les mêmes erreurs : trop nettoyer, trop assécher, et finalement aggraver la situation. Cette box corrige ça.</p>
+        <div class="why-points">
+          <div class="why-point">
+            <div class="why-point-num">01</div>
+            <div><h4>Purifier sans agresser</h4><p>La Centella Asiatica nettoie les pores et calme l'inflammation simultanément — pas l'un sans l'autre.</p></div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-num">02</div>
+            <div><h4>Rééquilibrer durablement</h4><p>Un nettoyage trop intense provoque une surproduction de sébum. La crème Dr. Althea évite cet effet rebond.</p></div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-num">03</div>
+            <div><h4>Routine en 2 étapes simples</h4><p>Pas besoin de 10 produits. Cette box te donne l'essentiel pour voir des résultats dès 2 semaines.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="why-img">
+        <img src="assets/images/peau-sensible.jpg" alt="Pourquoi la Pure Skin Box">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ SUIVI 1 MOIS -->
+<section class="suivi-bg">
+  <div class="si">
+    <div style="text-align:center">
+      <div class="sbadge" style="justify-content:center">Accompagnement</div>
+      <h2>Le suivi <em class="g-text">1 mois</em> inclus</h2>
+      <p style="max-width:480px;margin:14px auto 0;font-size:.95rem">On ne t'envoie pas juste une box. On reste là pour t'aider à l'utiliser correctement et à voir de vrais résultats.</p>
+    </div>
+    <div class="suivi-grid">
+      <div class="suivi-card">
+        <div class="suivi-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.5" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h4>Réponse sous 24h</h4>
+        <p>Chaque question sur WhatsApp reçoit une réponse personnelle — pas de bot, pas de réponse automatique.</p>
+      </div>
+      <div class="suivi-card">
+        <div class="suivi-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.5" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h4>Ajustement de routine</h4>
+        <p>Si ta peau réagit différemment ou si tu as des questions sur l'ordre d'application — on adapte avec toi.</p>
+      </div>
+      <div class="suivi-card">
+        <div class="suivi-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.5" stroke-linecap="round"><path d="M12 2l3.1 6.3L22 9.3l-5 4.9 1.2 6.9L12 18l-6.2 3.1 1.2-6.9L2 9.3l6.9-1z"/></svg>
+        </div>
+        <h4>Fiche routine offerte</h4>
+        <p>Une fiche personnalisée avec ton ordre d'application, la fréquence conseillée et les petites astuces pour optimiser tes résultats.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ TÉMOIGNAGES -->
+<section style="background:#fff">
+  <div class="si">
+    <div style="text-align:center">
+      <div class="sbadge" style="justify-content:center">Avis clients</div>
+      <h2>Ce qu'elles en<br><em class="g-text">pensent</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="tcard">
+        <div class="tstars">⭐⭐⭐⭐⭐</div>
+        <p class="ttext">"J'avais des pores très visibles et un excès de sébum permanent. Après 3 semaines avec la Pure Skin Box, mes pores ont visiblement diminué et ma peau brille beaucoup moins. Le masque stick, c'est une révélation !"</p>
+        <div class="tauthor">
+          <div class="tavatar">S</div>
+          <div>
+            <div class="tname">Sara M.</div>
+            <div class="tmeta">Peau mixte · Casablanca</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tstars">⭐⭐⭐⭐⭐</div>
+        <p class="ttext">"J'avais peur que les produits asséchent ma peau comme tous les autres que j'ai essayés. Mais la crème Dr. Althea est parfaite — légère, sans effet gras. Ma peau est enfin équilibrée."</p>
+        <div class="tauthor">
+          <div class="tavatar">N</div>
+          <div>
+            <div class="tname">Nadia B.</div>
+            <div class="tmeta">Peau grasse · Rabat</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tstars">⭐⭐⭐⭐⭐</div>
+        <p class="ttext">"Le suivi était incroyable. J'avais des questions sur comment utiliser le masque et j'ai eu une réponse détaillée en moins d'une heure. On sent vraiment qu'elles connaissent leurs produits."</p>
+        <div class="tauthor">
+          <div class="tavatar">I</div>
+          <div>
+            <div class="tname">Imane K.</div>
+            <div class="tmeta">Peau mixte · Marrakech</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ CROSS-SELL -->
+<section style="background:var(--soft-pink)">
+  <div class="si">
+    <div style="text-align:center">
+      <div class="sbadge" style="justify-content:center">Découvrir aussi</div>
+      <h2>D'autres boxs<br><em class="g-text">qui pourraient te plaire</em></h2>
+    </div>
+    <div class="cross-grid">
+      <a href="coffret-complete-glow-box.html" class="cross-card">
+        <div class="cross-img" style="background:linear-gradient(135deg,#FDF0F5,#FFE0EF)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+        </div>
+        <div class="cross-body">
+          <div class="cross-tag">Peaux ternes / mixtes</div>
+          <div class="cross-name">Complete Glow Box</div>
+          <div class="cross-obj"><span class="cross-pill">Nettoyer</span><span class="cross-pill">Hydrater</span><span class="cross-pill">SPF</span></div>
+          <span style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--fuchsia)">Voir la box →</span>
+        </div>
+      </a>
+      <a href="coffret-clear-calm-box.html" class="cross-card">
+        <div class="cross-img" style="background:linear-gradient(135deg,#E8F5E9,#C8E6C9)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+        </div>
+        <div class="cross-body">
+          <div class="cross-tag">Imperfections</div>
+          <div class="cross-name">Clear & Calm Box</div>
+          <div class="cross-obj"><span class="cross-pill">Purifier</span><span class="cross-pill">Apaiser</span><span class="cross-pill">Acné</span></div>
+          <span style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--fuchsia)">Voir la box →</span>
+        </div>
+      </a>
+      <a href="coffret-glow-even-box.html" class="cross-card">
+        <div class="cross-img" style="background:linear-gradient(135deg,#FFF3E0,#FFE0B2)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="cross-body">
+          <div class="cross-tag">Teint terne</div>
+          <div class="cross-name">Glow & Even Box</div>
+          <div class="cross-obj"><span class="cross-pill">Illuminer</span><span class="cross-pill">Unifier</span><span class="cross-pill">Vit.C</span></div>
+          <span style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--fuchsia)">Voir la box →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ CTA FINAL -->
+<section class="cta-final">
+  <div style="position:relative;z-index:1">
+    <div class="sbadge" style="justify-content:center;color:rgba(255,255,255,.7);margin-bottom:16px"><span>Prête ?</span></div>
+    <h2 style="color:#fff">Commande ta<br>Pure Skin Box</h2>
+    <p>Dis-nous que tu veux cette box — on te confirme le tarif et on prépare ta commande.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/212600000000?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9e%20par%20la%20Pure%20Skin%20Box%20et%20j%27aimerais%20un%20conseil%20personnalis%C3%A9" class="btn" style="background:#fff;color:var(--fuchsia);font-weight:700" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span>Je veux cette box</span>
+      </a>
+      <a href="conseil-peau.html" class="btn btn-ghost">
+        <span>Faire mon bilan d'abord</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-in">
+    <div class="footer-grid">
+      <div class="f-brand">
+        <span class="f-logo">GLOW UP BOX ✦</span>
+        <p>Boxs soins K-Beauty personnalisées. Conseil gratuit, livraison partout au Maroc.</p>
+        <div class="fsocials">
+          <a href="#" class="fsoc" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://wa.me/212600000000" class="fsoc" aria-label="WhatsApp" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Navigation</h4><ul class="f-links"><li><a href="coffrets.html">Boxs</a></li><li><a href="accessoires.html">Boutique</a></li><li><a href="conseil-peau.html">Bilan peau</a>
+  <a href="blog.html">Blog</a></li><li><a href="b2b.html">B2B</a></li></ul></div>
+      <div class="f-col"><h4>Informations</h4><ul class="f-links"><li><a href="a-propos.html">À Propos</a></li><li><a href="contact.html">Contacter nous</a></li><li><a href="conseil-peau.html">Bilan gratuit</a></li><li><a href="#">Mentions légales</a></li></ul></div>
+      <div class="f-col"><h4>Contact</h4><ul class="f-links"><li><a href="https://wa.me/212600000000" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="#">Instagram</a></li><li><span style="color:rgba(255,255,255,.3);font-size:13px">Livraison nationale Maroc</span></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Glow Up Box ✦ — Tous droits réservés</span><span style="color:rgba(255,255,255,.3)">K-Beauty authentique · Fait au Maroc</span></div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- SCRIPTS -->
+<script>
+// CURSOR
+const cr=document.getElementById('cr'),cd=document.getElementById('cd');
+if(window.matchMedia('(pointer:fine)').matches){
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px'});
+  (function loop(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(loop)})();
+}
+// NAVBAR — transparent at top
+const nav=document.getElementById('nav');
+nav.classList.add('dark');
+window.addEventListener('scroll',()=>{
+  if(scrollY>window.innerHeight*0.8){nav.classList.remove('dark')}
+  else{nav.classList.add('dark')}
+},{passive:true});
+// HAMBURGER
+const ham=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu'),mc=document.getElementById('mobileClose');
+ham.addEventListener('click',()=>mm.classList.add('open'));
+mc.addEventListener('click',()=>mm.classList.remove('open'));
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+</script>
+
+<script type="module">
+import { animate, inView, stagger, scroll } from 'https://cdn.jsdelivr.net/npm/motion@latest/+esm';
+
+// Bloc 1 — hero titre entrance
+animate(['#heroTag','#heroTitle','#heroSub'],
+  {opacity:[0,1],y:[28,0]},
+  {duration:.75,delay:stagger(.13),easing:[.34,1.56,.64,1]}
+);
+
+// Bloc 2 — showcase entrance
+animate(['#showcaseImg','#showcaseCard'],
+  {opacity:[0,1],y:[32,0]},
+  {duration:.7,delay:stagger(.15),easing:[.34,1.56,.64,1]}
+);
+
+// Scroll reveals
+inView('.inclus-item',({target})=>{
+  animate(target,{opacity:[0,1],y:[24,0]},{duration:.6,easing:[.25,.46,.45,.94]});
+},{amount:.2});
+
+inView('.produit-row',({target})=>{
+  const img=target.querySelector('.produit-img,.produit-img-placeholder');
+  const txt=target.querySelector('div:last-child');
+  if(img)animate(img,{opacity:[0,1],x:target.classList.contains('reverse')?[40,0]:[-40,0]},{duration:.7,easing:[.34,1.56,.64,1]});
+  if(txt)animate(txt,{opacity:[0,1],x:target.classList.contains('reverse')?[-40,0]:[40,0]},{duration:.7,delay:.1,easing:[.34,1.56,.64,1]});
+},{amount:.1});
+
+inView('.why-point',({target})=>{
+  animate(target,{opacity:[0,1],x:[-28,0]},{duration:.6,easing:[.25,.46,.45,.94]});
+},{amount:.2});
+
+inView('.suivi-card',({target})=>{
+  animate(target,{opacity:[0,1],y:[28,0]},{duration:.55,easing:[.34,1.56,.64,1]});
+},{amount:.2});
+
+inView('.tcard',({target})=>{
+  animate(target,{opacity:[0,1],y:[24,0]},{duration:.55,easing:[.34,1.56,.64,1]});
+},{amount:.2});
+
+inView('.cross-card',({target})=>{
+  animate(target,{opacity:[0,1],y:[20,0]},{duration:.5,easing:[.34,1.56,.64,1]});
+},{amount:.2});
+</script>
+</body>
+</html>

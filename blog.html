@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Beauté Skincare — Glow Up Box ✦ | K-Beauty Maroc</title>
+<meta name="description" content="Conseils skincare, routines beauté et astuces pour prendre soin de votre peau. Le blog K-Beauty de Glow Up Box au Maroc.">
+<meta property="og:title" content="Blog Beauté — Glow Up Box ✦">
+<meta property="og:description" content="Conseils skincare, routines beauté et astuces pour prendre soin de votre peau au quotidien.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{
+  --fuchsia:#E91E8C;--coral:#FF6B9D;--peach:#FFB347;
+  --black:#1A1A2E;--purple:#2D1B4E;--soft-pink:#FDF0F5;
+  --gray:#4A4A6A;--nude:#F5E6D3;
+  --grad:linear-gradient(135deg,#E91E8C 0%,#FF6B9D 50%,#FFB347 100%);
+  --grad-dark:linear-gradient(135deg,#1A1A2E 0%,#2D1B4E 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;color:var(--gray);background:#fff;overflow-x:hidden;font-weight:300;cursor:none}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--black)}
+h1{font-size:clamp(3rem,7vw,6rem);font-weight:600;font-style:italic;line-height:1.04;letter-spacing:-0.02em}
+h2{font-size:clamp(2rem,4vw,3.4rem);font-weight:600;line-height:1.08;letter-spacing:-0.01em}
+h3{font-size:clamp(1.15rem,2vw,1.5rem);font-weight:500}
+p{line-height:1.8;font-weight:300;font-size:1rem;font-family:'Jost',sans-serif}
+.g-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* CURSOR */
+#cr{width:36px;height:36px;border:1.5px solid var(--fuchsia);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s}
+#cd{width:6px;height:6px;background:var(--fuchsia);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+@media(max-width:768px){#cr,#cd{display:none}body{cursor:auto}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:50px;font-family:'Jost',sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;cursor:pointer;border:none;position:relative;overflow:hidden}
+.btn-grad{background:var(--grad);color:#fff}
+.btn-grad::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#FF6B9D,#FFB347,#E91E8C);opacity:0;transition:opacity .3s}
+.btn-grad:hover::after{opacity:1}
+.btn-grad:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(233,30,140,.35)}
+.btn-grad span,.btn-grad svg{position:relative;z-index:1}
+.btn-outline{background:transparent;color:var(--fuchsia);border:1.5px solid var(--fuchsia);font-family:'Jost',sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:14px 36px;border-radius:50px;text-decoration:none;transition:all .3s;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn-outline:hover{background:var(--fuchsia);color:#fff}
+.btn-sm{padding:10px 22px;font-size:11px}
+
+/* NAVBAR */
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 48px);max-width:1200px;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;border-radius:999px;background:rgba(26,26,46,.5);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);transition:all .4s}
+.nav.scrolled{background:rgba(255,255,255,.95);border-color:rgba(0,0,0,.06);box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.nav.scrolled .nav-logo{color:var(--black)}
+.nav.scrolled .nav-link{color:var(--gray)}
+.nav.scrolled .nav-link:hover{color:var(--fuchsia)}
+.nav.scrolled .hamburger{color:var(--black)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.3rem;color:#fff;text-decoration:none;letter-spacing:.08em}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-link{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;transition:color .3s}
+.nav-link:hover{color:#fff}
+.nav-link.active{color:var(--coral)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;color:#fff}
+.hamburger span{width:22px;height:1.5px;background:currentColor;display:block;transition:all .3s}
+@media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}
+@media(max-width:640px){.nav{width:calc(100% - 24px);top:10px;padding:12px 18px}}
+
+/* MOBILE MENU */
+.mobile-menu{position:fixed;inset:0;background:var(--grad-dark);z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{color:#fff;font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:500;font-style:italic;text-decoration:none;opacity:.7;transition:opacity .3s}
+.mobile-menu a:hover{opacity:1}
+.mobile-close{position:absolute;top:28px;right:28px;color:#fff;cursor:pointer}
+
+/* BREADCRUMB */
+.breadcrumb{display:flex;align-items:center;gap:8px;font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:20px}
+.breadcrumb a{color:rgba(255,255,255,.4);text-decoration:none;transition:color .3s}
+.breadcrumb a:hover{color:var(--coral)}
+.breadcrumb span{color:rgba(255,255,255,.2)}
+
+/* HERO */
+.blog-hero{background:var(--grad-dark);padding:150px 40px 96px;position:relative;overflow:hidden;min-height:46vh;display:flex;align-items:center}
+.blog-hero::before{content:'';position:absolute;top:-20%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(233,30,140,.15) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.blog-hero-inner{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2}
+.sbadge{display:inline-flex;align-items:center;gap:10px;color:var(--fuchsia);font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
+.sbadge::before{content:'';width:22px;height:1.5px;background:var(--grad);display:block;flex-shrink:0}
+
+/* FEATURED ARTICLE */
+.featured-section{padding:64px 40px 0;max-width:1200px;margin:0 auto}
+.featured-card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 8px 40px rgba(26,26,46,.08);display:grid;grid-template-columns:60% 40%;border:1px solid rgba(233,30,140,.06)}
+.featured-img{position:relative;min-height:400px;display:flex;align-items:center;justify-content:center}
+.featured-img svg{opacity:.4}
+.featured-body{padding:44px 40px;display:flex;flex-direction:column;justify-content:center}
+.cat-tag{display:inline-flex;align-items:center;background:rgba(233,30,140,.08);color:var(--fuchsia);padding:4px 14px;border-radius:20px;font-family:'Jost',sans-serif;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;width:fit-content}
+.featured-body h2{font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:14px;line-height:1.2}
+.featured-body p{font-size:.92rem;color:var(--gray);line-height:1.8;margin-bottom:20px;font-weight:300}
+.article-meta{display:flex;align-items:center;gap:16px;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:400;color:var(--gray);opacity:.6;margin-bottom:24px}
+.article-meta span{display:flex;align-items:center;gap:5px}
+.read-link{display:inline-flex;align-items:center;gap:8px;font-family:'Jost',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fuchsia);text-decoration:none;transition:gap .3s}
+.read-link:hover{gap:14px}
+@media(max-width:768px){.featured-card{grid-template-columns:1fr}.featured-img{min-height:220px}.featured-body{padding:28px 24px}}
+
+/* FILTRES */
+.filters-wrap{padding:48px 40px 0;max-width:1200px;margin:0 auto}
+.filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:6px;background:var(--soft-pink);border-radius:50px;width:fit-content}
+.filter-btn{padding:9px 20px;border-radius:50px;border:none;background:transparent;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);cursor:pointer;transition:all .3s;white-space:nowrap}
+.filter-btn.active{background:var(--grad);color:#fff;box-shadow:0 6px 20px rgba(233,30,140,.28)}
+.filter-btn:hover:not(.active){background:rgba(233,30,140,.08);color:var(--fuchsia)}
+@media(max-width:640px){.filters{width:100%;border-radius:16px;padding:8px;gap:5px}.filter-btn{padding:7px 14px;font-size:10px}}
+
+/* BLOG LAYOUT */
+.blog-content{padding:40px 40px 96px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:start}
+@media(max-width:1024px){.blog-content{grid-template-columns:1fr}}
+@media(max-width:640px){.blog-content{padding:32px 20px 64px}}
+
+/* ARTICLES GRID */
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:900px){.articles-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.articles-grid{grid-template-columns:1fr}}
+
+/* ARTICLE CARD */
+.article-card{background:#fff;border-radius:20px;overflow:hidden;border:1px solid rgba(233,30,140,.07);transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s;cursor:pointer}
+.article-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(233,30,140,.1)}
+.art-hidden{display:none}
+.article-img{height:188px;display:flex;align-items:center;justify-content:center;position:relative}
+.article-img svg{opacity:.45}
+.article-body{padding:20px}
+.article-body .cat-tag{margin-bottom:10px}
+.article-body h3{font-size:1.05rem;font-weight:600;font-style:italic;line-height:1.3;margin-bottom:8px;color:var(--black)}
+.article-body p{font-size:.82rem;color:var(--gray);line-height:1.65;margin-bottom:12px;font-weight:300;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.article-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid rgba(233,30,140,.06)}
+.article-date{font-family:'Jost',sans-serif;font-size:.72rem;font-weight:300;color:var(--gray);opacity:.6}
+.article-read{font-family:'Jost',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fuchsia);text-decoration:none;transition:letter-spacing .3s}
+.article-read:hover{letter-spacing:.16em}
+
+/* LOAD MORE */
+.load-more-wrap{text-align:center;padding:36px 0 0;grid-column:1/-1}
+
+/* SIDEBAR */
+.blog-sidebar{position:sticky;top:120px;height:fit-content;display:flex;flex-direction:column;gap:28px}
+.sidebar-block{background:#fff;border-radius:20px;padding:24px;border:1px solid rgba(233,30,140,.07)}
+.sidebar-title{font-family:'Jost',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fuchsia);margin-bottom:18px}
+.popular-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(233,30,140,.06)}
+.popular-item:last-child{border-bottom:none;padding-bottom:0}
+.popular-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;flex-shrink:0;width:28px}
+.popular-title{font-family:'Jost',sans-serif;font-size:.8rem;font-weight:400;color:var(--black);line-height:1.45;margin-bottom:3px}
+.popular-cat{font-family:'Jost',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--fuchsia);opacity:.6}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px}
+.tag-pill{background:var(--soft-pink);color:var(--gray);padding:5px 13px;border-radius:20px;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:400;text-decoration:none;transition:all .25s;cursor:pointer;border:none}
+.tag-pill:hover{background:rgba(233,30,140,.12);color:var(--fuchsia)}
+.sidebar-cta{background:var(--grad-dark);border-radius:20px;padding:28px;text-align:center}
+.sidebar-cta p{font-family:'Jost',sans-serif;font-size:.85rem;font-weight:300;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:16px}
+.sidebar-cta a{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#fff;padding:10px 20px;border-radius:50px;font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:transform .3s}
+.sidebar-cta a:hover{transform:translateY(-2px)}
+@media(max-width:1024px){.blog-sidebar{position:static}}
+
+/* FOOTER */
+footer{background:var(--black);color:rgba(255,255,255,.55);padding:60px 40px 28px}
+.footer-in{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:40px}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.06em;color:#fff;display:block;margin-bottom:14px}
+.f-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.45);font-weight:300}
+.fsocials{display:flex;gap:10px;margin-top:22px}
+.fsoc{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .3s,transform .3s}
+.fsoc:hover{background:var(--fuchsia);transform:translateY(-3px)}
+.f-col h4{color:#fff;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.f-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:13.5px;transition:color .3s;font-weight:300}
+.f-links a:hover{color:var(--coral)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:640px){.footer-grid{grid-template-columns:1fr;gap:28px}.footer-bottom{flex-direction:column;gap:10px;text-align:center}section{padding:70px 20px}}
+
+/* WA FLOAT */
+.wa{position:fixed;bottom:28px;right:28px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:998;box-shadow:0 8px 24px rgba(37,211,102,.4);text-decoration:none;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.wa:hover{transform:scale(1.12)}
+.wa::before,.wa::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid rgba(37,211,102,.4);animation:waP 2.2s ease-out infinite}
+.wa::after{animation-delay:.5s;border-color:rgba(37,211,102,.2)}
+@keyframes waP{0%{transform:scale(1);opacity:1}100%{transform:scale(1.7);opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+<div id="cr"></div><div id="cd"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-close" id="mobileClose"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+  <a href="coffrets.html">Boxs</a>
+  <a href="accessoires.html">Boutique</a>
+  <a href="blog.html" style="opacity:1">Blog</a>
+  <a href="contact.html">Contacter nous</a>
+  <a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="btn btn-grad btn-sm" target="_blank" rel="noopener"><span>WhatsApp</span></a>
+</div>
+
+<!-- NAVBAR -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">GLOW UP BOX ✦</a>
+  <ul class="nav-links">
+    <li><a href="coffrets.html" class="nav-link">Boxs</a></li>
+    <li><a href="accessoires.html" class="nav-link">Boutique</a></li>
+    <li><a href="blog.html" class="nav-link active">Blog</a></li>
+    <li><a href="contact.html" class="nav-link">Contacter nous</a></li>
+  </ul>
+  <a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="btn btn-grad btn-sm" target="_blank" rel="noopener">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span><span style="color:rgba(255,255,255,.65)">Blog</span></div>
+    <div class="sbadge" id="heroBadge" style="color:var(--coral)">Skincare & beauté</div>
+    <h1 id="heroTitle" style="color:#fff">Le Blog <em class="g-text">Beauté</em></h1>
+    <p id="heroSub" style="color:rgba(255,255,255,.55);max-width:520px;margin-top:16px;font-size:1.05rem">Conseils skincare, routines et astuces beauté — tout pour prendre soin de votre peau au quotidien.</p>
+  </div>
+</section>
+
+<!-- ARTICLE VEDETTE -->
+<div style="padding:64px 40px 0;max-width:1280px;margin:0 auto" id="featuredWrap">
+  <div class="sbadge" style="margin-bottom:20px">Article à la une</div>
+  <div class="featured-card">
+    <div class="featured-img" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c-4.97 0-9-4.03-9-9V8l9-5 9 5v5c0 4.97-4.03 9-9 9z"/><path d="M9 12h6m-3-3v6"/></svg>
+    </div>
+    <div class="featured-body">
+      <span class="cat-tag">Routine skincare</span>
+      <h2>Comment construire une routine skincare<br><em class="g-text">en 3 étapes simples</em></h2>
+      <p>Pas besoin de 10 produits pour avoir une belle peau. On vous explique comment construire une routine efficace, adaptée à votre type de peau, en seulement 3 étapes.</p>
+      <div class="article-meta">
+        <span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          15 Avril 2025
+        </span>
+        <span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          5 min de lecture
+        </span>
+      </div>
+      <a href="blog-article.html" class="read-link">
+        Lire l'article
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FILTRES -->
+<div class="filters-wrap" style="padding:48px 40px 0;max-width:1280px;margin:0 auto" id="filtersWrap">
+  <div class="sbadge" style="margin-bottom:16px">Tous les sujets</div>
+  <div class="filters">
+    <button class="filter-btn active" data-filter="tous">Tous les articles</button>
+    <button class="filter-btn" data-filter="routine">Routine skincare</button>
+    <button class="filter-btn" data-filter="typepeau">Types de peau</button>
+    <button class="filter-btn" data-filter="ingredients">Ingrédients</button>
+    <button class="filter-btn" data-filter="conseils">Conseils beauté</button>
+    <button class="filter-btn" data-filter="avantapres">Avant / Après</button>
+  </div>
+</div>
+
+<!-- BLOG LAYOUT : grille + sidebar -->
+<div class="blog-content" style="max-width:1280px">
+
+  <!-- GRILLE -->
+  <div>
+    <div class="articles-grid" id="articlesGrid">
+
+      <!-- Article 1 -->
+      <div class="article-card" data-cat="typepeau">
+        <div class="article-img" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <div class="article-body">
+          <span class="cat-tag">Types de peau</span>
+          <h3>Comment identifier votre type de peau en 5 minutes</h3>
+          <p>Peau grasse, sèche, mixte ou sensible ? Un test simple à faire chez vous pour ne plus jamais vous tromper de produits.</p>
+          <div class="article-footer">
+            <span class="article-date">10 Avril 2025 · 4 min</span>
+            <a href="blog-article.html" class="article-read">Lire →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 2 -->
+      <div class="article-card" data-cat="ingredients">
+        <div class="article-img" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+        </div>
+        <div class="article-body">
+          <span class="cat-tag" style="background:rgba(76,175,80,.1);color:#388e3c">Ingrédients</span>
+          <h3>Niacinamide, centella, acide hyaluronique : le guide des actifs</h3>
+          <p>Ces ingrédients stars de la skincare font beaucoup parler d'eux — mais à quoi servent-ils vraiment et comment les utiliser ?</p>
+          <div class="article-footer">
+            <span class="article-date">05 Avril 2025 · 6 min</span>
+            <a href="blog-article.html" class="article-read">Lire →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 3 -->
+      <div class="article-card" data-cat="conseils">
+        <div class="article-img" style="background:linear-gradient(135deg,#fff3e0,#ffcc80)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg>
+        </div>
+        <div class="article-body">
+          <span class="cat-tag" style="background:rgba(255,152,0,.1);color:#e65100">Conseils beauté</span>
+          <h3>Pourquoi la crème solaire est l'anti-âge numéro 1 — même en hiver</h3>
+          <p>La protection solaire n'est pas réservée à l'été. On vous explique pourquoi l'appliquer tous les jours est essentiel.</p>
+          <div class="article-footer">
+            <span class="article-date">28 Mars 2025 · 3 min</span>
+            <a href="blog-article.html" class="article-read">Lire →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 4 -->
+      <div class="article-card" data-cat="routine">
+        <div class="article-img" style="background:linear-gradient(135deg,#f3e5f5,#ce93d8)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </div>
+        <div class="article-body">
+          <span class="cat-tag">Routine skincare</span>
+          <h3>Routine du soir : les 4 étapes pour une peau réparée pendant votre sommeil</h3>
+          <p>La nuit est le meilleur moment pour traiter et régénérer votre peau. Voici comment optimiser votre routine du soir.</p>
+          <div class="article-footer">
+            <span class="article-date">20 Mars 2025 · 5 min</span>
+            <a href="blog-article.html" class="article-read">Lire →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 5 -->
+      <div class="article-card" data-cat="avantapres">
+        <div class="article-img" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="article-body">
+          <span class="cat-tag" style="background:rgba(233,30,140,.08);color:var(--fuchsia)">Avant / Après</span>
+          <h3>30 jours de routine skincare : les résultats de Salma</h3>
+          <p>Salma avait une peau terne et déshydratée. Après 30 jours avec la Glow & Even Box, voici ce qui a changé.</p>
+          <div class="article-footer">
+            <span class="article-date">12 Mars 2025 · 4 min</span>
+            <a href="blog-article.html" class="article-read">Lire →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 6 -->
+      <div class="article-card" data-cat="ingredients">
+        <div class="article-img" style="background:linear-gradient(135deg,#fdf8e1,#fff59d)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <div class="article-body">
+          <span class="cat-tag" style="background:rgba(76,175,80,.1);color:#388e3c">Ingrédients</span>
+          <h3>L'acide hyaluronique : tout ce que vous devez savoir pour bien l'utiliser</h3>
+          <p>L'ingrédient hydratant star — mais attention à l'utiliser dans le bon ordre sous peine de l'effet inverse !</p>
+          <div class="article-footer">
+            <span class="article-date">05 Mars 2025 · 5 min</span>
+            <a href="blog-article.html" class="article-read">Lire →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Articles cachés -->
+      <!-- Article 7 -->
+      <div class="article-card art-hidden" data-cat="typepeau">
+        <div class="article-img" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+        </div>
+        <div class="article-body">
+          <span class="cat-tag">Types de peau</span>
+          <h3>Peau sensible : les erreurs à éviter absolument dans votre routine</h3>
+          <p>Les peaux sensibles réagissent à tout. Voici les 5 erreurs les plus fréquentes et comment les éviter.</p>
+          <div class="article-footer">
+            <span class="article-date">25 Fév 2025 · 4 min</span>
+            <a href="blog-article.html" class="article-read">Lire →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 8 -->
+      <div class="article-card art-hidden" data-cat="conseils">
+        <div class="article-img" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round"><path d="M2 12c.5-5 8-5 8 0s7.5 5 8 0"/><path d="M2 18c.5-5 8-5 8 0s7.5 5 8 0"/><path d="M2 6c.5-5 8-5 8 0s7.5 5 8 0"/></svg>
+        </div>
+        <div class="article-body">
+          <span class="cat-tag" style="background:rgba(255,152,0,.1);color:#e65100">Conseils beauté</span>
+          <h3>Double nettoyage : pourquoi et comment le faire correctement</h3>
+          <p>Le double nettoyage est la base de toute bonne routine skincare. La méthode exacte pour ne pas rater cette étape clé.</p>
+          <div class="article-footer">
+            <span class="article-date">18 Fév 2025 · 3 min</span>
+            <a href="blog-article.html" class="article-read">Lire →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 9 -->
+      <div class="article-card art-hidden" data-cat="avantapres">
+        <div class="article-img" style="background:linear-gradient(135deg,#fff3e0,#ffcc80)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="article-body">
+          <span class="cat-tag" style="background:rgba(233,30,140,.08);color:var(--fuchsia)">Avant / Après</span>
+          <h3>Nadia a testé la Pure Skin Box pendant 3 semaines : voici son verdict</h3>
+          <p>Pores dilatés, excès de sébum, imperfections… Nadia nous partage son expérience honnête, semaine par semaine.</p>
+          <div class="article-footer">
+            <span class="article-date">10 Fév 2025 · 5 min</span>
+            <a href="blog-article.html" class="article-read">Lire →</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /articles-grid -->
+
+    <!-- LOAD MORE -->
+    <div style="text-align:center;padding:36px 0 0">
+      <button class="btn-outline" id="loadMoreBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14m-7-7 7 7 7-7"/></svg>
+        Charger plus d'articles
+      </button>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="blog-sidebar">
+
+    <!-- Articles populaires -->
+    <div class="sidebar-block">
+      <div class="sidebar-title">Articles populaires</div>
+      <div class="popular-item">
+        <div class="popular-num">01</div>
+        <div>
+          <div class="popular-title"><a href="blog-article.html" style="color:inherit;text-decoration:none">Comment construire une routine skincare en 3 étapes</a></div>
+          <div class="popular-cat">Routine skincare</div>
+        </div>
+      </div>
+      <div class="popular-item">
+        <div class="popular-num">02</div>
+        <div>
+          <div class="popular-title"><a href="blog-article.html" style="color:inherit;text-decoration:none">Niacinamide, centella, acide hyaluronique : le guide</a></div>
+          <div class="popular-cat">Ingrédients</div>
+        </div>
+      </div>
+      <div class="popular-item">
+        <div class="popular-num">03</div>
+        <div>
+          <div class="popular-title"><a href="blog-article.html" style="color:inherit;text-decoration:none">Pourquoi la crème solaire est l'anti-âge numéro 1</a></div>
+          <div class="popular-cat">Conseils beauté</div>
+        </div>
+      </div>
+      <div class="popular-item">
+        <div class="popular-num">04</div>
+        <div>
+          <div class="popular-title"><a href="blog-article.html" style="color:inherit;text-decoration:none">30 jours de routine skincare : les résultats de Salma</a></div>
+          <div class="popular-cat">Avant / Après</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <div class="sidebar-block">
+      <div class="sidebar-title">Sujets</div>
+      <div class="tag-cloud">
+        <button class="tag-pill" onclick="filterByTag('routine')">Routine</button>
+        <button class="tag-pill" onclick="filterByTag('typepeau')">Peau sensible</button>
+        <button class="tag-pill" onclick="filterByTag('conseils')">SPF</button>
+        <button class="tag-pill" onclick="filterByTag('ingredients')">Hydratation</button>
+        <button class="tag-pill" onclick="filterByTag('typepeau')">Sébum</button>
+        <button class="tag-pill" onclick="filterByTag('ingredients')">Actifs</button>
+        <button class="tag-pill" onclick="filterByTag('conseils')">Nettoyage</button>
+        <button class="tag-pill" onclick="filterByTag('conseils')">Anti-âge</button>
+      </div>
+    </div>
+
+    <!-- CTA bilan -->
+    <div class="sidebar-cta">
+      <div class="sidebar-title" style="color:var(--coral)">Bilan gratuit</div>
+      <p>Pas sûre de votre type de peau ? Faites votre bilan peau gratuit et recevez une recommandation personnalisée.</p>
+      <a href="conseil-peau.html">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2l3.1 6.3L22 9.3l-5 4.9 1.2 6.9L12 18l-6.2 3.1 1.2-6.9L2 9.3l6.9-1z"/></svg>
+        Mon bilan gratuit →
+      </a>
+    </div>
+
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-in">
+    <div class="footer-grid">
+      <div class="f-brand">
+        <span class="f-logo">GLOW UP BOX ✦</span>
+        <p>Boxs soins personnalisées après bilan peau gratuit. Livraison partout au Maroc.</p>
+        <div class="fsocials">
+          <a href="#" class="fsoc" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://wa.me/212600000000" class="fsoc" aria-label="WhatsApp" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Navigation</h4><ul class="f-links"><li><a href="coffrets.html">Boxs</a></li><li><a href="accessoires.html">Boutique</a></li><li><a href="conseil-peau.html">Bilan peau</a>
+  <a href="blog.html">Blog</a></li><li><a href="b2b.html">B2B</a></li></ul></div>
+      <div class="f-col"><h4>Informations</h4><ul class="f-links"><li><a href="a-propos.html">À Propos</a></li><li><a href="contact.html">Contacter nous</a></li><li><a href="conseil-peau.html">Bilan gratuit</a></li><li><a href="#">Mentions légales</a></li></ul></div>
+      <div class="f-col"><h4>Contact</h4><ul class="f-links"><li><a href="https://wa.me/212600000000" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="#">Instagram</a></li><li><span style="color:rgba(255,255,255,.3);font-size:13px">Livraison nationale Maroc</span></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Glow Up Box ✦ — Tous droits réservés</span><span style="color:rgba(255,255,255,.3)">K-Beauty authentique · Fait au Maroc</span></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// CURSOR
+const cr=document.getElementById('cr'),cd=document.getElementById('cd');
+if(window.matchMedia('(pointer:fine)').matches){
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px'});
+  (function loop(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(loop)})();
+}
+// NAVBAR
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+// HAMBURGER
+const ham=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu'),mc=document.getElementById('mobileClose');
+ham.addEventListener('click',()=>mm.classList.add('open'));
+mc.addEventListener('click',()=>mm.classList.remove('open'));
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+
+// FILTRES
+function applyFilter(filter){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector(`.filter-btn[data-filter="${filter}"]`)?.classList.add('active');
+  document.querySelectorAll('.article-card:not(.art-hidden-perm)').forEach(card=>{
+    const show=filter==='tous'||card.dataset.cat===filter;
+    card.style.display=show?'':'none';
+  });
+}
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>applyFilter(btn.dataset.filter));
+});
+function filterByTag(cat){applyFilter(cat);}
+
+// LOAD MORE
+const hiddenArticles=[...document.querySelectorAll('.art-hidden')];
+const loadMoreBtn=document.getElementById('loadMoreBtn');
+let shown=0;
+loadMoreBtn.addEventListener('click',()=>{
+  const toShow=hiddenArticles.slice(shown,shown+3);
+  toShow.forEach(a=>{a.classList.remove('art-hidden');a.style.display='';});
+  shown+=3;
+  if(shown>=hiddenArticles.length)loadMoreBtn.style.display='none';
+});
+</script>
+
+<script type="module">
+import { animate, inView, stagger } from 'https://cdn.jsdelivr.net/npm/motion@latest/+esm';
+animate(['#heroBadge','#heroTitle','#heroSub'],{opacity:[0,1],y:[24,0]},{duration:.7,delay:stagger(.12),easing:[.34,1.56,.64,1]});
+inView('#featuredWrap',({target})=>{animate(target,{opacity:[0,1],y:[28,0]},{duration:.7,easing:[.34,1.56,.64,1]});},{amount:.1});
+inView('#articlesGrid',({target})=>{
+  animate(target.querySelectorAll('.article-card:not(.art-hidden)'),{opacity:[0,1],y:[24,0]},{duration:.55,delay:stagger(.08),easing:[.34,1.56,.64,1]});
+},{amount:.05});
+inView('.blog-sidebar',({target})=>{animate(target,{opacity:[0,1],x:[24,0]},{duration:.6,easing:[.25,.46,.45,.94]});},{amount:.05});
+</script>
+</body>
+</html>

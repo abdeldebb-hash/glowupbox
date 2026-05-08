@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacter nous — Glow Up Box ✦ | K-Beauty Maroc</title>
+<meta name="description" content="Contactez Glow Up Box sur WhatsApp, Instagram ou via votre bilan peau gratuit. Disponibles 24h/24 — 7j/7 depuis Rabat, Maroc.">
+<meta property="og:title" content="Contacter nous — Glow Up Box ✦">
+<meta property="og:description" content="Une question, une commande, un conseil — on vous répond toujours. Disponible 24h/24 · 7j/7.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+/* ─── DESIGN TOKENS ─────────────────────────────────────────────── */
+:root{
+  --fuchsia:#E91E8C; --coral:#FF6B9D; --peach:#FFB347;
+  --black:#1A1A2E;   --purple:#2D1B4E; --soft-pink:#FDF0F5;
+  --gray:#4A4A6A;    --nude:#F5E6D3;
+  --grad:linear-gradient(135deg,#E91E8C 0%,#FF6B9D 50%,#FFB347 100%);
+  --grad-dark:linear-gradient(135deg,#1A1A2E 0%,#2D1B4E 100%);
+  --card-border:#F0E0E8;
+  --card-shadow:0 2px 20px rgba(0,0,0,.05);
+  --card-shadow-hover:0 20px 48px rgba(233,30,140,.14);
+  --transition:.35s cubic-bezier(.25,.46,.45,.94);
+}
+
+/* ─── RESET & BASE ──────────────────────────────────────────────── */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;color:var(--gray);background:#fff;overflow-x:hidden;font-weight:300;cursor:none}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;color:var(--black)}
+h1{font-size:clamp(3rem,7vw,6.5rem);font-weight:600;font-style:italic;line-height:1.04;letter-spacing:-0.02em}
+h2{font-size:clamp(2.2rem,5vw,4.5rem);font-weight:600;line-height:1.06;letter-spacing:-0.02em}
+h3{font-size:clamp(1.15rem,2vw,1.6rem);font-weight:500;line-height:1.3}
+p{line-height:1.8;font-weight:300;font-size:1rem;font-family:'Jost',sans-serif}
+.g-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ─── CURSOR ────────────────────────────────────────────────────── */
+#cr{width:36px;height:36px;border:1.5px solid var(--fuchsia);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s;will-change:left,top}
+#cd{width:6px;height:6px;background:var(--fuchsia);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cr.big{width:52px;height:52px;background:rgba(233,30,140,.08)}
+@media(max-width:768px){#cr,#cd{display:none}body{cursor:auto}}
+
+/* ─── BUTTONS ───────────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-family:'Jost',sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;cursor:pointer;border:none;position:relative;overflow:hidden;white-space:nowrap}
+.btn-grad{background:var(--grad);color:#fff;box-shadow:0 4px 20px rgba(233,30,140,.35)}
+.btn-grad::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#FF6B9D,#FFB347,#E91E8C);opacity:0;transition:opacity .3s}
+.btn-grad:hover::after{opacity:1}
+.btn-grad:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(233,30,140,.45)}
+.btn-grad span,.btn-grad svg{position:relative;z-index:1}
+.btn-ghost-dark{background:transparent;color:var(--black);border:1.5px solid var(--card-border);font-family:'Jost',sans-serif;font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:14px 32px;border-radius:50px;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.btn-ghost-dark:hover{border-color:var(--fuchsia);color:var(--fuchsia);transform:translateY(-2px)}
+.btn-white{background:#fff;color:var(--fuchsia);font-weight:700}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,255,255,.25)}
+.btn-sm{padding:10px 22px;font-size:11px}
+.btn-ghost-white{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);font-family:'Jost',sans-serif;font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:14px 32px;border-radius:50px;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+.btn-ghost-white:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+
+/* ─── NAVBAR ────────────────────────────────────────────────────── */
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:1000;width:calc(100% - 48px);max-width:1200px;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;border-radius:999px;background:rgba(26,26,46,.5);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);transition:all .35s ease}
+.nav.scrolled{background:rgba(255,255,255,.95);border-color:rgba(0,0,0,.06);box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.nav.scrolled .nav-logo{color:var(--black)}
+.nav.scrolled .nav-link{color:var(--gray)}
+.nav.scrolled .nav-link:hover{color:var(--fuchsia)}
+.nav.scrolled .hamburger{color:var(--black)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.3rem;color:#fff;text-decoration:none;letter-spacing:.08em;transition:color .35s}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-link{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;transition:color .3s}
+.nav-link:hover,.nav-link.active{color:var(--coral)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;color:#fff}
+.hamburger span{width:22px;height:1.5px;background:currentColor;display:block;transition:all .3s}
+@media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}
+@media(max-width:640px){.nav{width:calc(100% - 24px);top:10px;padding:12px 18px}}
+
+/* ─── MOBILE MENU ───────────────────────────────────────────────── */
+.mobile-menu{position:fixed;inset:0;background:var(--grad-dark);z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{color:#fff;font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:500;font-style:italic;text-decoration:none;opacity:.7;transition:opacity .3s}
+.mobile-menu a:hover{opacity:1}
+.mobile-close{position:absolute;top:28px;right:28px;color:#fff;cursor:pointer}
+
+/* ─── BREADCRUMB ────────────────────────────────────────────────── */
+.breadcrumb{display:flex;align-items:center;gap:8px;font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:20px}
+.breadcrumb a{color:rgba(255,255,255,.4);text-decoration:none;transition:color .3s}
+.breadcrumb a:hover{color:var(--coral)}
+.breadcrumb span{color:rgba(255,255,255,.2)}
+
+/* ─── HERO ──────────────────────────────────────────────────────── */
+.hero{background:var(--grad-dark);padding:clamp(100px,14vw,160px) 40px clamp(60px,8vw,100px);position:relative;overflow:hidden;min-height:54vh;display:flex;align-items:center}
+.hero::before{content:'';position:absolute;top:-15%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(233,30,140,.18) 0%,transparent 70%);border-radius:50%;pointer-events:none;animation:orbF 9s ease-in-out infinite}
+.hero::after{content:'';position:absolute;bottom:-10%;left:5%;width:350px;height:350px;background:radial-gradient(circle,rgba(255,179,71,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none;animation:orbF 7s ease-in-out infinite -3s}
+@keyframes orbF{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(20px,-30px) scale(1.06)}70%{transform:translate(-15px,18px) scale(.94)}}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(233,30,140,.15);border:1px solid rgba(233,30,140,.28);color:var(--coral);padding:6px 18px;border-radius:50px;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:22px}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--coral);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+/* ─── SECTION WRAPPER ───────────────────────────────────────────── */
+.section{padding:clamp(60px,8vw,110px) 40px}
+.si{max-width:1200px;margin:0 auto}
+.sbadge{display:inline-flex;align-items:center;gap:10px;color:var(--fuchsia);font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
+.sbadge::before{content:'';width:22px;height:1.5px;background:var(--grad);display:block;flex-shrink:0}
+
+/* ─── CONTACT CARDS ─────────────────────────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:24px;margin-top:48px}
+/* Base card */
+.contact-card{border-radius:20px;border:1.5px solid var(--card-border);background:#fff;padding:36px 32px;position:relative;overflow:hidden;transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition);box-shadow:var(--card-shadow);cursor:default}
+.contact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform var(--transition)}
+.contact-card:hover{transform:translateY(-6px);box-shadow:var(--card-shadow-hover);border-color:var(--coral)}
+.contact-card:hover::before{transform:scaleX(1)}
+/* Featured WhatsApp card */
+.contact-card.featured{background:var(--grad-dark);border-color:transparent;color:#fff}
+.contact-card.featured::before{background:var(--grad)}
+.contact-card.featured:hover{box-shadow:0 24px 60px rgba(26,26,46,.35);border-color:transparent}
+.card-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-family:'Jost',sans-serif;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:24px}
+.badge-recommended{background:var(--grad);color:#fff}
+.badge-available{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+.badge-available-light{background:rgba(233,30,140,.08);color:var(--fuchsia)}
+.card-icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;flex-shrink:0}
+.icon-wa{background:rgba(37,211,102,.15)}
+.icon-ig{background:rgba(233,30,140,.1)}
+.icon-loc{background:rgba(255,179,71,.1)}
+.contact-card h3{font-size:1.5rem;font-weight:600;font-style:italic;margin-bottom:12px}
+.contact-card.featured h3{color:#fff}
+.contact-card p{font-size:.9rem;line-height:1.75;font-weight:300;margin-bottom:24px}
+.contact-card.featured p{color:rgba(255,255,255,.65)}
+.card-info{display:flex;align-items:center;gap:8px;font-family:'Jost',sans-serif;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.5);margin-bottom:28px}
+.card-info-light{color:var(--gray);opacity:.7;margin-bottom:28px}
+.card-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Jost',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:gap .3s}
+.cta-white{color:#fff}
+.cta-white:hover{gap:14px}
+.cta-fuchsia{color:var(--fuchsia)}
+.cta-fuchsia:hover{gap:14px}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}.contact-card.featured{grid-row:1}}
+@media(max-width:640px){.contact-card{padding:28px 24px}}
+
+/* ─── DISPONIBILITÉ ─────────────────────────────────────────────── */
+.dispo-section{background:var(--soft-pink)}
+.dispo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:52px}
+.dispo-item{background:#fff;border-radius:20px;padding:32px;border:1px solid var(--card-border);text-align:center;transition:transform var(--transition),box-shadow var(--transition)}
+.dispo-item:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(233,30,140,.08)}
+.dispo-icon{width:56px;height:56px;border-radius:18px;background:rgba(233,30,140,.08);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.dispo-item h4{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;font-style:italic;color:var(--black);margin-bottom:8px}
+.dispo-item p{font-size:.88rem;font-weight:300;color:var(--gray);line-height:1.7}
+@media(max-width:768px){.dispo-grid{grid-template-columns:1fr}}
+
+/* ─── FAQ ───────────────────────────────────────────────────────── */
+.faq-section{background:#fff}
+.faq-list{max-width:760px;margin:52px auto 0}
+.faq-item{border-bottom:1px solid rgba(233,30,140,.1)}
+.faq-item.open{border-bottom-color:transparent}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer;background:none;border:none;text-align:left;gap:20px}
+.faq-q-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,2vw,1.3rem);font-weight:500;color:var(--black);line-height:1.4;transition:color .25s}
+.faq-item.open .faq-q-text{color:var(--fuchsia)}
+.faq-chevron{flex-shrink:0;transition:transform .4s cubic-bezier(.34,1.56,.64,1);color:var(--fuchsia)}
+.faq-item.open .faq-chevron{transform:rotate(180deg)}
+.faq-a{height:0;overflow:hidden;opacity:0}
+.faq-a-inner{background:linear-gradient(135deg,var(--soft-pink),rgba(255,255,255,.9));border:1px solid rgba(233,30,140,.1);border-radius:16px;padding:20px 24px;margin-bottom:16px}
+.faq-a-inner p{font-size:.9rem;color:var(--gray);line-height:1.85;font-weight:300}
+.faq-a-inner a{color:var(--fuchsia);text-decoration:none;font-weight:500}
+.faq-a-inner a:hover{text-decoration:underline}
+
+/* ─── CTA FINAL ─────────────────────────────────────────────────── */
+.cta-final{background:var(--grad);padding:clamp(72px,10vw,110px) 40px;text-align:center;position:relative;overflow:hidden}
+.cta-final::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,.06);top:-200px;left:-100px;pointer-events:none}
+.cta-final::after{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.04);bottom:-100px;right:-50px;pointer-events:none}
+.cta-final h2{color:#fff;margin-bottom:14px;position:relative;z-index:1}
+.cta-final p{color:rgba(255,255,255,.78);font-size:1.05rem;margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto;position:relative;z-index:1}
+.cta-final-dispo{font-family:'Jost',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:16px;position:relative;z-index:1}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+
+/* ─── FOOTER ────────────────────────────────────────────────────── */
+footer{background:var(--black);color:rgba(255,255,255,.55);padding:60px 40px 28px}
+.footer-in{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:40px}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.06em;color:#fff;display:block;margin-bottom:14px;text-decoration:none}
+.f-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.45);font-weight:300}
+.fsocials{display:flex;gap:10px;margin-top:22px}
+.fsoc{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .3s,transform .3s}
+.fsoc:hover{background:var(--fuchsia);transform:translateY(-3px)}
+.f-col h4{color:#fff;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.f-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:13.5px;transition:color .3s;font-weight:300}
+.f-links a:hover{color:var(--coral)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-wrap:wrap;gap:8px}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:640px){.footer-grid{grid-template-columns:1fr;gap:28px}.footer-bottom{flex-direction:column;gap:10px;text-align:center}.section{padding:60px 20px}.hero{padding:100px 24px 64px}}
+
+/* ─── WA FLOAT ──────────────────────────────────────────────────── */
+.wa{position:fixed;bottom:28px;right:28px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:900;box-shadow:0 8px 24px rgba(37,211,102,.4);text-decoration:none;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.wa:hover{transform:scale(1.12)}
+.wa::before,.wa::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid rgba(37,211,102,.4);animation:waP 2.2s ease-out infinite}
+.wa::after{animation-delay:.5s;border-color:rgba(37,211,102,.2)}
+@keyframes waP{0%{transform:scale(1);opacity:1}100%{transform:scale(1.7);opacity:0}}
+
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+<div id="cr"></div><div id="cd"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-close" id="mobileClose" role="button" aria-label="Fermer le menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </div>
+  <a href="coffrets.html">Boxs</a>
+  <a href="accessoires.html">Boutique</a>
+  <a href="conseil-peau.html">Bilan peau</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html" style="opacity:1;-webkit-text-fill-color:var(--coral);color:var(--coral)">Contacter nous</a>
+  <a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="btn btn-grad btn-sm" target="_blank" rel="noopener"><span>WhatsApp</span></a>
+</div>
+
+<!-- NAVBAR -->
+<nav class="nav" id="nav" aria-label="Navigation principale">
+  <a href="index.html" class="nav-logo">GLOW UP BOX ✦</a>
+  <ul class="nav-links" role="list">
+    <li><a href="coffrets.html" class="nav-link">Boxs</a></li>
+    <li><a href="accessoires.html" class="nav-link">Boutique</a></li>
+    <li><a href="conseil-peau.html" class="nav-link">Bilan peau</a></li>
+    <li><a href="blog.html" class="nav-link">Blog</a></li>
+    <li><a href="contact.html" class="nav-link active">Contacter nous</a></li>
+  </ul>
+  <a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="btn btn-grad btn-sm" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <div class="hamburger" id="hamburger" role="button" aria-label="Ouvrir le menu" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ① HERO -->
+<main>
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="hero-inner">
+    <div class="breadcrumb" id="heroBreadcrumb">
+      <a href="index.html">Accueil</a><span aria-hidden="true">›</span>
+      <span style="color:rgba(255,255,255,.65)">Contact</span>
+    </div>
+    <div class="hero-badge" id="heroBadge">
+      <div class="hero-badge-dot" aria-hidden="true"></div>
+      Disponible 24h/24 · 7j/7
+    </div>
+    <h1 id="heroTitle" style="color:#fff">On est là<br><em class="g-text">pour vous</em></h1>
+    <p id="heroSub" style="color:rgba(255,255,255,.65);max-width:500px;margin-top:18px;font-size:1.08rem">Une question, une commande, un conseil — on vous répond toujours.</p>
+  </div>
+</section>
+
+<!-- ② CARDS CONTACT -->
+<section class="section" aria-labelledby="contactTitle">
+  <div class="si">
+    <div id="contactHead">
+      <div class="sbadge">Nous joindre</div>
+      <h2 id="contactTitle">Comment nous<br><em class="g-text">contacter</em> ?</h2>
+    </div>
+    <div class="contact-grid" id="contactGrid">
+
+      <!-- WhatsApp — Featured -->
+      <div class="contact-card featured" id="cardWA">
+        <span class="card-badge badge-recommended">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Recommandé
+        </span>
+        <div class="card-icon icon-wa" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <h3>WhatsApp</h3>
+        <p>Le moyen le plus rapide pour nous joindre. Commandes, conseils, questions — tout passe par WhatsApp.</p>
+        <div class="card-info">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Disponible 24h/24 · 7j/7
+        </div>
+        <a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="card-cta cta-white" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp">
+          Écrire maintenant
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Instagram -->
+      <div class="contact-card" id="cardIG">
+        <span class="card-badge badge-available-light">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Disponible 24h/24
+        </span>
+        <div class="card-icon icon-ig" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--fuchsia)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="var(--fuchsia)" stroke="none"/></svg>
+        </div>
+        <h3>Instagram</h3>
+        <p>Suivez nos actualités, produits et conseils beauté au quotidien. Écrivez-nous aussi en DM.</p>
+        <div class="card-info-light" style="display:flex;align-items:center;gap:8px;font-family:'Jost',sans-serif;font-size:.8rem;font-weight:500">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          @glowupbox.ma
+        </div>
+        <a href="#" class="card-cta cta-fuchsia" target="_blank" rel="noopener" aria-label="Nous suivre sur Instagram">
+          Nous suivre
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Localisation -->
+      <div class="contact-card" id="cardLoc">
+        <span class="card-badge badge-available-light">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Livraison nationale
+        </span>
+        <div class="card-icon icon-loc" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--peach)" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Rabat, Maroc</h3>
+        <p>Nous livrons partout au Maroc. Contactez-nous pour connaître les délais selon votre ville.</p>
+        <div class="card-info-light" style="display:flex;align-items:center;gap:8px;font-family:'Jost',sans-serif;font-size:.8rem;font-weight:500">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+          Livraison rapide au Maroc
+        </div>
+        <a href="https://wa.me/212600000000?text=Bonjour%2C+je+voudrais+savoir+si+vous+livrez+dans+ma+ville" class="card-cta cta-fuchsia" target="_blank" rel="noopener" aria-label="Vérifier la livraison dans ma ville">
+          Vérifier ma ville
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ③ DISPONIBILITÉ -->
+<section class="section dispo-section" aria-labelledby="dispoTitle">
+  <div class="si" style="text-align:center">
+    <div id="dispoHead">
+      <div class="sbadge" style="justify-content:center">Toujours là</div>
+      <h2 id="dispoTitle">Toujours disponibles<br><em class="g-text">pour vous</em></h2>
+      <p style="max-width:460px;margin:14px auto 0;font-size:.95rem">Que ce soit pour une question sur un produit, un conseil peau ou une commande — on vous répond.</p>
+    </div>
+    <div class="dispo-grid" id="dispoGrid">
+      <div class="dispo-item">
+        <div class="dispo-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.5" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h4>WhatsApp</h4>
+        <p>Réponse rapide, disponible 24h/24 — 7j/7.</p>
+      </div>
+      <div class="dispo-item">
+        <div class="dispo-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="#E91E8C" stroke="none"/></svg>
+        </div>
+        <h4>Instagram</h4>
+        <p>Suivez-nous et écrivez-nous en DM.</p>
+      </div>
+      <div class="dispo-item">
+        <div class="dispo-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.5" stroke-linecap="round"><path d="M12 2l3.1 6.3L22 9.3l-5 4.9 1.2 6.9L12 18l-6.2 3.1 1.2-6.9L2 9.3l6.9-1z"/></svg>
+        </div>
+        <h4>Bilan peau</h4>
+        <p>Conseil personnalisé gratuit, sans engagement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④ FAQ ACCORDÉON -->
+<section class="section faq-section" aria-labelledby="faqTitle">
+  <div class="si">
+    <div id="faqHead" style="text-align:center">
+      <div class="sbadge" style="justify-content:center">FAQ</div>
+      <h2 id="faqTitle">Questions<br><em class="g-text">fréquentes</em></h2>
+    </div>
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Comment passer une commande ?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner"><p>Tout se passe via WhatsApp. Cliquez sur le bouton de commande sur chaque produit — WhatsApp s'ouvre avec un message pré-rempli. Vous n'avez plus qu'à envoyer.</p></div></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Le conseil peau est vraiment gratuit ?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner"><p>Oui, 100% gratuit et sans engagement. Vous remplissez le bilan, on vous conseille — si notre recommandation ne vous convient pas, vous n'achetez rien.</p></div></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Vous livrez partout au Maroc ?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner"><p>Oui, partout au Maroc depuis Rabat. Les délais et frais de livraison sont communiqués lors de votre commande sur WhatsApp.</p></div></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Quels sont les délais de livraison ?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner"><p>Les délais varient selon votre ville. <a href="https://wa.me/212600000000?text=Bonjour%2C+je+voudrais+conna%C3%AEtre+les+d%C3%A9lais+de+livraison" target="_blank" rel="noopener">Contactez-nous sur WhatsApp</a> avec votre ville et on vous communique le délai exact.</p></div></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Comment fonctionne le suivi personnalisé 1 mois ?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner"><p>Après votre commande, on reste disponibles pendant 1 mois pour vous aider à rester régulière, adapter votre routine si besoin et répondre à vos questions — via WhatsApp.</p></div></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Puis-je commander plusieurs boxs ?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner"><p>Bien sûr ! Pour les commandes groupées ou les cadeaux d'entreprise, consultez notre <a href="b2b.html">offre B2B</a> ou contactez-nous directement sur WhatsApp.</p></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ CTA FINAL WHATSAPP -->
+<section class="cta-final" aria-labelledby="ctaTitle">
+  <h2 id="ctaTitle">La façon la plus simple<br><em>de nous joindre</em></h2>
+  <p>WhatsApp, c'est rapide, humain et efficace.<br>On vous répond personnellement.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="btn btn-white" target="_blank" rel="noopener" aria-label="Ouvrir WhatsApp">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span>Ouvrir WhatsApp</span>
+    </a>
+    <a href="conseil-peau.html" class="btn btn-ghost-white" aria-label="Faire mon bilan peau gratuit">
+      <span>Mon bilan gratuit</span>
+    </a>
+  </div>
+  <p class="cta-final-dispo">Disponible 24h/24 · 7j/7</p>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-in">
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="index.html" class="f-logo">GLOW UP BOX ✦</a>
+        <p>Boxs soins personnalisées après bilan peau gratuit. Livraison partout au Maroc.</p>
+        <div class="fsocials">
+          <a href="#" class="fsoc" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://wa.me/212600000000" class="fsoc" aria-label="WhatsApp" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Navigation</h4><ul class="f-links"><li><a href="coffrets.html">Boxs</a></li><li><a href="accessoires.html">Boutique</a></li><li><a href="conseil-peau.html">Bilan peau</a>
+  <a href="blog.html">Blog</a></li><li><a href="b2b.html">B2B</a></li></ul></div>
+      <div class="f-col"><h4>Informations</h4><ul class="f-links"><li><a href="a-propos.html">À Propos</a></li><li><a href="contact.html">Contacter nous</a></li><li><a href="conseil-peau.html">Bilan gratuit</a></li><li><a href="#">Mentions légales</a></li></ul></div>
+      <div class="f-col"><h4>Contact</h4><ul class="f-links"><li><a href="https://wa.me/212600000000" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="#">Instagram</a></li><li><span style="color:rgba(255,255,255,.3);font-size:13px">Rabat · Livraison Maroc</span></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Glow Up Box ✦ — Tous droits réservés</span>
+      <span style="color:rgba(255,255,255,.3)">K-Beauty authentique · Fait au Maroc</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="wa" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- SCRIPTS -->
+<script>
+// Cursor
+const cr=document.getElementById('cr'),cd=document.getElementById('cd');
+if(window.matchMedia('(pointer:fine)').matches){
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px'});
+  (function loop(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(loop)})();
+  document.querySelectorAll('a,button,.contact-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>cr.classList.add('big'));
+    el.addEventListener('mouseleave',()=>cr.classList.remove('big'));
+  });
+}
+// Navbar scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+// Hamburger
+const ham=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu'),mc=document.getElementById('mobileClose');
+ham.addEventListener('click',()=>mm.classList.add('open'));
+ham.addEventListener('keydown',e=>e.key==='Enter'&&mm.classList.add('open'));
+mc.addEventListener('click',()=>mm.classList.remove('open'));
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+</script>
+
+<script type="module">
+import { animate, inView, stagger } from 'https://cdn.jsdelivr.net/npm/motion@latest/+esm';
+
+// Hero entrance
+animate(['#heroBreadcrumb','#heroBadge','#heroTitle','#heroSub'],
+  {opacity:[0,1],y:[28,0]},
+  {duration:.75,delay:stagger(.12),easing:[.34,1.56,.64,1]}
+);
+
+// Contact cards stagger
+inView('#contactGrid',({target})=>{
+  animate(target.querySelectorAll('.contact-card'),
+    {opacity:[0,1],y:[32,0]},
+    {duration:.65,delay:stagger(.1),easing:[.34,1.56,.64,1]}
+  );
+},{amount:.1});
+
+// Section heading
+inView('#contactHead',({target})=>{
+  animate(target,{opacity:[0,1],y:[20,0]},{duration:.6,easing:[.34,1.56,.64,1]});
+},{amount:.2});
+
+// Disponibilité
+inView('#dispoHead',({target})=>{
+  animate(target,{opacity:[0,1],y:[20,0]},{duration:.6,easing:[.34,1.56,.64,1]});
+},{amount:.2});
+inView('#dispoGrid',({target})=>{
+  animate(target.querySelectorAll('.dispo-item'),
+    {opacity:[0,1],y:[24,0]},
+    {duration:.55,delay:stagger(.1),easing:[.34,1.56,.64,1]}
+  );
+},{amount:.1});
+
+// FAQ
+inView('#faqHead',({target})=>{
+  animate(target,{opacity:[0,1],y:[20,0]},{duration:.6,easing:[.34,1.56,.64,1]});
+},{amount:.2});
+
+// FAQ Motion accordion
+function closeFaqItem(item){
+  const ans=item.querySelector('.faq-a');
+  animate(ans,{height:0,opacity:0},{duration:.3,easing:[.25,.46,.45,.94]});
+  animate(item.querySelector('.faq-chevron'),{rotate:0},{duration:.3});
+  item.classList.remove('open');
+  item.querySelector('.faq-q').setAttribute('aria-expanded','false');
+}
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item');
+    const ans=item.querySelector('.faq-a');
+    const isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>closeFaqItem(i));
+    if(!isOpen){
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+      ans.style.height='auto';
+      ans.style.opacity='1';
+      const h=ans.scrollHeight;
+      ans.style.height='0px';
+      ans.style.opacity='0';
+      animate(ans,{height:h+'px',opacity:1},{duration:.42,easing:[.34,1.56,.64,1]});
+      animate(btn.querySelector('.faq-chevron'),{rotate:180},{duration:.35});
+    }
+  });
+});
+</script>
+</body>
+</html>

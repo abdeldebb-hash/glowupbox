@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nos Boxs — Glow Up Box ✦ | K-Beauty Maroc</title>
+<meta name="description" content="Découvrez nos boxs soins K-Beauty composées pour chaque type de peau. Conseil gratuit, recommandation personnalisée, livraison partout au Maroc.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{
+  --fuchsia:#E91E8C;--coral:#FF6B9D;--peach:#FFB347;
+  --black:#1A1A2E;--purple:#2D1B4E;--soft-pink:#FDF0F5;
+  --gray:#4A4A6A;--nude:#F5E6D3;
+  --grad:linear-gradient(135deg,#E91E8C 0%,#FF6B9D 50%,#FFB347 100%);
+  --grad-dark:linear-gradient(135deg,#1A1A2E 0%,#2D1B4E 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;color:var(--gray);background:#fff;overflow-x:hidden;font-weight:300}
+
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--black)}
+h1{font-size:clamp(3rem,7vw,6rem);font-weight:600;font-style:italic;line-height:1.04;letter-spacing:-0.02em}
+h2{font-size:clamp(2.6rem,5.5vw,5rem);font-weight:600;line-height:1.06;letter-spacing:-0.02em}
+h3{font-size:clamp(1.2rem,2vw,1.6rem);font-weight:500}
+p{line-height:1.8;font-weight:300;font-size:1rem;font-family:'Jost',sans-serif}
+
+.g-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* CURSOR */
+#cr{width:36px;height:36px;border:1.5px solid var(--fuchsia);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s}
+#cd{width:6px;height:6px;background:var(--fuchsia);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+@media(max-width:768px){#cr,#cd{display:none}body{cursor:auto}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:50px;font-family:'Jost',sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;cursor:pointer;border:none;position:relative;overflow:hidden}
+.btn-grad{background:var(--grad);color:#fff}
+.btn-grad::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#FF6B9D,#FFB347,#E91E8C);opacity:0;transition:opacity .3s}
+.btn-grad:hover::after{opacity:1}
+.btn-grad:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(233,30,140,.35)}
+.btn-grad span,.btn-grad svg{position:relative;z-index:1}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.35);backdrop-filter:blur(8px)}
+.btn-ghost:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+.btn-white{background:#fff;color:var(--fuchsia)}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,.12)}
+.btn-sm{padding:10px 22px;font-size:11px}
+.btn-outline{background:transparent;color:rgba(255,255,255,.7);border:1.5px solid rgba(255,255,255,.25);font-family:'Jost',sans-serif;font-weight:500;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 22px;border-radius:50px;text-decoration:none;transition:all .3s}
+.btn-outline:hover{border-color:#fff;color:#fff}
+
+/* NAVBAR */
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 48px);max-width:1200px;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;border-radius:999px;background:rgba(26,26,46,.5);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);transition:all .4s}
+.nav.scrolled{background:rgba(255,255,255,.95);border-color:rgba(0,0,0,.06);box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.nav.scrolled .nav-logo{color:var(--black)}
+.nav.scrolled .nav-link{color:var(--gray)}
+.nav.scrolled .nav-link:hover{color:var(--fuchsia)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.3rem;color:#fff;text-decoration:none;letter-spacing:.08em}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-link{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;transition:color .3s}
+.nav-link:hover{color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:currentColor;display:block;transition:all .3s}
+@media(max-width:900px){.nav-links{display:none}.hamburger{display:flex;color:#fff}.nav.scrolled .hamburger{color:var(--black)}}
+@media(max-width:640px){.nav{width:calc(100% - 24px);top:10px;padding:12px 18px}}
+
+/* MOBILE MENU */
+.mobile-menu{position:fixed;inset:0;background:var(--grad-dark);z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{color:#fff;font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:500;font-style:italic;text-decoration:none;opacity:.7;transition:opacity .3s}
+.mobile-menu a:hover{opacity:1}
+.mobile-close{position:absolute;top:28px;right:28px;color:#fff;cursor:pointer;font-size:1.5rem}
+
+/* HERO PAGE */
+.page-hero{min-height:72vh;background:var(--grad-dark);position:relative;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.page-hero-content{padding:140px 56px 80px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.page-hero-img{position:relative;overflow:hidden}
+.page-hero-img img{width:100%;height:100%;object-fit:cover;opacity:.55;mix-blend-mode:luminosity;display:block}
+.page-hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,#1A1A2E 0%,transparent 40%)}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:1}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(233,30,140,.2) 0%,transparent 70%);top:-100px;left:-100px}
+.orb2{width:300px;height:300px;background:radial-gradient(circle,rgba(255,107,157,.12) 0%,transparent 70%);bottom:-50px;left:30%}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:20px}
+.breadcrumb a{color:rgba(255,255,255,.4);text-decoration:none;transition:color .3s}
+.breadcrumb a:hover{color:var(--coral)}
+.breadcrumb span{color:rgba(255,255,255,.2)}
+@media(max-width:900px){.page-hero{grid-template-columns:1fr;min-height:auto}.page-hero-img{display:none}.page-hero-content{padding:120px 28px 64px}}
+
+/* SECTIONS */
+section{padding:96px 40px}
+.si{max-width:1200px;margin:0 auto}
+.sbadge{display:inline-flex;align-items:center;gap:10px;color:var(--fuchsia);font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
+.sbadge::before{content:'';width:22px;height:1.5px;background:var(--grad);display:block;flex-shrink:0}
+
+/* INFO BANNER */
+.info-banner{background:linear-gradient(135deg,rgba(233,30,140,.06),rgba(255,179,71,.06));border:1px solid rgba(233,30,140,.15);border-radius:20px;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:64px}
+.info-banner-text{display:flex;align-items:flex-start;gap:16px}
+.info-banner-icon{width:42px;height:42px;border-radius:12px;background:rgba(233,30,140,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info-banner-text p{font-size:.9rem;color:var(--gray);line-height:1.7;max-width:560px}
+@media(max-width:768px){.info-banner{flex-direction:column;padding:24px}.info-banner .btn{width:100%;justify-content:center}}
+
+/* FILTRES — style 21st pills */
+.filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:52px;padding:6px;background:var(--soft-pink);border-radius:50px;width:fit-content}
+.filter-btn{padding:10px 22px;border-radius:50px;border:none;background:transparent;font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);cursor:pointer;transition:all .3s;white-space:nowrap}
+.filter-btn.active{background:var(--grad);color:#fff;box-shadow:0 8px 24px rgba(233,30,140,.3)}
+.filter-btn:hover:not(.active){background:rgba(233,30,140,.08);color:var(--fuchsia)}
+@media(max-width:640px){.filters{width:100%;border-radius:16px;padding:8px;gap:6px}.filter-btn{padding:8px 16px;font-size:11px}}
+
+/* BOX CARDS GRID */
+.boxs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:1024px){.boxs-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.boxs-grid{grid-template-columns:1fr}}
+
+.box-card{background:#fff;border-radius:28px;overflow:hidden;border:1px solid rgba(233,30,140,.08);transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s;will-change:transform}
+.box-card:hover{transform:translateY(-8px);box-shadow:0 32px 64px rgba(233,30,140,.12)}
+
+/* Card icon area */
+.box-icon{height:180px;display:flex;align-items:center;justify-content:center;position:relative}
+.box-icon svg{opacity:.5}
+
+/* Card body */
+.box-body{padding:24px}
+.box-tag{display:inline-flex;align-items:center;background:rgba(233,30,140,.08);color:var(--fuchsia);padding:4px 14px;border-radius:20px;font-family:'Jost',sans-serif;font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.box-badge{display:inline-flex;align-items:center;gap:6px;background:var(--grad);color:#fff;padding:3px 12px;border-radius:20px;font-family:'Jost',sans-serif;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-left:6px}
+.box-tags-row{margin-bottom:12px}
+.box-accroche{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;font-style:italic;color:var(--black);margin-bottom:12px;line-height:1.25}
+
+/* Objectifs */
+.box-objectifs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.obj-pill{background:var(--soft-pink);color:var(--fuchsia);padding:4px 12px;border-radius:20px;font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:.06em}
+
+/* Produits — compact */
+.box-produits-mini{font-family:'Jost',sans-serif;font-size:.82rem;color:var(--gray);font-weight:300;line-height:1.7;margin-bottom:18px;padding:10px 14px;background:var(--soft-pink);border-radius:10px}
+.box-produits-mini-label{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--fuchsia);opacity:.7;margin-bottom:5px}
+
+/* CTA */
+.box-cta .btn{width:100%;justify-content:center}
+
+/* SPECIAL CARD — Sur mesure — pleine largeur */
+.box-card.surmesure{
+  background:linear-gradient(#1A1A2E,#2D1B4E) padding-box,
+             linear-gradient(135deg,#E91E8C,#FF6B9D,#FFB347) border-box;
+  border:2px solid transparent;
+  grid-column:1 / -1;
+}
+.box-card.surmesure .box-accroche{color:#fff}
+.box-card.surmesure .box-desc{color:rgba(255,255,255,.6)}
+.box-card.surmesure .box-produits-title{color:rgba(255,255,255,.4)}
+.box-card.surmesure .box-produit{border-color:rgba(255,255,255,.07)}
+.box-card.surmesure .box-produit-name{color:#fff}
+.box-card.surmesure .box-produit-desc{color:rgba(255,255,255,.45)}
+.box-card.surmesure .box-bonus{background:rgba(255,255,255,.05)}
+.box-card.surmesure .box-bonus-row{color:rgba(255,255,255,.55)}
+.box-card.surmesure .obj-pill{background:rgba(255,255,255,.07);color:rgba(255,255,255,.7)}
+.surmesure-inner{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+@media(max-width:768px){.surmesure-inner{grid-template-columns:1fr}}
+.surmesure-ctas{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+
+/* CTA BANNER */
+.cta-banner-section{background:var(--grad-dark);padding:80px 40px;position:relative;overflow:hidden}
+.cta-banner-section::before{content:'';position:absolute;top:-40%;right:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(233,30,140,.2) 0%,transparent 70%);border-radius:50%}
+.cta-banner-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;position:relative;z-index:1}
+.cta-banner-inner h2{color:#fff;font-size:clamp(2rem,4vw,3.5rem)}
+.cta-banner-inner p{color:rgba(255,255,255,.55);font-size:.95rem;margin-top:8px;max-width:440px}
+.cta-banner-btns{display:flex;gap:14px;flex-wrap:wrap;flex-shrink:0}
+@media(max-width:768px){.cta-banner-inner{flex-direction:column}.cta-banner-btns{width:100%}.cta-banner-btns .btn{flex:1;justify-content:center}}
+
+/* PROCESS */
+.process-bg{background:var(--grad-dark);position:relative;overflow:hidden}
+.process-bg::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--grad);opacity:.35}
+.methode-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(255,255,255,.08);border-radius:24px;overflow:hidden;margin-top:56px}
+.methode-card{padding:40px 28px;border-right:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);transition:background .35s}
+.methode-card:last-child{border-right:none}
+.methode-card:hover{background:rgba(233,30,140,.06)}
+.methode-num{font-family:'Jost',sans-serif;font-size:2.8rem;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:22px;letter-spacing:-0.04em}
+.methode-card h3{font-family:'Jost',sans-serif;font-size:.95rem;font-weight:600;color:#fff;margin-bottom:12px;font-style:normal}
+.methode-card p{font-family:'Jost',sans-serif;font-size:.83rem;color:rgba(255,255,255,.48);line-height:1.75;font-weight:300}
+@media(max-width:900px){.methode-grid{grid-template-columns:repeat(2,1fr)}.methode-card:nth-child(2){border-right:none}.methode-card:nth-child(3){border-top:1px solid rgba(255,255,255,.08);border-right:1px solid rgba(255,255,255,.08)}.methode-card:nth-child(4){border-top:1px solid rgba(255,255,255,.08)}}
+@media(max-width:480px){.methode-grid{grid-template-columns:1fr}.methode-card{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}.methode-card:last-child{border-bottom:none}}
+
+/* FAQ — style Motion + boxed answer */
+.faq-list{max-width:800px;margin:48px auto 0}
+.faq-item{border-bottom:1px solid rgba(233,30,140,.1)}
+.faq-item.open{border-bottom-color:transparent}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer;background:none;border:none;text-align:left;gap:16px}
+.faq-q-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.35rem);font-weight:500;color:var(--black);line-height:1.4}
+.faq-item.open .faq-q-text{color:var(--fuchsia)}
+.faq-chevron{flex-shrink:0;transition:transform .4s cubic-bezier(.34,1.56,.64,1);color:var(--fuchsia)}
+.faq-item.open .faq-chevron{transform:rotate(180deg)}
+/* Answer box — Motion animates height */
+.faq-a{height:0;overflow:hidden;opacity:0}
+.faq-a-inner{background:linear-gradient(135deg,var(--soft-pink),rgba(255,255,255,.9));border:1px solid rgba(233,30,140,.12);border-radius:16px;padding:20px 24px;margin-bottom:16px}
+.faq-a-inner p{font-size:.92rem;color:var(--gray);line-height:1.85;font-weight:300}
+
+/* FOOTER */
+footer{background:var(--black);color:rgba(255,255,255,.55);padding:60px 40px 28px}
+.footer-in{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:40px}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.06em;color:#fff;display:block;margin-bottom:14px}
+.f-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.45);font-weight:300}
+.fsocials{display:flex;gap:10px;margin-top:22px}
+.fsoc{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .3s,transform .3s}
+.fsoc:hover{background:var(--fuchsia);transform:translateY(-3px)}
+.f-col h4{color:#fff;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.f-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:13.5px;transition:color .3s;font-weight:300}
+.f-links a:hover{color:var(--coral)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:640px){.footer-grid{grid-template-columns:1fr;gap:28px}.footer-bottom{flex-direction:column;gap:10px;text-align:center}}
+
+/* WA FLOAT */
+.wa{position:fixed;bottom:28px;right:28px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:998;box-shadow:0 8px 24px rgba(37,211,102,.4);text-decoration:none;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.wa:hover{transform:scale(1.12)}
+.wa::before,.wa::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid rgba(37,211,102,.4);animation:waP 2.2s ease-out infinite}
+.wa::after{animation-delay:.5s;border-color:rgba(37,211,102,.2)}
+@keyframes waP{0%{transform:scale(1);opacity:1}100%{transform:scale(1.7);opacity:0}}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rv.visible{opacity:1;transform:none}
+/* Fallback: show everything after 600ms no matter what */
+body.loaded .rv{opacity:1;transform:none}
+
+@media(max-width:900px){.surmesure-g{grid-template-columns:1fr !important;padding:32px 28px !important;gap:24px !important}}
+@media(max-width:640px){
+  section{padding:60px 20px}
+  h2{font-size:clamp(2.2rem,8vw,3.2rem)}
+  .methode-card{padding:28px 20px}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+<div id="cr"></div><div id="cd"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-close" id="mobileClose">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </div>
+  <a href="coffrets.html">Boxs</a>
+  <a href="accessoires.html">Boutique</a>
+  <a href="conseil-peau.html">Bilan peau</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contacter nous</a>
+  <a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="btn btn-grad btn-sm" target="_blank"><span>📲 WhatsApp</span></a>
+</div>
+
+<!-- NAVBAR -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">GLOW UP BOX ✦</a>
+  <ul class="nav-links">
+    <li><a href="coffrets.html" class="nav-link" style="color:var(--coral)">Boxs</a></li>
+    <li><a href="accessoires.html" class="nav-link">Boutique</a></li>
+    <li><a href="conseil-peau.html" class="nav-link">Bilan peau</a></li>
+    <li><a href="blog.html" class="nav-link">Blog</a></li>
+    <li><a href="contact.html" class="nav-link">Contacter nous</a></li>
+  </ul>
+  <a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="btn btn-grad btn-sm" target="_blank" rel="noopener">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-content">
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <div style="position:relative;z-index:2">
+      <div class="breadcrumb rv">
+        <a href="index.html">Accueil</a>
+        <span>›</span>
+        <span style="color:rgba(255,255,255,.7)">Boxs</span>
+      </div>
+      <div class="sbadge rv" style="color:var(--coral)">Notre collection</div>
+      <h1 class="rv" style="color:#fff">Nos <em class="g-text">Boxs soins</em></h1>
+      <p class="rv" style="color:rgba(255,255,255,.55);max-width:480px;margin-top:22px;font-size:1.1rem;line-height:1.8">Chaque box est composée pour un objectif précis. Avant toute recommandation, on prend le temps de vous conseiller — gratuitement.</p>
+      <div class="rv" style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap">
+        <a href="conseil-peau.html" class="btn btn-grad">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2l3.1 6.3L22 9.3l-5 4.9 1.2 6.9L12 18l-6.2 3.1 1.2-6.9L2 9.3l6.9-1z"/></svg>
+          <span>Bilan gratuit</span>
+        </a>
+        <a href="https://wa.me/212600000000?text=Bonjour%2C%20j%27aimerais%20des%20conseils%20pour%20choisir%20ma%20box" class="btn btn-ghost" target="_blank" rel="noopener">
+          <span>Parler à une conseillère</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="page-hero-img">
+    <img src="assets/images/peau-terne.jpg" alt="Boxs soins K-Beauty Glow Up Box">
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section>
+  <div class="si">
+
+    <!-- FILTRES -->
+    <div class="filters rv" id="filters">
+      <button class="filter-btn active" data-filter="toutes">Toutes</button>
+      <button class="filter-btn" data-filter="grasse">Peau grasse / mixte</button>
+      <button class="filter-btn" data-filter="eclat">Peau terne / éclat</button>
+      <button class="filter-btn" data-filter="debutantes">Débutantes</button>
+      <button class="filter-btn" data-filter="imperfections">Imperfections</button>
+      <button class="filter-btn" data-filter="surmesure">Sur mesure</button>
+    </div>
+
+    <!-- GRILLE BOXS -->
+    <div class="boxs-grid" id="boxsGrid">
+
+      <!-- CARD 1 — PURE SKIN BOX -->
+      <div class="box-card rv" data-filter="grasse imperfections">
+        <div class="box-icon" style="background:linear-gradient(135deg,#F0F5FF,#D4E0FF)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <div class="box-body">
+          <div class="box-tags-row"><span class="box-tag">Peau grasse / mixte</span></div>
+          <div class="box-accroche">Pure Skin Box</div>
+          <div class="box-objectifs"><span class="obj-pill">Nettoyer</span><span class="obj-pill">Purifier</span><span class="obj-pill">Rééquilibrer</span></div>
+          <div class="box-produits-mini"><div class="box-produits-mini-label">Inclus</div>Skin1004 Clay Mask · Dr. Althea 147 Crème</div>
+          <div class="box-cta"><a href="https://wa.me/212600000000?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9e%20par%20la%20Pure%20Skin%20Box" class="btn btn-grad btn-sm" target="_blank" rel="noopener"><span>Je veux cette box</span></a></div>
+        </div>
+      </div>
+
+      <!-- CARD 2 — DAILY GLOW BOX -->
+      <div class="box-card rv" data-filter="debutantes">
+        <div class="box-icon" style="background:linear-gradient(135deg,#FFF9F0,#FFE8C0)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg>
+        </div>
+        <div class="box-body">
+          <div class="box-tags-row"><span class="box-tag">Tous types de peau</span><span class="box-badge">Débutantes</span></div>
+          <div class="box-accroche">Daily Glow Box</div>
+          <div class="box-objectifs"><span class="obj-pill">Nettoyer</span><span class="obj-pill">Hydrater</span><span class="obj-pill">Protéger</span></div>
+          <div class="box-produits-mini"><div class="box-produits-mini-label">Inclus</div>Dr. Althea Gel · Dr. Althea 147 Crème · Beauty of Joseon SPF50+</div>
+          <div class="box-cta"><a href="https://wa.me/212600000000?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9e%20par%20la%20Daily%20Glow%20Box" class="btn btn-grad btn-sm" target="_blank" rel="noopener"><span>Je veux cette box</span></a></div>
+        </div>
+      </div>
+
+      <!-- CARD 3 — COMPLETE GLOW BOX -->
+      <div class="box-card rv" data-filter="eclat">
+        <div class="box-icon" style="background:linear-gradient(135deg,#FDF0F5,#FFE0EF)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+        </div>
+        <div class="box-body">
+          <div class="box-tags-row"><span class="box-tag">Peaux ternes / mixtes</span><span class="box-badge">Best-seller</span></div>
+          <div class="box-accroche">Complete Glow Box</div>
+          <div class="box-objectifs"><span class="obj-pill">Nettoyer</span><span class="obj-pill">Hydrater</span><span class="obj-pill">Traiter</span><span class="obj-pill">SPF</span></div>
+          <div class="box-produits-mini"><div class="box-produits-mini-label">Inclus</div>Dr. Althea Gel · B.of Joseon Toner · Crème · SPF50+</div>
+          <div class="box-cta"><a href="https://wa.me/212600000000?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9e%20par%20la%20Complete%20Glow%20Box" class="btn btn-grad btn-sm" target="_blank" rel="noopener"><span>Je veux cette box</span></a></div>
+        </div>
+      </div>
+
+      <!-- CARD 4 — CLEAR & CALM BOX -->
+      <div class="box-card rv" data-filter="grasse imperfections">
+        <div class="box-icon" style="background:linear-gradient(135deg,#E8F5E9,#C8E6C9)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+        </div>
+        <div class="box-body">
+          <div class="box-tags-row"><span class="box-tag">Peau grasse / imperfections</span></div>
+          <div class="box-accroche">Clear & Calm Box</div>
+          <div class="box-objectifs"><span class="obj-pill">Purifier</span><span class="obj-pill">Apaiser</span><span class="obj-pill">Anti-imperfections</span></div>
+          <div class="box-produits-mini"><div class="box-produits-mini-label">Inclus</div>Skin1004 Centella Ampoule · B.of Joseon Pore Mask · COSRX Acne Patch</div>
+          <div class="box-cta"><a href="https://wa.me/212600000000?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9e%20par%20la%20Clear%20%26%20Calm%20Box" class="btn btn-grad btn-sm" target="_blank" rel="noopener"><span>Je veux cette box</span></a></div>
+        </div>
+      </div>
+
+      <!-- CARD 5 — GLOW & EVEN BOX -->
+      <div class="box-card rv" data-filter="eclat">
+        <div class="box-icon" style="background:linear-gradient(135deg,#FFF3E0,#FFE0B2)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="box-body">
+          <div class="box-tags-row"><span class="box-tag">Teint terne / irrégulier</span><span class="box-badge">Nouveau</span></div>
+          <div class="box-accroche">Glow & Even Box</div>
+          <div class="box-objectifs"><span class="obj-pill">Hydrater</span><span class="obj-pill">Illuminer</span><span class="obj-pill">Unifier</span></div>
+          <div class="box-produits-mini"><div class="box-produits-mini-label">Inclus</div>B.of Joseon Rice Toner · Light On Serum Vit.C · Dr. Althea Crème</div>
+          <div class="box-cta"><a href="https://wa.me/212600000000?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9e%20par%20la%20Glow%20%26%20Even%20Box" class="btn btn-grad btn-sm" target="_blank" rel="noopener"><span>Je veux cette box</span></a></div>
+        </div>
+      </div>
+
+      <!-- CARD 6 — DAILY PROTECT BOX -->
+      <div class="box-card rv" data-filter="debutantes">
+        <div class="box-icon" style="background:linear-gradient(135deg,#F3E5F5,#E1BEE7)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="box-body">
+          <div class="box-tags-row"><span class="box-tag">Tous types de peau</span><span class="box-badge">Essentielle</span></div>
+          <div class="box-accroche">Daily Protect Box</div>
+          <div class="box-objectifs"><span class="obj-pill">Nettoyer</span><span class="obj-pill">Hydrater</span><span class="obj-pill">SPF50+</span></div>
+          <div class="box-produits-mini"><div class="box-produits-mini-label">Inclus</div>Dr. Althea Gel · Dr. Althea 147 Crème · Beauty of Joseon SPF50+</div>
+          <div class="box-cta"><a href="https://wa.me/212600000000?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9e%20par%20la%20Daily%20Protect%20Box" class="btn btn-grad btn-sm" target="_blank" rel="noopener"><span>Je veux cette box</span></a></div>
+        </div>
+      </div>
+
+      <!-- CARD 7 — BOX PERSONNALISABLE ⭐ pleine largeur -->
+      <div class="box-card surmesure rv" data-filter="surmesure">
+        <div style="padding:48px 56px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;align-items:center" class="surmesure-g">
+          <div>
+            <div class="box-tags-row"><span class="box-tag" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.65)">Sur mesure</span><span class="box-badge">Exclusif ⭐</span></div>
+            <div class="box-accroche" style="font-size:clamp(1.8rem,3vw,2.6rem);margin-top:14px">Ta box, tes règles</div>
+            <p style="color:rgba(255,255,255,.5);font-size:.9rem;margin-top:10px;font-weight:300">Tu ne te reconnais dans aucun profil ? On crée ta box sur mesure, adaptée exactement à ta peau.</p>
+          </div>
+          <div>
+            <div class="box-objectifs"><span class="obj-pill">Tes produits préférés</span><span class="obj-pill">Ton niveau de routine</span><span class="obj-pill">Ton budget</span><span class="obj-pill">Tes accessoires</span></div>
+            <p style="color:rgba(255,255,255,.4);font-size:.8rem;margin-top:14px;font-weight:300">✦ Fiche routine personnalisée · Suivi 1 mois inclus</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <a href="https://wa.me/212600000000?text=Bonjour%2C%20je%20souhaite%20cr%C3%A9er%20une%20box%20personnalis%C3%A9e%20selon%20mes%20besoins" class="btn btn-grad" target="_blank" rel="noopener" style="justify-content:center"><span>Créer ma box sur mesure</span></a>
+            <a href="conseil-peau.html" class="btn btn-outline" style="justify-content:center">Faire mon bilan d'abord</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /boxsGrid -->
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner-section">
+  <div class="cta-banner-inner rv">
+    <div>
+      <div class="sbadge" style="color:var(--coral)">Tu hésites ?</div>
+      <h2>Tu hésites entre<br><em class="g-text">plusieurs boxs ?</em></h2>
+      <p>Réponds à quelques questions et on te recommande la box exactement adaptée à ta peau.</p>
+    </div>
+    <div class="cta-banner-btns">
+      <a href="conseil-peau.html" class="btn btn-grad">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2l3.1 6.3L22 9.3l-5 4.9 1.2 6.9L12 18l-6.2 3.1 1.2-6.9L2 9.3l6.9-1z"/></svg>
+        <span>Faire mon bilan gratuit</span>
+      </a>
+      <a href="https://wa.me/212600000000?text=Bonjour%2C%20j%27aimerais%20des%20conseils%20pour%20choisir%20ma%20box" class="btn btn-ghost" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span>Parler à une conseillère</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="process-bg">
+  <div class="si">
+    <div style="text-align:center" class="rv">
+      <div class="sbadge" style="justify-content:center;color:var(--coral)">Notre méthode</div>
+      <h2 style="color:#fff">Comment ça marche ?</h2>
+      <p style="color:rgba(255,255,255,.45);max-width:440px;margin:10px auto 0;font-family:'Jost',sans-serif;font-size:.9rem;font-weight:300">De votre bilan peau à la livraison — simple, gratuit, personnalisé.</p>
+    </div>
+    <div class="methode-grid">
+      <div class="methode-card rv"><div class="methode-num">01</div><h3>Bilan peau</h3><p>Tu réponds à 6 questions en 2 minutes pour cerner ton type de peau et tes objectifs.</p></div>
+      <div class="methode-card rv"><div class="methode-num">02</div><h3>Analyse</h3><p>On étudie ton profil et on identifie la box idéale pour ta peau spécifiquement.</p></div>
+      <div class="methode-card rv"><div class="methode-num">03</div><h3>Recommandation</h3><p>On te répond sur WhatsApp sous 24h avec notre sélection et le tarif exact.</p></div>
+      <div class="methode-card rv"><div class="methode-num">04</div><h3>Livraison</h3><p>Tu valides, on prépare ta box et on livre partout au Maroc.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:#fff">
+  <div class="si">
+    <div style="text-align:center" class="rv">
+      <div class="sbadge" style="justify-content:center">Questions fréquentes</div>
+      <h2>Vous avez des questions ?</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item rv">
+        <button class="faq-q"><span class="faq-q-text">Pourquoi les prix ne sont pas affichés ?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Chaque box est recommandée après un conseil personnalisé. Le tarif dépend de ta sélection finale, adaptée à ton profil peau.</p></div></div>
+      </div>
+      <div class="faq-item rv">
+        <button class="faq-q"><span class="faq-q-text">Le conseil est vraiment gratuit ?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>100% gratuit, sans engagement. Tu remplis le bilan, on te conseille — si notre recommandation ne te convient pas, tu n'achètes rien.</p></div></div>
+      </div>
+      <div class="faq-item rv">
+        <button class="faq-q"><span class="faq-q-text">C'est quoi les accessoires offerts ?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Chaque box inclut un bandeau skincare, des manchettes, une pince, un pinceau et des patches yeux selon disponibilité — pour que tu aies tout ce qu'il faut dès le départ.</p></div></div>
+      </div>
+      <div class="faq-item rv">
+        <button class="faq-q"><span class="faq-q-text">C'est quoi le suivi personnalisé ?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Pendant 1 mois après ta commande, on reste disponibles pour t'aider à rester régulière, adapter ta routine si besoin et répondre à tes questions.</p></div></div>
+      </div>
+      <div class="faq-item rv">
+        <button class="faq-q"><span class="faq-q-text">Livrez-vous partout au Maroc ?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Oui, partout au Maroc. Les délais et frais de livraison sont communiqués lors du conseil WhatsApp.</p></div></div>
+      </div>
+      <div class="faq-item rv">
+        <button class="faq-q"><span class="faq-q-text">Comment fonctionne la box personnalisable ?</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Tu nous contactes sur WhatsApp, on échange sur ta peau, tes objectifs et tes préférences, et on compose une box sur mesure rien que pour toi.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-in">
+    <div class="footer-grid">
+      <div class="f-brand">
+        <span class="f-logo">GLOW UP BOX ✦</span>
+        <p>Boxs soins K-Beauty personnalisées après bilan peau gratuit. Livraison partout au Maroc.</p>
+        <div class="fsocials">
+          <a href="#" class="fsoc" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://wa.me/212600000000" class="fsoc" aria-label="WhatsApp" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Navigation</h4><ul class="f-links"><li><a href="coffrets.html">Boxs</a></li><li><a href="accessoires.html">Boutique</a></li><li><a href="conseil-peau.html">Bilan peau</a>
+  <a href="blog.html">Blog</a></li><li><a href="b2b.html">B2B</a></li></ul></div>
+      <div class="f-col"><h4>Informations</h4><ul class="f-links"><li><a href="a-propos.html">À Propos</a></li><li><a href="contact.html">Contacter nous</a></li><li><a href="conseil-peau.html">Bilan peau gratuit</a></li><li><a href="#">Mentions légales</a></li></ul></div>
+      <div class="f-col"><h4>Contact</h4><ul class="f-links"><li><a href="https://wa.me/212600000000" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="#">Instagram</a></li><li><a href="mailto:contact@glowupbox.ma">Email</a></li><li><span style="color:rgba(255,255,255,.3);font-size:13px">Livraison nationale Maroc</span></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Glow Up Box ✦ — Tous droits réservés</span><span style="color:rgba(255,255,255,.3)">K-Beauty authentique · Fait au Maroc</span></div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/212600000000?text=Bonjour%20Glow%20Up%20Box%20!" class="wa" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// CURSOR
+const cr=document.getElementById('cr'),cd=document.getElementById('cd');
+if(window.matchMedia('(pointer:fine)').matches){
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px'});
+  (function loop(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(loop)})();
+}
+
+// NAVBAR
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+
+// HAMBURGER
+const ham=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu'),mc=document.getElementById('mobileClose');
+ham.addEventListener('click',()=>mm.classList.add('open'));
+mc.addEventListener('click',()=>mm.classList.remove('open'));
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+
+// SCROLL REVEAL — affiche immédiatement tout ce qui est visible au chargement
+document.querySelectorAll('.rv').forEach(el=>el.classList.add('visible'));
+// Puis observer pour le reste au scroll
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:0});
+document.querySelectorAll('.rv:not(.visible)').forEach(el=>observer.observe(el));
+
+// FILTRES — style 21st pills
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const filter=btn.dataset.filter;
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.box-card').forEach(card=>{
+      const show=filter==='toutes'||card.dataset.filter.includes(filter);
+      card.style.display=show?'':'none';
+    });
+  });
+});
+</script>
+
+<script type="module">
+// FAQ — Motion.js animated + boxed answer
+import { animate } from 'https://cdn.jsdelivr.net/npm/motion@latest/+esm';
+
+function closeFaqItem(item){
+  const ans=item.querySelector('.faq-a');
+  animate(ans,{height:0,opacity:0},{duration:.3,easing:[.25,.46,.45,.94]});
+  animate(item.querySelector('.faq-chevron'),{rotate:0},{duration:.3});
+  item.classList.remove('open');
+}
+
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item');
+    const ans=item.querySelector('.faq-a');
+    const isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>closeFaqItem(i));
+    if(!isOpen){
+      item.classList.add('open');
+      ans.style.height='auto';
+      ans.style.opacity='1';
+      const h=ans.scrollHeight;
+      ans.style.height='0px';
+      ans.style.opacity='0';
+      animate(ans,{height:h+'px',opacity:1},{duration:.42,easing:[.34,1.56,.64,1]});
+      animate(btn.querySelector('.faq-chevron'),{rotate:180},{duration:.35});
+    }
+  });
+});
+</script>
+</body>
+</html>
