@@ -89,9 +89,11 @@ const FAQS = [
   { q: 'Livrez-vous partout au Maroc ?',                         a: 'Oui, partout au Maroc depuis Rabat. Pour les Packs Grand Compte, la livraison multi-sites est possible.' },
 ]
 
-type B2BProps = { title?: string; subtitle?: string }
+type B2BTestimonial = { text: string; name: string; role: string; company: string }
+type B2BProps = { title?: string; subtitle?: string; testimonials?: B2BTestimonial[] }
 
-export function B2BClient({ title, subtitle }: B2BProps = {}) {
+export function B2BClient({ title, subtitle, testimonials: testimonialsOverride }: B2BProps = {}) {
+  const testimonialsData = (testimonialsOverride && testimonialsOverride.length > 0) ? testimonialsOverride : TESTIMONIALS
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   return (
@@ -345,7 +347,7 @@ export function B2BClient({ title, subtitle }: B2BProps = {}) {
             </h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {TESTIMONIALS.map((t, i) => (
+            {testimonialsData.map((t, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
                 <div className="bg-soft-pink rounded-3xl p-8 border border-[rgba(233,30,140,.08)] hover:-translate-y-1 transition-transform duration-300">
                   <div className="flex gap-0.5 mb-5">

@@ -23,7 +23,10 @@ const stepItemV = { hidden: { opacity: 0, x: -28 }, visible: { opacity: 1, x: 0,
 const featsV = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }
 const featItemV = { hidden: { opacity: 0, x: 28 }, visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] } } }
 
-export function ProcessSection() {
+type StepItem = { title: string; desc: string }
+
+export function ProcessSection({ steps: stepsOverride }: { steps?: StepItem[] } = {}) {
+  const stepsData = (stepsOverride && stepsOverride.length > 0) ? stepsOverride : steps
   const stepsRef = useRef(null)
   const featsRef = useRef(null)
   const stepsInView = useInView(stepsRef, { once: true, margin: '-60px' })
@@ -47,14 +50,14 @@ export function ProcessSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-14">
           {/* Étapes */}
           <motion.div ref={stepsRef} variants={stepsV} initial="hidden" animate={stepsInView ? 'visible' : 'hidden'} className="flex flex-col">
-            {steps.map((s, i) => (
-              <motion.div key={s.n} variants={stepItemV} className="flex gap-6 py-7 relative">
-                {i < steps.length - 1 && (
+            {stepsData.map((s, i) => (
+              <motion.div key={i} variants={stepItemV} className="flex gap-6 py-7 relative">
+                {i < stepsData.length - 1 && (
                   <div className="absolute left-[18px] top-[68px] bottom-0 w-px bg-gradient-to-b from-[rgba(233,30,140,0.4)] to-transparent" />
                 )}
                 <div className="w-9 h-9 rounded-full flex items-center justify-center font-playfair font-bold text-[15px] text-white flex-shrink-0"
                   style={{ background: 'linear-gradient(135deg,#E91E8C,#FF6B9D,#FFB347)' }}>
-                  {s.n}
+                  {String(i + 1)}
                 </div>
                 <div>
                   <h3 className="text-white font-bold text-[1.05rem] mb-1.5">{s.title}</h3>

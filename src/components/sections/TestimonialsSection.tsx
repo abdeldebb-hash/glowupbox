@@ -63,7 +63,10 @@ function MarqueeTrack({ items, speed = 28 }: { items: typeof testimonials; speed
   )
 }
 
-export function TestimonialsSection() {
+type TestimonialItem = { quote: string; name: string; meta: string; initial: string }
+
+export function TestimonialsSection({ items }: { items?: TestimonialItem[] } = {}) {
+  const testimonialList = (items && items.length > 0) ? items : testimonials
   return (
     <section className="py-20 bg-white overflow-hidden">
       <div className="text-center px-6 mb-14">
@@ -80,7 +83,7 @@ export function TestimonialsSection() {
         {/* Fade masks */}
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-white to-transparent" />
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-white to-transparent" />
-        <MarqueeTrack items={testimonials} speed={28} />
+        <MarqueeTrack items={testimonialList} speed={28} />
       </div>
     </section>
   )

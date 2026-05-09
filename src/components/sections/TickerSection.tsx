@@ -1,7 +1,8 @@
-const items = ['K-BEAUTY AUTHENTIQUE', 'CONSEIL PEAU GRATUIT', 'LIVRAISON MAROC', 'CRUELTY FREE', 'COFFRETS PERSONNALISÉS', 'INGRÉDIENTS CORÉENS']
-const doubled = [...items, ...items]
+const DEFAULT_ITEMS = ['K-BEAUTY AUTHENTIQUE', 'CONSEIL PEAU GRATUIT', 'LIVRAISON MAROC', 'CRUELTY FREE', 'COFFRETS PERSONNALISÉS', 'INGRÉDIENTS CORÉENS']
 
-export function TickerSection() {
+export function TickerSection({ items }: { items?: string[] } = {}) {
+  const list   = (items && items.length > 0) ? items : DEFAULT_ITEMS
+  const doubled = [...list, ...list]
   return (
     <div className="overflow-hidden py-3.5" style={{ background: 'linear-gradient(135deg,#E91E8C,#FF6B9D,#FFB347)' }}>
       <div className="flex w-max" style={{ animation: 'tickerScroll 22s linear infinite' }}>

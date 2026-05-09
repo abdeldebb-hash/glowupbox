@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { waUrl } from '@/lib/utils'
 
-export function CtaFinalSection() {
+export function CtaFinalSection({ title, subtitle }: { title?: string; subtitle?: string } = {}) {
   return (
     <section className="py-24 px-6 sm:px-10 relative overflow-hidden" style={{ background: 'linear-gradient(135deg,#E91E8C 0%,#FF6B9D 50%,#FFB347 100%)' }}>
       {/* Orbs déco */}
@@ -17,11 +17,10 @@ export function CtaFinalSection() {
             Commencez maintenant
           </div>
           <h2 className="text-white font-playfair font-bold mb-4" style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)' }}>
-            Prête pour votre transformation ?
+            {title ?? 'Prête pour votre transformation ?'}
           </h2>
           <p className="text-white/78 text-[1.05rem] leading-relaxed mb-10">
-            Votre bilan peau personnalisé est gratuit et sans engagement.<br />
-            Découvrez ce que la K-Beauty peut faire pour vous.
+            {subtitle ?? <>Votre bilan peau personnalisé est gratuit et sans engagement.<br />Découvrez ce que la K-Beauty peut faire pour vous.</>}
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <motion.a

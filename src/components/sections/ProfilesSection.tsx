@@ -19,7 +19,12 @@ const cardV = {
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.65, ease: [0.34, 1.56, 0.64, 1] } },
 }
 
-export function ProfilesSection() {
+type ProfileItem = { name: string; desc: string }
+
+export function ProfilesSection({ profiles: profilesOverride }: { profiles?: ProfileItem[] } = {}) {
+  const profilesData = (profilesOverride && profilesOverride.length > 0)
+    ? profiles.map((p, i) => ({ ...p, ...(profilesOverride[i] ?? {}) }))
+    : profiles
   const gridRef = useRef(null)
   const inView = useInView(gridRef, { once: true, margin: '-60px' })
 
@@ -43,7 +48,7 @@ export function ProfilesSection() {
           animate={inView ? 'visible' : 'hidden'}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
         >
-          {profiles.map((p) => (
+          {profilesData.map((p) => (
             <ProfileCard key={p.name} {...p} />
           ))}
         </motion.div>

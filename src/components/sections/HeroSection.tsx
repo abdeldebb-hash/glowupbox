@@ -48,13 +48,16 @@ function Counter({ target }: { target: number }) {
 }
 
 type HeroProps = {
-  title?:    string
-  subtitle?: string
-  cta1?:     string
-  cta2?:     string
+  title?:       string
+  subtitle?:    string
+  cta1?:        string
+  cta2?:        string
+  statClients?: string
+  statRating?:  string
 }
 
-export function HeroSection({ title, subtitle, cta1, cta2 }: HeroProps = {}) {
+export function HeroSection({ title, subtitle, cta1, cta2, statClients, statRating }: HeroProps = {}) {
+  const clientsTarget = statClients ? parseInt(statClients) || 200 : 200
   const heroRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const visualY  = useTransform(scrollYProgress, [0, 1], [0, -70])
@@ -128,8 +131,8 @@ export function HeroSection({ title, subtitle, cta1, cta2 }: HeroProps = {}) {
           {/* Stats */}
           <motion.div variants={itemV} className="flex gap-9 mt-12 pt-10 border-t border-white/10 flex-wrap">
             {[
-              { value: <Counter target={200} />, label: 'Clientes satisfaites' },
-              { value: '4.9 ★', label: 'Note moyenne' },
+              { value: <Counter target={clientsTarget} />, label: 'Clientes satisfaites' },
+              { value: statRating ?? '4.9 ★', label: 'Note moyenne' },
               { value: '100%', label: 'Conseil gratuit' },
             ].map((s, i) => (
               <div key={i}>

@@ -15,15 +15,23 @@ export const metadata: Metadata = {
   },
 }
 
+function parseJSON<T>(val: string | undefined, fallback: T): T {
+  if (!val) return fallback
+  try { return JSON.parse(val) as T } catch { return fallback }
+}
+
 export default async function B2BPage() {
   const rows = await tursoQuery('SELECT key, value FROM Option').catch(() => [])
   const opts: Record<string, string> = {}
   rows.forEach(r => { opts[String(r.key)] = String(r.value) })
 
+  const testimonials = parseJSON<{text:string;name:string;role:string;company:string}[]>(opts.b2b_testimonials, [])
+
   return (
     <B2BClient
-      title={opts.b2b_title    || undefined}
-      subtitle={opts.b2b_subtitle || undefined}
+      title={opts.b2b_title         || undefined}
+      subtitle={opts.b2b_subtitle   || undefined}
+      testimonials={testimonials.length > 0 ? testimonials : undefined}
     />
   )
 }

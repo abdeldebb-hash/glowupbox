@@ -1,17 +1,22 @@
-import { tursoQuery }              from '@/lib/turso'
-import { HeroSection }             from '@/components/sections/HeroSection'
-import { TickerSection }           from '@/components/sections/TickerSection'
-import { ProfilesSection }         from '@/components/sections/ProfilesSection'
-import { ProcessSection }          from '@/components/sections/ProcessSection'
-import { BoxsSection }             from '@/components/sections/BoxsSection'
-import { BoutiqueSection }         from '@/components/sections/BoutiqueSection'
-import { B2BSection }              from '@/components/sections/B2BSection'
-import { TestimonialsSection }     from '@/components/sections/TestimonialsSection'
-import { CtaFinalSection }         from '@/components/sections/CtaFinalSection'
-import type { BoxItem }            from '@/components/sections/BoxsSection'
-import type { ProductItem }        from '@/components/sections/BoutiqueSection'
+import { tursoQuery }          from '@/lib/turso'
+import { HeroSection }         from '@/components/sections/HeroSection'
+import { TickerSection }       from '@/components/sections/TickerSection'
+import { ProfilesSection }     from '@/components/sections/ProfilesSection'
+import { ProcessSection }      from '@/components/sections/ProcessSection'
+import { BoxsSection }         from '@/components/sections/BoxsSection'
+import { BoutiqueSection }     from '@/components/sections/BoutiqueSection'
+import { B2BSection }          from '@/components/sections/B2BSection'
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
+import { CtaFinalSection }     from '@/components/sections/CtaFinalSection'
+import type { BoxItem }        from '@/components/sections/BoxsSection'
+import type { ProductItem }    from '@/components/sections/BoutiqueSection'
 
 export const dynamic = 'force-dynamic'
+
+function parseJSON<T>(val: string | undefined, fallback: T): T {
+  if (!val) return fallback
+  try { return JSON.parse(val) as T } catch { return fallback }
+}
 
 async function getData() {
   try {
@@ -44,12 +49,23 @@ async function getData() {
 
     return { boxes: boxItems, products: productItems, opts }
   } catch {
-    return { boxes: [], products: [], opts: {} }
+    return { boxes: [], products: [], opts: {} as Record<string, string> }
   }
 }
 
 export default async function HomePage() {
   const { boxes, products, opts } = await getData()
+
+  const tickerItems   = parseJSON<string[]>(opts.ticker_items, [])
+  const testimonials  = parseJSON<{quote:string;name:string;meta:string;initial:string}[]>(opts.testimonials, [])
+  const processSteps  = [1,2,3,4].map(n => ({
+    title: opts[`process_step${n}_title`] || '',
+    desc:  opts[`process_step${n}_desc`]  || '',
+  })).filter(s => s.title || s.desc)
+  const profileItems  = [1,2,3,4].map(n => ({
+    name: opts[`profile${n}_name`] || '',
+    desc: opts[`profile${n}_desc`] || '',
+  })).filter(p => p.name || p.desc)
 
   return (
     <>
@@ -58,15 +74,20 @@ export default async function HomePage() {
         subtitle={opts.hero_subtitle || undefined}
         cta1={opts.hero_cta1     || undefined}
         cta2={opts.hero_cta2     || undefined}
+        statClients={opts.stat_clients || undefined}
+        statRating={opts.stat_rating   || undefined}
       />
-      <TickerSection />
-      <ProfilesSection />
-      <ProcessSection />
+      <TickerSection items={tickerItems.length > 0 ? tickerItems : undefined} />
+      <ProfilesSection profiles={profileItems.length > 0 ? profileItems : undefined} />
+      <ProcessSection  steps={processSteps.length > 0  ? processSteps  : undefined} />
       <BoxsSection boxes={boxes} />
       <BoutiqueSection products={products} />
       <B2BSection />
-      <TestimonialsSection />
-      <CtaFinalSection />
+      <TestimonialsSection items={testimonials.length > 0 ? testimonials : undefined} />
+      <CtaFinalSection
+        title={opts.cta_title    || undefined}
+        subtitle={opts.cta_subtitle || undefined}
+      />
     </>
   )
 }
