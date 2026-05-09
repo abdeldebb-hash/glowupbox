@@ -31,11 +31,12 @@ export async function tursoQuery(sql: string, args: TursoValue[] = []): Promise<
   const cols: string[] = result.response?.result?.cols?.map((c: { name: string }) => c.name) ?? []
   const rows = result.response?.result?.rows ?? []
 
-  return rows.map((row: TursoValue[]) => {
+  return rows.map((row: unknown[]) => {
     const obj: TursoRow = {}
     cols.forEach((col, i) => {
-      const cell = row[i] as { type: string; value: string | null }
-      obj[col] = cell?.type === 'null' ? null : cell?.type === 'integer' || cell?.type === 'float' ? Number(cell.value) : cell?.value ?? null
+      const cell = row[i] as { type: string; value: string | null } | null
+      if (!cell) { obj[col] = null; return }
+      obj[col] = cell.type === 'null' ? null : cell.type === 'integer' || cell.type === 'float' ? Number(cell.value) : cell.value ?? null
     })
     return obj
   })
