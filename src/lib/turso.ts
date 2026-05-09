@@ -1,5 +1,5 @@
-const TURSO_URL   = process.env.TURSO_DATABASE_URL   ?? ''
-const TURSO_TOKEN = process.env.TURSO_AUTH_TOKEN ?? ''
+const TURSO_URL   = (process.env.TURSO_DATABASE_URL   ?? '').trim()
+const TURSO_TOKEN = (process.env.TURSO_AUTH_TOKEN ?? '').trim().replace(/\s/g, '')
 
 type TursoValue = string | number | boolean | null
 
