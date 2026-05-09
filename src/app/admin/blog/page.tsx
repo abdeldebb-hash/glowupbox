@@ -1,11 +1,22 @@
 import Link           from 'next/link'
-import { prisma }     from '@/lib/db'
+import { tursoQuery } from '@/lib/turso'
 import { Plus, Pencil, Globe, EyeOff, Clock } from 'lucide-react'
 import { DeleteBtn }  from '../boxs/DeleteBtn'
 
 async function getArticles() {
-  try { return await prisma.article.findMany({ orderBy: { createdAt: 'desc' } }) }
-  catch { return [] }
+  try {
+    const rows = await tursoQuery('SELECT * FROM Article ORDER BY createdAt DESC')
+    return rows.map(a => ({
+      id:        Number(a.id),
+      title:     String(a.title),
+      excerpt:   String(a.excerpt),
+      image:     a.image ? String(a.image) : null,
+      category:  String(a.category),
+      catLabel:  String(a.catLabel ?? ''),
+      readTime:  String(a.readTime ?? '5 min'),
+      published: Number(a.published) === 1,
+    }))
+  } catch { return [] }
 }
 
 export default async function AdminBlogPage() {
@@ -29,7 +40,7 @@ export default async function AdminBlogPage() {
 
         {articles.length === 0 ? (
           <div className="bg-white rounded-2xl border border-gray-100 p-16 text-center">
-            <p className="text-[#4A4A6A] text-sm mb-4">Aucun article pour l'instant</p>
+            <p className="text-[#4A4A6A] text-sm mb-4">Aucun article pour l&apos;instant</p>
             <Link href="/admin/blog/new" className="text-[#E91E8C] text-sm font-semibold hover:underline">
               Rédiger le premier article →
             </Link>

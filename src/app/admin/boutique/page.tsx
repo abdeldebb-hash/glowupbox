@@ -1,11 +1,25 @@
 import Link           from 'next/link'
-import { prisma }     from '@/lib/db'
+import { tursoQuery } from '@/lib/turso'
 import { Plus, Pencil, Eye, EyeOff, Star } from 'lucide-react'
 import { DeleteBtn }  from '../boxs/DeleteBtn'
 
 async function getProducts() {
-  try { return await prisma.product.findMany({ orderBy: { order: 'asc' } }) }
-  catch { return [] }
+  try {
+    const rows = await tursoQuery('SELECT * FROM Product ORDER BY "order" ASC')
+    return rows.map(p => ({
+      id:          Number(p.id),
+      name:        String(p.name),
+      slug:        String(p.slug),
+      image:       p.image ? String(p.image) : null,
+      category:    String(p.category),
+      catLabel:    String(p.catLabel ?? ''),
+      price:       Number(p.price),
+      oldPrice:    p.oldPrice ? Number(p.oldPrice) : null,
+      stockStatus: String(p.stockStatus ?? 'ok'),
+      featured:    Number(p.featured) === 1,
+      active:      Number(p.active) === 1,
+    }))
+  } catch { return [] }
 }
 
 export default async function AdminBoutiquePage() {
@@ -29,7 +43,7 @@ export default async function AdminBoutiquePage() {
 
         {products.length === 0 ? (
           <div className="bg-white rounded-2xl border border-gray-100 p-16 text-center">
-            <p className="text-[#4A4A6A] text-sm mb-4">Aucun accessoire pour l'instant</p>
+            <p className="text-[#4A4A6A] text-sm mb-4">Aucun accessoire pour l&apos;instant</p>
             <Link href="/admin/boutique/new" className="text-[#E91E8C] text-sm font-semibold hover:underline">
               Ajouter le premier accessoire →
             </Link>
@@ -67,18 +81,14 @@ export default async function AdminBoutiquePage() {
                         </div>
                       </div>
                     </td>
-                    <td className="px-5 py-4">
-                      <span className="text-[#4A4A6A] text-sm">{p.catLabel || p.category}</span>
-                    </td>
+                    <td className="px-5 py-4 text-[#4A4A6A] text-sm">{p.catLabel || p.category}</td>
                     <td className="px-5 py-4 text-right">
                       <span className="font-playfair font-bold text-[#E91E8C] text-base">{p.price} DH</span>
                       {p.oldPrice && <span className="text-[#4A4A6A]/40 text-xs line-through ml-1">{p.oldPrice} DH</span>}
                     </td>
                     <td className="px-5 py-4 text-center">
                       <span className={`text-xs font-semibold px-2.5 py-1 rounded-lg ${
-                        p.stockStatus === 'ok'
-                          ? 'bg-green-50 text-green-700'
-                          : 'bg-orange-50 text-orange-600'
+                        p.stockStatus === 'ok' ? 'bg-green-50 text-green-700' : 'bg-orange-50 text-orange-600'
                       }`}>
                         {p.stockStatus === 'ok' ? 'En stock' : 'Stock limité'}
                       </span>

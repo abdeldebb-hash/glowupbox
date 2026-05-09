@@ -1,11 +1,23 @@
 import Link           from 'next/link'
-import { prisma }     from '@/lib/db'
+import { tursoQuery } from '@/lib/turso'
 import { Plus, Pencil, Eye, EyeOff } from 'lucide-react'
 import { DeleteBtn }  from './DeleteBtn'
 
 async function getBoxes() {
-  try { return await prisma.box.findMany({ orderBy: { order: 'asc' } }) }
-  catch { return [] }
+  try {
+    const rows = await tursoQuery('SELECT * FROM Box ORDER BY "order" ASC')
+    return rows.map(b => ({
+      id:        Number(b.id),
+      name:      String(b.name),
+      slug:      String(b.slug),
+      image:     b.image ? String(b.image) : null,
+      skinType:  String(b.skinType),
+      skinLabel: String(b.skinLabel ?? ''),
+      products:  String(b.products ?? '[]'),
+      active:    Number(b.active) === 1,
+      order:     Number(b.order ?? 0),
+    }))
+  } catch { return [] }
 }
 
 export default async function AdminBoxsPage() {
@@ -29,7 +41,7 @@ export default async function AdminBoxsPage() {
 
         {boxes.length === 0 ? (
           <div className="bg-white rounded-2xl border border-gray-100 p-16 text-center">
-            <p className="text-[#4A4A6A] text-sm mb-4">Aucune box pour l'instant</p>
+            <p className="text-[#4A4A6A] text-sm mb-4">Aucune box pour l&apos;instant</p>
             <Link href="/admin/boxs/new" className="text-[#E91E8C] text-sm font-semibold hover:underline">
               Créer la première box →
             </Link>
