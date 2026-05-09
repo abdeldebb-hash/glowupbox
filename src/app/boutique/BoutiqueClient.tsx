@@ -7,6 +7,7 @@ import { ScrollReveal }   from '@/components/ui/ScrollReveal'
 import { SectionBadge }   from '@/components/ui/SectionBadge'
 import { GradientButton } from '@/components/ui/GradientButton'
 import { waUrl }          from '@/lib/utils'
+import { useWaNumber }   from '@/lib/wa-context'
 
 export type ProductData = {
   id:         number
@@ -68,6 +69,7 @@ export function BoutiqueClient({ products, crossBoxes }: {
   products:   ProductData[]
   crossBoxes: { img: string; cat: string; name: string; slug: string }[]
 }) {
+  const waNum = useWaNumber()
   const [activeFilter, setActiveFilter] = useState('tous')
   const [sortBy,       setSortBy]       = useState('default')
   const [liked,        setLiked]        = useState<Set<number>>(new Set())
@@ -182,7 +184,7 @@ export function BoutiqueClient({ products, crossBoxes }: {
                       </span>
                     </div>
                     <div className="flex flex-col gap-2">
-                      <GradientButton href={waUrl(`Bonjour, je souhaite commander ${featured.name} (${featured.price} DH)`)} size="sm" external className="w-full justify-center">
+                      <GradientButton href={waUrl(`Bonjour, je souhaite commander ${featured.name} (${featured.price} DH)`, waNum)} size="sm" external className="w-full justify-center">
                         <MessageCircle className="w-4 h-4" />Commander →
                       </GradientButton>
                       <GradientButton href={`/boutique/${featured.id}`} variant="ghost" size="sm" className="w-full justify-center">Voir le détail</GradientButton>
@@ -230,7 +232,7 @@ export function BoutiqueClient({ products, crossBoxes }: {
                       </span>
                     </div>
                     <div className="flex gap-2">
-                      <GradientButton href={waUrl(`Bonjour, je souhaite commander ${p.name} (${p.price} DH)`)} size="sm" external className="flex-1 justify-center">Commander →</GradientButton>
+                      <GradientButton href={waUrl(`Bonjour, je souhaite commander ${p.name} (${p.price} DH)`, waNum)} size="sm" external className="flex-1 justify-center">Commander →</GradientButton>
                       <GradientButton href={`/boutique/${p.id}`} variant="outline" size="sm">Détail</GradientButton>
                     </div>
                   </div>

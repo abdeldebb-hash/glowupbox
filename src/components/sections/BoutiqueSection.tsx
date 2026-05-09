@@ -5,6 +5,7 @@ import { SectionBadge }   from '@/components/ui/SectionBadge'
 import { GradientButton } from '@/components/ui/GradientButton'
 import { ScrollReveal }   from '@/components/ui/ScrollReveal'
 import { waUrl }          from '@/lib/utils'
+import { useWaNumber }   from '@/lib/wa-context'
 
 export type ProductItem = {
   id:       number
@@ -19,6 +20,7 @@ const gridV = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }
 const cardV = { hidden: { opacity: 0, y: 36 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1] } } }
 
 export function BoutiqueSection({ products }: { products: ProductItem[] }) {
+  const waNum = useWaNumber()
   const gridRef = useRef(null)
   const inView  = useInView(gridRef, { once: true, margin: '-60px' })
 
@@ -52,6 +54,7 @@ export function BoutiqueSection({ products }: { products: ProductItem[] }) {
 }
 
 function ProductCard({ img, cat, name, price, desc }: ProductItem) {
+  const waNum = useWaNumber()
   return (
     <motion.div variants={cardV}
       className="bg-white rounded-[22px] overflow-hidden cursor-pointer focus-visible:ring-2 focus-visible:ring-[#E91E8C] focus-visible:outline-none"
@@ -68,7 +71,7 @@ function ProductCard({ img, cat, name, price, desc }: ProductItem) {
         <p className="text-[#4A4A6A] text-[13px] leading-relaxed mb-4">{desc}</p>
         <div className="flex items-center justify-between">
           <span className="font-playfair font-bold text-[1.2rem] text-[#E91E8C]">{price} DH</span>
-          <motion.a href={waUrl(`Bonjour, je souhaite commander ${name}`)} target="_blank" rel="noopener"
+          <motion.a href={waUrl(`Bonjour, je souhaite commander ${name}`, waNum)} target="_blank" rel="noopener"
             className="px-4 py-2 rounded-full bg-gradient-to-r from-[#E91E8C] to-[#FFB347] text-white text-[12px] font-bold uppercase tracking-wide"
             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             Commander

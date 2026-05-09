@@ -6,6 +6,7 @@ import { ScrollReveal }   from '@/components/ui/ScrollReveal'
 import { SectionBadge }   from '@/components/ui/SectionBadge'
 import { GradientButton } from '@/components/ui/GradientButton'
 import { waUrl }          from '@/lib/utils'
+import { useWaNumber }   from '@/lib/wa-context'
 
 export type BoxDetail = {
   id: number; name: string; slug: string; description: string
@@ -26,6 +27,7 @@ const TESTIMONIALS = [
 ]
 
 export function BoxDetailClient({ box, related }: { box: BoxDetail; related: BoxDetail[] }) {
+  const waNum = useWaNumber()
   return (
     <main>
       {/* HERO */}
@@ -90,7 +92,7 @@ export function BoxDetailClient({ box, related }: { box: BoxDetail; related: Box
                   <p className="text-brand-gray text-[11px] mt-1">Prix communiqué après bilan peau gratuit</p>
                 </div>
                 <div className="space-y-2.5">
-                  <GradientButton href={waUrl(box.waMessage)} size="sm" external className="w-full justify-center">
+                  <GradientButton href={waUrl(box.waMessage, waNum)} size="sm" external className="w-full justify-center">
                     <MessageCircle className="w-4 h-4" />Je veux cette box
                   </GradientButton>
                   <GradientButton href="/conseil-peau" variant="outline" size="sm" className="w-full justify-center">
@@ -246,7 +248,7 @@ export function BoxDetailClient({ box, related }: { box: BoxDetail; related: Box
             Dis-nous que tu veux cette box — on te confirme le tarif et on prépare ta commande.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <GradientButton href={waUrl(box.waMessage)} variant="white" size="lg" external>
+            <GradientButton href={waUrl(box.waMessage, waNum)} variant="white" size="lg" external>
               <MessageCircle className="w-4 h-4" />Je veux cette box
             </GradientButton>
             <GradientButton href="/conseil-peau" variant="ghost" size="lg">Faire mon bilan d'abord</GradientButton>

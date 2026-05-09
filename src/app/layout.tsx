@@ -4,6 +4,7 @@ import { Navbar }          from '@/components/layout/Navbar'
 import { Footer }          from '@/components/layout/Footer'
 import { WhatsAppFloat }   from '@/components/layout/WhatsAppFloat'
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar'
+import { WaProvider }      from '@/lib/wa-context'
 import { tursoQuery }      from '@/lib/turso'
 
 const BASE = 'https://www.glowup-box.com'
@@ -54,7 +55,7 @@ const orgSchema = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const rows = await tursoQuery('SELECT value FROM Option WHERE key=?', ['wa_number']).catch(() => [])
-  const waNumber = rows[0] ? String(rows[0].value) : undefined
+  const waNumber = rows[0] ? String(rows[0].value) : (process.env.NEXT_PUBLIC_WA_NUMBER ?? '212600000000')
 
   return (
     <html lang="fr">
@@ -65,11 +66,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         />
       </head>
       <body>
+        <WaProvider waNumber={waNumber}>
         <ScrollProgressBar />
         <Navbar waNumber={waNumber} />
         <main>{children}</main>
         <Footer waNumber={waNumber} />
         <WhatsAppFloat waNumber={waNumber} />
+        </WaProvider>
       </body>
     </html>
   )

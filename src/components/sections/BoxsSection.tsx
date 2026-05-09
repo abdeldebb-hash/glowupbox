@@ -5,6 +5,7 @@ import { SectionBadge }   from '@/components/ui/SectionBadge'
 import { GradientButton } from '@/components/ui/GradientButton'
 import { ScrollReveal }   from '@/components/ui/ScrollReveal'
 import { waUrl }          from '@/lib/utils'
+import { useWaNumber }   from '@/lib/wa-context'
 
 export type BoxItem = {
   img:      string
@@ -20,6 +21,7 @@ const gridV = { hidden: {}, visible: { transition: { staggerChildren: 0.14 } } }
 const cardV = { hidden: { opacity: 0, y: 44 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1] } } }
 
 export function BoxsSection({ boxes }: { boxes: BoxItem[] }) {
+  const waNum = useWaNumber()
   const gridRef = useRef(null)
   const inView  = useInView(gridRef, { once: true, margin: '-60px' })
 
@@ -56,6 +58,7 @@ export function BoxsSection({ boxes }: { boxes: BoxItem[] }) {
 }
 
 function BoxCard({ img, tag, name, desc, products, slug, waMessage }: BoxItem) {
+  const waNum = useWaNumber()
   return (
     <motion.div variants={cardV}
       className="rounded-4xl overflow-hidden bg-[#FDF0F5] cursor-pointer focus-visible:ring-2 focus-visible:ring-[#E91E8C] focus-visible:outline-none"
@@ -76,7 +79,7 @@ function BoxCard({ img, tag, name, desc, products, slug, waMessage }: BoxItem) {
         </div>
         <p className="text-[12px] text-[#E91E8C] italic font-semibold mb-4">✦ Prix après bilan peau gratuit</p>
         <div className="flex gap-2">
-          <motion.a href={waUrl(waMessage)} target="_blank" rel="noopener"
+          <motion.a href={waUrl(waMessage, waNum)} target="_blank" rel="noopener"
             className="flex-1 text-center px-4 py-2.5 rounded-full bg-gradient-to-r from-[#E91E8C] to-[#FFB347] text-white text-[12px] font-bold uppercase tracking-wide"
             whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
             WhatsApp

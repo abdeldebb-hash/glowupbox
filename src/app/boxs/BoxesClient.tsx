@@ -7,6 +7,7 @@ import { ScrollReveal }   from '@/components/ui/ScrollReveal'
 import { SectionBadge }   from '@/components/ui/SectionBadge'
 import { GradientButton } from '@/components/ui/GradientButton'
 import { waUrl }          from '@/lib/utils'
+import { useWaNumber }   from '@/lib/wa-context'
 
 export type BoxData = {
   id:          number
@@ -45,6 +46,7 @@ const FAQS = [
 ]
 
 export function BoxesClient({ boxes }: { boxes: BoxData[] }) {
+  const waNum = useWaNumber()
   const [activeFilter, setActiveFilter] = useState('all')
   const [openFaq, setOpenFaq]           = useState<number | null>(null)
 
@@ -129,7 +131,7 @@ export function BoxesClient({ boxes }: { boxes: BoxData[] }) {
                       <span className="text-fuchsia text-[12px] font-semibold">Suivi personnalisé 1 mois offert</span>
                     </div>
                     <p className="text-[11px] text-brand-gray/50 text-center mb-3">Prix communiqué après bilan peau gratuit</p>
-                    <GradientButton href={waUrl(box.waMessage)} size="sm" external className="w-full justify-center">
+                    <GradientButton href={waUrl(box.waMessage, waNum)} size="sm" external className="w-full justify-center">
                       <MessageCircle className="w-4 h-4" />Demander un conseil
                     </GradientButton>
                   </div>
