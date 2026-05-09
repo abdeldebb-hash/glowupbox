@@ -1,8 +1,20 @@
-import { tursoQuery }      from '@/lib/turso'
-import { BlogClient }      from './BlogClient'
+import { tursoQuery }       from '@/lib/turso'
+import { BlogClient }       from './BlogClient'
 import type { ArticleData } from './BlogClient'
+import type { Metadata }    from 'next'
 
 export const dynamic = 'force-dynamic'
+
+export const metadata: Metadata = {
+  title:       'Blog K-Beauty — Conseils Routines & Ingrédients Coréens',
+  description: 'Conseils beauté K-Beauty en français : routines coréennes, ingrédients actifs, types de peau, avant/après. Par l\'équipe Glow Up Box Maroc.',
+  alternates:  { canonical: 'https://www.glowup-box.com/blog' },
+  openGraph: {
+    title:       'Blog K-Beauty | Glow Up Box',
+    description: 'Routines, ingrédients et conseils K-Beauty pour le marché marocain.',
+    url:         'https://www.glowup-box.com/blog',
+  },
+}
 
 function formatDate(d: string): string {
   return new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })

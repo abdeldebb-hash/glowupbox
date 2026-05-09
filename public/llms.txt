@@ -1,0 +1,48 @@
+# Glow Up Box
+
+> Coffrets K-Beauty personnalisés pour le marché marocain. Bilan peau gratuit, livraison partout au Maroc.
+
+Glow Up Box est une boutique en ligne marocaine spécialisée dans la cosmétique coréenne (K-Beauty). Fondée par Salma Benali, experte K-Beauty depuis 2019, la marque propose des coffrets soins personnalisés selon le type de peau de chaque cliente, après un bilan peau gratuit sur WhatsApp.
+
+## Ce que propose Glow Up Box
+
+- **Coffrets K-Beauty personnalisés** : sélection de produits coréens adaptés à chaque type de peau (sensible, grasse, mixte, sèche, terne, anti-âge)
+- **Bilan peau gratuit** : quiz en ligne + recommandation personnalisée envoyée sur WhatsApp
+- **Boutique d'accessoires** : ice roller, gua sha, rouleau jade, brosses de soin
+- **Offres B2B** : cadeaux d'entreprise K-Beauty pour événements et incentives
+- **Blog K-Beauty** : conseils, routines, ingrédients coréens expliqués en français
+- **Suivi WhatsApp 1 mois** : accompagnement post-achat gratuit
+
+## Modèle commercial
+
+- Vente 100% via WhatsApp (aucun paiement en ligne)
+- Livraison partout au Maroc
+- Zéro prix affiché sur les boxs — prix communiqué après bilan peau gratuit
+- Marché cible : femmes marocaines 18-45 ans
+
+## Pages clés
+
+- [Accueil](https://www.glowup-box.com)
+- [Nos Boxs K-Beauty](https://www.glowup-box.com/boxs)
+- [Boutique Accessoires](https://www.glowup-box.com/boutique)
+- [Bilan Peau Gratuit](https://www.glowup-box.com/conseil-peau)
+- [Blog K-Beauty](https://www.glowup-box.com/blog)
+- [Offres B2B](https://www.glowup-box.com/b2b)
+- [À Propos](https://www.glowup-box.com/a-propos)
+
+## Boxs disponibles
+
+- **Douceur Coréenne** — peau sensible
+- **Glow Intense** — peau terne
+- **Équilibre & Pureté** — peau grasse / mixte
+- **Hydra Boost** — peau sèche
+- **Zone T Maîtrisée** — peau mixte
+- **Youth Élixir** — anti-âge
+
+## Localisation
+
+Maroc · Livraison nationale · Contact WhatsApp uniquement
+
+## Sitemap
+
+https://www.glowup-box.com/sitemap.xml

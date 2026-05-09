@@ -1,8 +1,20 @@
-import { tursoQuery }           from '@/lib/turso'
-import { BoutiqueClient }       from './BoutiqueClient'
-import type { ProductData }     from './BoutiqueClient'
+import { tursoQuery }       from '@/lib/turso'
+import { BoutiqueClient }   from './BoutiqueClient'
+import type { ProductData } from './BoutiqueClient'
+import type { Metadata }    from 'next'
 
 export const dynamic = 'force-dynamic'
+
+export const metadata: Metadata = {
+  title:       'Boutique Accessoires K-Beauty — Ice Roller, Gua Sha, Rouleau Jade',
+  description: 'Accessoires K-Beauty authentiques : ice roller, gua sha quartz rose, rouleau jade, brosse nettoyante. Livraison Maroc. Commander sur WhatsApp.',
+  alternates:  { canonical: 'https://www.glowup-box.com/boutique' },
+  openGraph: {
+    title:       'Boutique Accessoires K-Beauty | Glow Up Box',
+    description: 'Accessoires soin coréens livrés partout au Maroc. Prix en dirhams.',
+    url:         'https://www.glowup-box.com/boutique',
+  },
+}
 
 async function getData() {
   try {

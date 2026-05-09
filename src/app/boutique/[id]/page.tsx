@@ -6,8 +6,30 @@ import { ScrollReveal }   from '@/components/ui/ScrollReveal'
 import { SectionBadge }   from '@/components/ui/SectionBadge'
 import { GradientButton } from '@/components/ui/GradientButton'
 import { waUrl }          from '@/lib/utils'
+import type { Metadata }  from 'next'
 
 export const dynamic = 'force-dynamic'
+
+const BASE = 'https://www.glowup-box.com'
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params
+  const rows = await tursoQuery(
+    'SELECT * FROM Product WHERE id=? OR slug=? LIMIT 1',
+    [isNaN(Number(id)) ? -1 : Number(id), id]
+  )
+  if (!rows.length) return {}
+  const p           = rows[0]
+  const title       = `${String(p.name)} ${Number(p.price)} DH — Accessoire K-Beauty Maroc`
+  const description = `${String(p.description).slice(0, 130)} Livraison Maroc. Commander sur WhatsApp.`
+  const image       = p.image ? String(p.image) : `${BASE}/images/hero-bg.jpg`
+  return {
+    title,
+    description,
+    alternates: { canonical: `${BASE}/boutique/${id}` },
+    openGraph:  { title, description, url: `${BASE}/boutique/${id}`, images: [{ url: image, alt: title }] },
+  }
+}
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -38,7 +60,25 @@ export default async function ProduitDetailPage({ params }: { params: Promise<{ 
 
   const benefits: string[] = (() => { try { return JSON.parse(String(p.benefits)) } catch { return [] } })()
 
+  const productSchema = {
+    '@context':  'https://schema.org',
+    '@type':     'Product',
+    name:        String(p.name),
+    description: String(p.description),
+    image:       p.image ? String(p.image) : `${BASE}/images/hero-bg.jpg`,
+    brand:       { '@type': 'Brand', name: 'Glow Up Box' },
+    offers: {
+      '@type':          'Offer',
+      price:            String(p.price),
+      priceCurrency:    'MAD',
+      availability:     p.stockStatus === 'out' ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
+      seller:           { '@type': 'Organization', name: 'Glow Up Box' },
+    },
+  }
+
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
     <main>
       {/* HERO */}
       <section className="bg-soft-pink pt-32 pb-12 px-5">
@@ -173,5 +213,6 @@ export default async function ProduitDetailPage({ params }: { params: Promise<{ 
         </ScrollReveal>
       </section>
     </main>
+    </>
   )
 }
