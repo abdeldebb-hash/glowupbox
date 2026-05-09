@@ -1,36 +1,26 @@
 import { NextResponse } from 'next/server'
-import { prisma }       from '@/lib/db'
-import { slugify }      from '@/lib/utils'
+import { tursoQuery, tursoExec } from '@/lib/turso'
+import { slugify }               from '@/lib/utils'
 
 export async function GET() {
   try {
-    const boxes = await prisma.box.findMany({ orderBy: { order: 'asc' } })
-    return NextResponse.json(boxes)
-  } catch {
-    return NextResponse.json({ error: 'DB non disponible' }, { status: 503 })
+    const rows = await tursoQuery('SELECT * FROM Box WHERE active=1 ORDER BY "order" ASC')
+    return NextResponse.json(rows)
+  } catch (e) {
+    return NextResponse.json({ error: String(e) }, { status: 503 })
   }
 }
 
 export async function POST(req: Request) {
   try {
-    const data = await req.json()
-    const box  = await prisma.box.create({
-      data: {
-        name:        data.name,
-        slug:        slugify(data.name),
-        description: data.description ?? '',
-        skinType:    data.skinType    ?? '',
-        skinLabel:   data.skinLabel   ?? '',
-        tag:         data.tag         ?? '',
-        accroche:    data.accroche    ?? '',
-        products:    JSON.stringify(data.products ?? []),
-        image:       data.image       ?? null,
-        active:      data.active      ?? true,
-        order:       data.order       ?? 0,
-        waMessage:   data.waMessage   ?? '',
-      },
-    })
-    return NextResponse.json(box, { status: 201 })
+    const d = await req.json()
+    const products = JSON.stringify(d.products ?? [])
+    await tursoExec(
+      `INSERT INTO Box (name,slug,description,skinType,skinLabel,tag,accroche,products,image,active,"order",waMessage,updatedAt)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)`,
+      [d.name, slugify(d.name), d.description ?? '', d.skinType ?? '', d.skinLabel ?? '', d.tag ?? '', d.accroche ?? '', products, d.image ?? null, d.active ? 1 : 0, d.order ?? 0, d.waMessage ?? '']
+    )
+    return NextResponse.json({ ok: true }, { status: 201 })
   } catch (e) {
     return NextResponse.json({ error: String(e) }, { status: 500 })
   }
