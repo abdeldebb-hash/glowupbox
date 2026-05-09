@@ -15,7 +15,8 @@ const links = [
   { href: '/a-propos',    label: 'À Propos' },
 ]
 
-export function Navbar() {
+export function Navbar({ waNumber }: { waNumber?: string } = {}) {
+  const waNum = waNumber ?? process.env.NEXT_PUBLIC_WA_NUMBER ?? '212600000000'
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -49,7 +50,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <Link
-            href={`https://wa.me/${process.env.NEXT_PUBLIC_WA_NUMBER ?? '212600000000'}?text=${encodeURIComponent('Bonjour Glow Up Box !')}`}
+            href={`https://wa.me/${waNum}?text=${encodeURIComponent('Bonjour Glow Up Box !')}`}
             target="_blank"
             className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[12px] font-bold uppercase tracking-wider text-white gradient-bg hover:-translate-y-0.5 transition-transform"
           >

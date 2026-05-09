@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { Navbar } from '@/components/layout/Navbar'
-import { Footer } from '@/components/layout/Footer'
-import { WhatsAppFloat } from '@/components/layout/WhatsAppFloat'
+import { Navbar }          from '@/components/layout/Navbar'
+import { Footer }          from '@/components/layout/Footer'
+import { WhatsAppFloat }   from '@/components/layout/WhatsAppFloat'
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar'
+import { tursoQuery }      from '@/lib/turso'
 
 const BASE = 'https://www.glowup-box.com'
 
@@ -51,7 +52,10 @@ const orgSchema = {
   sameAs: ['https://instagram.com/glowupbox.ma'],
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const rows = await tursoQuery('SELECT value FROM Option WHERE key=?', ['wa_number']).catch(() => [])
+  const waNumber = rows[0] ? String(rows[0].value) : undefined
+
   return (
     <html lang="fr">
       <head>
@@ -62,10 +66,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ScrollProgressBar />
-        <Navbar />
+        <Navbar waNumber={waNumber} />
         <main>{children}</main>
-        <Footer />
-        <WhatsAppFloat />
+        <Footer waNumber={waNumber} />
+        <WhatsAppFloat waNumber={waNumber} />
       </body>
     </html>
   )

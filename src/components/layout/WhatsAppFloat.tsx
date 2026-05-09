@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion'
 
-export function WhatsAppFloat() {
-  const waNum = process.env.NEXT_PUBLIC_WA_NUMBER ?? '212600000000'
+export function WhatsAppFloat({ waNumber }: { waNumber?: string } = {}) {
+  const waNum = waNumber ?? process.env.NEXT_PUBLIC_WA_NUMBER ?? '212600000000'
   return (
     <motion.a
       href={`https://wa.me/${waNum}?text=${encodeURIComponent('Bonjour Glow Up Box !')}`}
