@@ -15,10 +15,13 @@ export const dynamic = 'force-dynamic'
 
 async function getData() {
   try {
-    const [boxes, products] = await Promise.all([
+    const [boxes, products, optRows] = await Promise.all([
       tursoQuery('SELECT * FROM Box WHERE active=1 ORDER BY "order" ASC LIMIT 3'),
       tursoQuery('SELECT * FROM Product WHERE active=1 ORDER BY "order" ASC LIMIT 4'),
+      tursoQuery('SELECT key, value FROM Option'),
     ])
+    const opts: Record<string, string> = {}
+    optRows.forEach(r => { opts[String(r.key)] = String(r.value) })
 
     const boxItems: BoxItem[] = boxes.map(b => ({
       img:       b.image ? String(b.image) : '/images/peau-sensible.jpg',
@@ -39,18 +42,23 @@ async function getData() {
       desc:  String(p.description),
     }))
 
-    return { boxes: boxItems, products: productItems }
+    return { boxes: boxItems, products: productItems, opts }
   } catch {
-    return { boxes: [], products: [] }
+    return { boxes: [], products: [], opts: {} }
   }
 }
 
 export default async function HomePage() {
-  const { boxes, products } = await getData()
+  const { boxes, products, opts } = await getData()
 
   return (
     <>
-      <HeroSection />
+      <HeroSection
+        title={opts.hero_title    || undefined}
+        subtitle={opts.hero_subtitle || undefined}
+        cta1={opts.hero_cta1     || undefined}
+        cta2={opts.hero_cta2     || undefined}
+      />
       <TickerSection />
       <ProfilesSection />
       <ProcessSection />

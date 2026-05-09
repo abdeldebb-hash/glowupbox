@@ -43,7 +43,9 @@ const ENGAGEMENTS = [
   { num: '04', title: 'Suivi 1 mois WhatsApp',        desc: "Après livraison, on reste disponibles pendant 30 jours. Votre peau évolue, votre routine aussi — on vous accompagne dans cette évolution." },
 ]
 
-export function AProposClient() {
+type AProposProps = { founder?: string; role?: string; bio?: string; story?: string }
+
+export function AProposClient({ founder, role, bio, story }: AProposProps = {}) {
   const heroRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const imgY = useTransform(scrollYProgress, [0, 1], [0, -60])
@@ -133,7 +135,7 @@ export function AProposClient() {
               Née d'une frustration, <span className="gradient-text">construite avec passion</span>
             </h2>
             <p className="text-brand-gray text-sm leading-relaxed mb-5">
-              En 2022, notre fondatrice cherchait des soins coréens adaptés à sa peau mixte sensible. Elle s'est retrouvée face à une multitude de produits importés, sans conseil, sans garantie d'authenticité, sans accompagnement.
+              {story ?? "En 2022, notre fondatrice cherchait des soins coréens adaptés à sa peau mixte sensible. Elle s'est retrouvée face à une multitude de produits importés, sans conseil, sans garantie d'authenticité, sans accompagnement."}
             </p>
             <div className="bg-soft-pink border-l-4 border-fuchsia rounded-r-2xl pl-5 pr-4 py-4 mb-5">
               <p className="text-brand-black font-playfair italic text-lg leading-relaxed">
@@ -241,10 +243,10 @@ export function AProposClient() {
                   alt="Salma Benali, fondatrice de Glow Up Box" className="w-full h-full object-cover" />
               </div>
               <div className="p-8 md:p-10 flex flex-col justify-center">
-                <h3 className="font-playfair font-bold italic text-white text-3xl mb-1">Salma Benali</h3>
-                <span className="text-coral text-[11px] font-bold uppercase tracking-widest mb-5 block">Fondatrice & Experte K-Beauty</span>
+                <h3 className="font-playfair font-bold italic text-white text-3xl mb-1">{founder ?? 'Salma Benali'}</h3>
+                <span className="text-coral text-[11px] font-bold uppercase tracking-widest mb-5 block">{role ?? 'Fondatrice & Experte K-Beauty'}</span>
                 <p className="text-white/60 text-sm leading-relaxed mb-7">
-                  Passionnée de cosmétologie coréenne depuis 2019, Salma a fondé Glow Up Box pour partager ce qu'elle a mis des années à apprendre : comment choisir les bons produits pour sa peau.
+                  {bio ?? "Passionnée de cosmétologie coréenne depuis 2019, Salma a fondé Glow Up Box pour partager ce qu'elle a mis des années à apprendre : comment choisir les bons produits pour sa peau."}
                 </p>
                 <div className="flex gap-3">
                   <motion.a href="#" aria-label="Instagram de Salma" whileHover={{ scale:1.1 }} whileTap={{ scale:.95 }}

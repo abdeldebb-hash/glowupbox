@@ -47,7 +47,14 @@ function Counter({ target }: { target: number }) {
   return <span ref={divRef}>{val}+</span>
 }
 
-export function HeroSection() {
+type HeroProps = {
+  title?:    string
+  subtitle?: string
+  cta1?:     string
+  cta2?:     string
+}
+
+export function HeroSection({ title, subtitle, cta1, cta2 }: HeroProps = {}) {
   const heroRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const visualY  = useTransform(scrollYProgress, [0, 1], [0, -70])
@@ -90,13 +97,11 @@ export function HeroSection() {
 
           <motion.h1 variants={itemV} className="text-white font-playfair font-black leading-[1.12] mb-5"
             style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)' }}>
-            Votre peau mérite<br />
-            <em className="gradient-text not-italic">le meilleur</em><br />
-            de la Corée
+            {title ?? <>Votre peau mérite<br /><em className="gradient-text not-italic">le meilleur</em><br />de la Corée</>}
           </motion.h1>
 
           <motion.p variants={itemV} className="text-white/65 text-[1.05rem] leading-relaxed mb-9 max-w-md">
-            Bilan peau gratuit, Box personnalisée, livraison partout au Maroc. L'expertise K-Beauty enfin accessible.
+            {subtitle ?? "Bilan peau gratuit, Box personnalisée, livraison partout au Maroc. L'expertise K-Beauty enfin accessible."}
           </motion.p>
 
           <motion.div variants={itemV} className="flex gap-4 flex-wrap">
@@ -107,7 +112,7 @@ export function HeroSection() {
               whileTap={{ scale: 0.97 }}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M12 2l3.1 6.3L22 9.3l-5 4.9 1.2 6.9L12 18l-6.2 3.1 1.2-6.9L2 9.3l6.9-1z"/></svg>
-              Bilan gratuit
+              {cta1 ?? 'Bilan gratuit'}
             </motion.a>
             <motion.a
               href="/boxs"
@@ -115,7 +120,7 @@ export function HeroSection() {
               whileHover={{ scale: 1.04, backgroundColor: 'rgba(255,255,255,0.18)', borderColor: 'rgba(255,255,255,1)' }}
               whileTap={{ scale: 0.97 }}
             >
-              Voir les Boxs
+              {cta2 ?? 'Voir les Boxs'}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </motion.a>
           </motion.div>

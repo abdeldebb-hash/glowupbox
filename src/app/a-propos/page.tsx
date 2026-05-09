@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
+import { tursoQuery }    from '@/lib/turso'
 import { AProposClient } from './AProposClient'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title:       'À Propos — Salma Benali, Fondatrice & Experte K-Beauty Maroc',
@@ -12,6 +15,17 @@ export const metadata: Metadata = {
   },
 }
 
-export default function AProposPage() {
-  return <AProposClient />
+export default async function AProposPage() {
+  const rows = await tursoQuery('SELECT key, value FROM Option').catch(() => [])
+  const opts: Record<string, string> = {}
+  rows.forEach(r => { opts[String(r.key)] = String(r.value) })
+
+  return (
+    <AProposClient
+      founder={opts.about_founder || undefined}
+      role={opts.about_role       || undefined}
+      bio={opts.about_bio         || undefined}
+      story={opts.about_story     || undefined}
+    />
+  )
 }

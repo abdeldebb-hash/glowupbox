@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
-import { B2BClient } from './B2BClient'
+import { tursoQuery }  from '@/lib/turso'
+import { B2BClient }   from './B2BClient'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title:       'Cadeaux Entreprise K-Beauty — Offres B2B Glow Up Box Maroc',
@@ -12,6 +15,15 @@ export const metadata: Metadata = {
   },
 }
 
-export default function B2BPage() {
-  return <B2BClient />
+export default async function B2BPage() {
+  const rows = await tursoQuery('SELECT key, value FROM Option').catch(() => [])
+  const opts: Record<string, string> = {}
+  rows.forEach(r => { opts[String(r.key)] = String(r.value) })
+
+  return (
+    <B2BClient
+      title={opts.b2b_title    || undefined}
+      subtitle={opts.b2b_subtitle || undefined}
+    />
+  )
 }

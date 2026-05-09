@@ -89,7 +89,9 @@ const FAQS = [
   { q: 'Livrez-vous partout au Maroc ?',                         a: 'Oui, partout au Maroc depuis Rabat. Pour les Packs Grand Compte, la livraison multi-sites est possible.' },
 ]
 
-export function B2BClient() {
+type B2BProps = { title?: string; subtitle?: string }
+
+export function B2BClient({ title, subtitle }: B2BProps = {}) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   return (
@@ -110,10 +112,10 @@ export function B2BClient() {
             {[
               <SectionBadge key="badge" light>Cadeaux d'entreprise</SectionBadge>,
               <h1 key="h1" className="font-playfair font-bold italic text-white my-4" style={{ fontSize:'clamp(2.5rem,5.5vw,4.5rem)' }}>
-                Fini les cadeaux<br /><span className="gradient-text">génériques</span>
+                {title ?? <>Fini les cadeaux<br /><span className="gradient-text">génériques</span></>}
               </h1>,
               <p key="sub" className="text-white/60 text-base max-w-md leading-relaxed mb-8">
-                Offrez à vos collaboratrices un cadeau qui leur ressemble vraiment. Boxs soins personnalisables pour tous vos événements d'entreprise.
+                {subtitle ?? "Offrez à vos collaboratrices un cadeau qui leur ressemble vraiment. Boxs soins personnalisables pour tous vos événements d'entreprise."}
               </p>,
               <div key="stats" className="flex flex-wrap gap-5 mb-9">
                 {[
