@@ -185,7 +185,7 @@ export function ConseilPeauClient() {
       ? `Autre : ${answers.objectifAutre}`
       : answers.objectif
 
-    const msg = `Bonjour Glow Up Box ! 👋\n\nVoici mon bilan peau :\n\n👤 Nom & Prénom : ${answers.nom}\n📱 WhatsApp : ${answers.phone}\n\n🌿 Type de peau : ${answers.typePeau}\n⚠️ Préoccupation principale : ${answers.preoccupation}\n🧴 Réaction après nettoyage : ${answers.reactionNettoyage}\n🫧 Texture préférée : ${answers.texture}\n💰 Budget mensuel : ${answers.budget}\n🧪 Expérience centella/acides : ${answers.experienceCentella}\n💆 Routine actuelle : ${answers.routineActuelle}\n😣 Inconforts cutanés : ${answers.inconforts}\n🎯 Objectif principal : ${objectifFinal}\n\nMerci de me conseiller ! 🌸`
+    const msg = `Bonjour Glow Up Box !\n\nVoici mon bilan peau :\n\n• Nom & Prénom : ${answers.nom}\n• WhatsApp : ${answers.phone}\n\n• Type de peau : ${answers.typePeau}\n• Préoccupation principale : ${answers.preoccupation}\n• Réaction après nettoyage : ${answers.reactionNettoyage}\n• Texture préférée : ${answers.texture}\n• Budget mensuel : ${answers.budget}\n• Expérience centella/acides : ${answers.experienceCentella}\n• Routine actuelle : ${answers.routineActuelle}\n• Inconforts cutanés : ${answers.inconforts}\n• Objectif principal : ${objectifFinal}\n\nMerci de me conseiller !`
 
     window.open(waUrl(msg, waNum), '_blank')
     await new Promise(r => setTimeout(r, 800))
