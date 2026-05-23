@@ -39,7 +39,7 @@ function Counter({ target }: { target: number }) {
         }
         requestAnimationFrame(tick)
       }
-    }, { threshold: 0.5 })
+    }, { threshold: 0.1 })
     if (divRef.current) obs.observe(divRef.current)
     return () => obs.disconnect()
   }, [target])
@@ -57,7 +57,7 @@ type HeroProps = {
 }
 
 export function HeroSection({ title, subtitle, cta1, cta2, statClients, statRating }: HeroProps = {}) {
-  const clientsTarget = statClients ? parseInt(statClients) || 200 : 200
+  const clientsTarget = statClients ? parseInt(statClients) || 150 : 150
   const heroRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const visualY  = useTransform(scrollYProgress, [0, 1], [0, -70])
@@ -94,17 +94,17 @@ export function HeroSection({ title, subtitle, cta1, cta2, statClients, statRati
           <motion.div variants={itemV}>
             <span className="inline-flex items-center gap-2 bg-[rgba(233,30,140,0.15)] border border-[rgba(233,30,140,0.3)] text-[#FF6B9D] px-4 py-2 rounded-full text-[11px] font-bold tracking-widest uppercase mb-6">
               <svg width="9" height="9" viewBox="0 0 10 10" fill="currentColor"><polygon points="5,0 6.2,3.8 10,3.8 7,6.1 8.1,10 5,7.6 1.9,10 3,6.1 0,3.8 3.8,3.8"/></svg>
-              K-Beauty · Exclusif Maroc
+              Soins · Exclusif Maroc
             </span>
           </motion.div>
 
           <motion.h1 variants={itemV} className="text-white font-playfair font-black leading-[1.12] mb-5"
             style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)' }}>
-            {title ?? <>Votre peau mérite<br /><em className="gradient-text not-italic">le meilleur</em><br />de la Corée</>}
+            {title ?? <>Votre peau mérite<br /><em className="gradient-text not-italic">le meilleur</em><br />des soins</>}
           </motion.h1>
 
           <motion.p variants={itemV} className="text-white/65 text-[1.05rem] leading-relaxed mb-9 max-w-md">
-            {subtitle ?? "Bilan peau gratuit, Box personnalisée, livraison partout au Maroc. L'expertise K-Beauty enfin accessible."}
+            {subtitle ?? "Bilan peau gratuit, Box personnalisée, livraison partout au Maroc. L'expertise soins enfin accessible."}
           </motion.p>
 
           <motion.div variants={itemV} className="flex gap-4 flex-wrap">
@@ -123,7 +123,7 @@ export function HeroSection({ title, subtitle, cta1, cta2, statClients, statRati
               whileHover={{ scale: 1.04, backgroundColor: 'rgba(255,255,255,0.18)', borderColor: 'rgba(255,255,255,1)' }}
               whileTap={{ scale: 0.97 }}
             >
-              {cta2 ?? 'Voir les Boxs'}
+              {cta2 ?? 'Voir les Box'}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </motion.a>
           </motion.div>

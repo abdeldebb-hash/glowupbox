@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const links = [
-  { href: '/boxs',        label: 'Boxs' },
+  { href: '/boxs',        label: 'Box' },
   { href: '/boutique',    label: 'Boutique' },
   { href: '/conseil-peau',label: 'Conseil Peau' },
   { href: '/b2b',         label: 'B2B' },

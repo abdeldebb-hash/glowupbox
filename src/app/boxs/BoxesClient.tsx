@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MessageCircle, Heart, Sparkles, ChevronDown } from 'lucide-react'
+import { MessageCircle, Sparkles, ChevronDown } from 'lucide-react'
 import { ScrollReveal }   from '@/components/ui/ScrollReveal'
 import { SectionBadge }   from '@/components/ui/SectionBadge'
 import { GradientButton } from '@/components/ui/GradientButton'
@@ -39,20 +40,29 @@ const STEPS = [
 ]
 
 const FAQS = [
-  { q: "Pourquoi les boxs n'ont pas de prix affiché ?",         a: "Chaque box est personnalisée après un bilan peau gratuit. Le prix dépend de votre profil et des produits sélectionnés. Contactez-nous pour recevoir votre tarif personnalisé." },
   { q: 'En quoi consiste le suivi personnalisé 1 mois offert ?', a: 'Après réception de votre box, notre équipe reste disponible pendant 1 mois pour adapter votre routine si besoin, répondre à vos questions et vous accompagner vers de vrais résultats.' },
-  { q: 'Les produits sont-ils adaptés au marché marocain ?',     a: 'Oui, tous nos produits K-Beauty sont sélectionnés en tenant compte du climat marocain et des types de peau locaux.' },
+  { q: 'Les soins sont-ils adaptés au marché marocain ?',        a: 'Oui, tous nos soins sont sélectionnés en tenant compte du climat marocain et des types de peau locaux.' },
   { q: 'Quelle est la durée de livraison ?',                     a: 'La livraison est disponible dans tout le Maroc. Les délais varient selon votre ville, contactez-nous pour plus d\'informations.' },
 ]
+
+const PAGE_SIZE = 6
 
 export function BoxesClient({ boxes }: { boxes: BoxData[] }) {
   const waNum = useWaNumber()
   const [activeFilter, setActiveFilter] = useState('all')
-  const [openFaq, setOpenFaq]           = useState<number | null>(null)
+  const [openFaq,      setOpenFaq]      = useState<number | null>(null)
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
 
   const filtered = activeFilter === 'all'
     ? boxes
     : boxes.filter(b => b.skinType === activeFilter)
+
+  const displayed = filtered.slice(0, visibleCount)
+
+  function handleFilter(id: string) {
+    setActiveFilter(id)
+    setVisibleCount(PAGE_SIZE)
+  }
 
   return (
     <main>
@@ -62,26 +72,14 @@ export function BoxesClient({ boxes }: { boxes: BoxData[] }) {
           style={{ backgroundImage:'radial-gradient(circle at 30% 50%,#E91E8C 0%,transparent 60%),radial-gradient(circle at 70% 50%,#FFB347 0%,transparent 60%)' }} />
         <div className="max-w-5xl mx-auto relative z-10 text-center w-full">
           <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:.6 }}>
-            <SectionBadge light>Coffrets K-Beauty</SectionBadge>
+            <SectionBadge light>Coffrets Soins</SectionBadge>
             <h1 className="font-playfair font-bold italic text-white mt-2 mb-5" style={{ fontSize:'clamp(2rem,5vw,3.8rem)' }}>
-              Vos Boxs <span className="gradient-text">Glow Up</span>
+              Vos Box <span className="gradient-text">Glow Up</span>
             </h1>
             <p className="text-white/70 max-w-xl mx-auto text-lg leading-relaxed">
-              Des coffrets K-Beauty pensés pour votre type de peau. Conseillées avant d'être commandées.
+              Des coffrets soins pensés pour votre type de peau. Conseillées avant d&apos;être commandées.
             </p>
           </motion.div>
-        </div>
-      </section>
-
-      {/* BANNER */}
-      <section className="bg-soft-pink border-y border-[#E91E8C]/10 py-5 px-5">
-        <div className="max-w-3xl mx-auto flex flex-wrap items-center gap-3 justify-center text-center">
-          <span className="text-2xl">💬</span>
-          <p className="text-brand-gray text-sm">
-            <strong className="text-fuchsia">Pourquoi pas de prix affiché ?</strong>{' '}
-            Parce que chaque peau est unique. Un bilan gratuit nous permet de vous recommander exactement ce dont vous avez besoin.
-          </p>
-          <GradientButton href="/conseil-peau" size="sm">Bilan gratuit</GradientButton>
         </div>
       </section>
 
@@ -90,7 +88,7 @@ export function BoxesClient({ boxes }: { boxes: BoxData[] }) {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-wrap gap-2 justify-center mb-12">
             {FILTERS.map(f => (
-              <button key={f.id} onClick={() => setActiveFilter(f.id)}
+              <button key={f.id} onClick={() => handleFilter(f.id)}
                 className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 min-h-[44px] ${
                   activeFilter === f.id
                     ? 'bg-brand-gradient text-white shadow-[0_4px_16px_rgba(233,30,140,0.3)]'
@@ -99,49 +97,22 @@ export function BoxesClient({ boxes }: { boxes: BoxData[] }) {
             ))}
           </div>
 
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatePresence mode="popLayout">
-              {filtered.map((box, i) => (
-                <motion.article key={box.id} layout
-                  initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }}
-                  exit={{ opacity:0, scale:.95 }}
-                  transition={{ duration:.4, delay:i*.05 }}
-                  className="bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
-                >
-                  <div className="h-44 relative overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={box.img} alt={box.name} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0" style={{ background:'linear-gradient(to top,rgba(26,26,46,.3) 0%,transparent 50%)' }} />
-                  </div>
-                  <div className="p-6 flex flex-col flex-1">
-                    <span className="inline-block bg-soft-pink text-fuchsia text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3 self-start">
-                      {box.skinLabel}
-                    </span>
-                    <h2 className="font-playfair font-bold text-brand-black text-xl mb-2">{box.name}</h2>
-                    <p className="text-brand-gray text-sm leading-relaxed mb-4">{box.description}</p>
-                    <ul className="space-y-1.5 mb-5 flex-1">
-                      {box.products.map(p => (
-                        <li key={p} className="flex items-start gap-2 text-sm text-brand-gray">
-                          <span className="text-fuchsia mt-0.5 flex-shrink-0 text-[10px]">✦</span>{p}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="bg-soft-pink rounded-xl px-3 py-2 flex items-center gap-2 mb-4">
-                      <Heart className="w-3.5 h-3.5 text-fuchsia flex-shrink-0" />
-                      <span className="text-fuchsia text-[12px] font-semibold">Suivi personnalisé 1 mois offert</span>
-                    </div>
-                    <p className="text-[11px] text-brand-gray/50 text-center mb-3">Prix communiqué après bilan peau gratuit</p>
-                    <GradientButton href={waUrl(box.waMessage, waNum)} size="sm" external className="w-full justify-center">
-                      <MessageCircle className="w-4 h-4" />Demander un conseil
-                    </GradientButton>
-                  </div>
-                </motion.article>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+          <BoxGrid boxes={displayed} waNum={waNum} />
 
           {filtered.length === 0 && (
             <p className="text-center text-brand-gray/50 py-16 font-playfair italic">Aucune box pour ce type de peau.</p>
+          )}
+
+          {filtered.length > visibleCount && (
+            <div className="flex justify-center mt-10">
+              <motion.button
+                onClick={() => setVisibleCount(c => c + PAGE_SIZE)}
+                whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                className="px-8 py-3.5 rounded-full border-2 border-fuchsia text-fuchsia font-bold text-sm uppercase tracking-wider hover:bg-fuchsia hover:text-white transition-colors duration-200"
+              >
+                Voir plus de box +
+              </motion.button>
+            </div>
           )}
         </div>
       </section>
@@ -216,5 +187,57 @@ export function BoxesClient({ boxes }: { boxes: BoxData[] }) {
         </ScrollReveal>
       </section>
     </main>
+  )
+}
+
+function BoxGrid({ boxes, waNum }: { boxes: BoxData[]; waNum: string }) {
+  const router = useRouter()
+  return (
+    <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+      <AnimatePresence mode="popLayout">
+        {boxes.map((box, i) => (
+          <motion.article key={box.id} layout
+            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }}
+            exit={{ opacity:0, scale:.95 }}
+            transition={{ duration:.4, delay:i*.05 }}
+            className="bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col cursor-pointer"
+            onClick={() => router.push(`/boxs/${box.slug}`)}
+          >
+            <div className="h-44 relative overflow-hidden flex-shrink-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={box.img} alt={box.name} className="w-full h-full object-cover"
+                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.style.background = 'linear-gradient(135deg,#E91E8C,#FFB347)' }} />
+              <div className="absolute inset-0" style={{ background:'linear-gradient(to top,rgba(26,26,46,.3) 0%,transparent 50%)' }} />
+            </div>
+            <div className="p-6 flex flex-col flex-1">
+              <span className="inline-block bg-soft-pink text-fuchsia text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3 self-start">
+                {box.skinLabel}
+              </span>
+              <h2 className="font-playfair font-bold text-brand-black text-xl mb-2">{box.name}</h2>
+              <p className="text-brand-gray text-sm leading-relaxed mb-4 line-clamp-4 flex-1">{box.description}</p>
+              <ul className="space-y-1.5 mb-5">
+                {box.products.map(p => (
+                  <li key={p} className="flex items-start gap-2 text-sm text-brand-gray">
+                    <span className="text-fuchsia mt-0.5 flex-shrink-0 text-[10px]">✦</span>{p}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-col gap-2 mt-auto" onClick={(e) => e.stopPropagation()}>
+                <GradientButton
+                  href={waUrl(`Bonjour, je suis intéressée par la ${box.name} et j'aimerais commander ou avoir un conseil 🌸`, waNum)}
+                  size="sm" external className="w-full justify-center">
+                  <MessageCircle className="w-4 h-4" />Je veux cette box →
+                </GradientButton>
+                <GradientButton
+                  href={waUrl(`Bonjour, j'aimerais un conseil personnalisé avant de choisir ma box 💬`, waNum)}
+                  size="sm" variant="outline" external className="w-full justify-center">
+                  Demander conseil
+                </GradientButton>
+              </div>
+            </div>
+          </motion.article>
+        ))}
+      </AnimatePresence>
+    </motion.div>
   )
 }

@@ -11,7 +11,7 @@ import { waUrl }          from '@/lib/utils'
 const STATS = [
   { value: '200+', label: 'Clientes satisfaites' },
   { value: '4.9★', label: 'Note moyenne' },
-  { value: '3 ans', label: "D'expertise K-Beauty" },
+  { value: '3 ans', label: "D'expertise soins" },
   { value: '100%', label: 'Bilan peau gratuit' },
 ]
 
@@ -19,7 +19,7 @@ const VALEURS = [
   {
     icon: Star,
     title: 'Authenticité',
-    desc:  "Chaque produit est rigoureusement sélectionné pour son efficacité et son authenticité. Pas de copie, pas de compromis — uniquement des formules K-Beauty approuvées.",
+    desc:  "Chaque produit est rigoureusement sélectionné pour son efficacité et son authenticité. Pas de copie, pas de compromis — uniquement des formules approuvées.",
     tag:   'Produits 100% originaux',
   },
   {
@@ -75,7 +75,7 @@ export function AProposClient({ founder, role, bio, story }: AProposProps = {}) 
               </p>,
               <span key="badge" className="inline-flex items-center gap-2 bg-[rgba(233,30,140,.12)] border border-[rgba(233,30,140,.25)] text-coral px-4 py-2 rounded-full text-[11px] font-semibold uppercase tracking-widest mb-6">
                 <span className="w-2 h-2 rounded-full bg-fuchsia" />
-                Fondée à Rabat · K-Beauty authentique
+                Fondée à Rabat · Soins authentiques
               </span>,
               <h1 key="h1" className="font-playfair font-bold italic text-white mb-5" style={{ fontSize:'clamp(2.5rem,5.5vw,4.5rem)' }}>
                 Notre histoire,<br /><span className="gradient-text">votre beauté</span>
@@ -85,7 +85,7 @@ export function AProposClient({ founder, role, bio, story }: AProposProps = {}) 
               </p>,
               <div key="ctas" className="flex flex-wrap gap-3">
                 <GradientButton href="/conseil-peau" size="md"><Heart className="w-4 h-4" />Mon bilan gratuit</GradientButton>
-                <GradientButton href="/boxs" variant="ghost" size="md">Découvrir les boxs</GradientButton>
+                <GradientButton href="/boxs" variant="ghost" size="md">Découvrir les box</GradientButton>
               </div>,
             ].map((el, i) => (
               <motion.div key={i} variants={{ hidden:{ opacity:0, y:30 }, visible:{ opacity:1, y:0, transition:{ duration:.75, ease:[.34,1.56,.64,1] } } }}>
@@ -139,7 +139,7 @@ export function AProposClient({ founder, role, bio, story }: AProposProps = {}) 
             </p>
             <div className="bg-soft-pink border-l-4 border-fuchsia rounded-r-2xl pl-5 pr-4 py-4 mb-5">
               <p className="text-brand-black font-playfair italic text-lg leading-relaxed">
-                "Je voulais une K-Beauty honnête — des produits vrais, un conseil sincère et un suivi qui dure au-delà de la commande."
+                "Je voulais des soins honnêtes — des produits vrais, un conseil sincère et un suivi qui dure au-delà de la commande."
               </p>
               <cite className="text-fuchsia text-[12px] font-bold mt-2 block not-italic">— Fondatrice, Glow Up Box</cite>
             </div>
@@ -232,7 +232,7 @@ export function AProposClient({ founder, role, bio, story }: AProposProps = {}) 
           <ScrollReveal className="mb-12">
             <SectionBadge light>L'équipe</SectionBadge>
             <h2 className="font-playfair font-bold text-white mt-2" style={{ fontSize:'clamp(2rem,4vw,3.2rem)' }}>
-              La femme <span className="gradient-text">derrière les boxs</span>
+              La femme <span className="gradient-text">derrière les box</span>
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
@@ -244,7 +244,7 @@ export function AProposClient({ founder, role, bio, story }: AProposProps = {}) 
               </div>
               <div className="p-8 md:p-10 flex flex-col justify-center">
                 <h3 className="font-playfair font-bold italic text-white text-3xl mb-1">{founder ?? 'Salma Benali'}</h3>
-                <span className="text-coral text-[11px] font-bold uppercase tracking-widest mb-5 block">{role ?? 'Fondatrice & Experte K-Beauty'}</span>
+                <span className="text-coral text-[11px] font-bold uppercase tracking-widest mb-5 block">{role ?? 'Fondatrice & Experte en soins personnalisés'}</span>
                 <p className="text-white/60 text-sm leading-relaxed mb-7">
                   {bio ?? "Passionnée de cosmétologie coréenne depuis 2019, Salma a fondé Glow Up Box pour partager ce qu'elle a mis des années à apprendre : comment choisir les bons produits pour sa peau."}
                 </p>

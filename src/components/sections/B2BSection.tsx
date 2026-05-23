@@ -25,7 +25,7 @@ export function B2BSection() {
                 Glow Up Box pour vos équipes
               </h2>
               <p className="text-white/65 leading-relaxed max-w-xl">
-                Cadeaux d'entreprise, incentives, séminaires… Des Boxs K-Beauty premium pour sublimer vos collaborateurs.
+                Cadeaux d'entreprise, incentives, séminaires… Des coffrets soins premium pour sublimer vos collaborateurs.
               </p>
               <div className="flex flex-wrap gap-2.5 mt-5">
                 {tags.map(t => (

@@ -37,7 +37,7 @@ export function BoxDetailClient({ box, related }: { box: BoxDetail; related: Box
         <div className="max-w-3xl mx-auto relative z-10">
           <p className="text-white/40 text-[11px] uppercase tracking-widest mb-5 flex items-center justify-center gap-2">
             <a href="/" className="hover:text-coral transition-colors">Accueil</a><span>›</span>
-            <a href="/boxs" className="hover:text-coral transition-colors">Boxs</a><span>›</span>
+            <a href="/boxs" className="hover:text-coral transition-colors">Box</a><span>›</span>
             <span className="text-white/65">{box.name}</span>
           </p>
           <span className="inline-flex items-center bg-[rgba(233,30,140,.15)] border border-[rgba(233,30,140,.28)] text-coral px-5 py-2 rounded-full text-[10px] font-semibold uppercase tracking-widest mb-6">
@@ -61,7 +61,7 @@ export function BoxDetailClient({ box, related }: { box: BoxDetail; related: Box
           <div className="rounded-3xl overflow-hidden border border-[rgba(233,30,140,.08)] shadow-[0_12px_40px_rgba(26,26,46,.06)]">
             <div className="px-8 py-5 bg-brand-black flex items-center justify-between">
               <h2 className="font-playfair font-bold italic text-white text-2xl">{box.name}</h2>
-              <span className="bg-[rgba(233,30,140,.15)] text-coral text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">Box K-Beauty</span>
+              <span className="bg-[rgba(233,30,140,.15)] text-coral text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">Box Soins</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2">
               <div className="p-8 bg-white border-r border-[rgba(233,30,140,.07)]">
@@ -146,7 +146,7 @@ export function BoxDetailClient({ box, related }: { box: BoxDetail; related: Box
                   <span className="font-playfair font-black italic gradient-text text-2xl w-8 flex-shrink-0">{String(i+1).padStart(2,'0')}</span>
                   <div>
                     <h3 className="font-playfair font-bold italic text-brand-black text-lg mb-1">{p}</h3>
-                    <p className="text-brand-gray text-sm leading-relaxed">Produit K-Beauty authentique sélectionné pour votre type de peau.</p>
+                    <p className="text-brand-gray text-sm leading-relaxed">Soin authentique sélectionné pour votre type de peau.</p>
                   </div>
                 </div>
               </ScrollReveal>

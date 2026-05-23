@@ -5,16 +5,16 @@ import { SectionBadge } from '@/components/ui/SectionBadge'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 
 const steps = [
-  { n: '1', title: 'Faites votre bilan peau', desc: '6 questions simples pour cerner votre type de peau, vos préoccupations et vos objectifs.' },
-  { n: '2', title: 'On analyse votre profil',  desc: 'Votre bilan nous parvient via WhatsApp. On l\'analyse pour vous proposer la bonne Box.' },
-  { n: '3', title: 'Recommandation personnalisée', desc: 'Vous recevez notre sélection K-Beauty adaptée à votre peau, avec explications des produits.' },
+  { n: '1', title: 'Faites votre bilan peau', desc: '6 questions simples pour cerner votre type de peau, vos préoccupations et vos objectifs de routine.' },
+  { n: '2', title: 'On analyse votre profil',  desc: 'Votre bilan nous parvient via WhatsApp. On l\'analyse pour vous proposer les soins les plus adaptés à votre peau.' },
+  { n: '3', title: 'Recommandation personnalisée', desc: 'Vous recevez notre sélection de soins adaptée à votre peau, avec explications détaillées de chaque produit recommandé.' },
   { n: '4', title: 'Livraison partout au Maroc', desc: 'Commandez directement sur WhatsApp. Livraison rapide partout au Maroc.' },
 ]
 
 const features = [
-  { icon: '🎁', title: 'Boxs curatées', desc: 'Chaque Box est sélectionnée par des experts K-Beauty avec des produits complémentaires.' },
+  { icon: '🎁', title: 'Box curatées', desc: 'Chaque Box est sélectionnée par des experts soins avec des produits complémentaires.' },
   { icon: '💬', title: 'Conseil humain, pas un bot', desc: 'Un vrai conseiller répond à chaque bilan et explique chaque produit recommandé.' },
-  { icon: '🇰🇷', title: 'Produits authentiques', desc: 'Cosmétiques coréens certifiés, sélectionnés pour leur efficacité prouvée.' },
+  { icon: '✦', title: 'Soins sélectionnés', desc: 'Soins sélectionnés · Chaque produit est choisi pour son efficacité prouvée.' },
   { icon: '✅', title: '0 risque, 0 engagement', desc: 'Bilan et conseil 100% gratuits. Vous achetez seulement si vous êtes convaincue.' },
 ]
 

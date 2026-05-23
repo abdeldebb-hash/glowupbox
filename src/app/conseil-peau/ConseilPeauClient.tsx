@@ -220,7 +220,7 @@ Merci de me conseiller ! 😊`
 
               <div className="p-7 sm:p-10">
                 <p className="text-[11px] font-bold text-brand-gray/40 uppercase tracking-widest mb-7">
-                  Étape {step + 1} / {TOTAL_STEPS + 1}
+                  {step === 0 ? 'Vos informations' : `Étape ${step} / 6`}
                 </p>
 
                 <AnimatePresence mode="wait" custom={direction}>

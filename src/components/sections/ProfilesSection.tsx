@@ -9,8 +9,9 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal'
 const profiles = [
   { emoji: '🌿', type: 'Profil 01', name: 'Peau Sensible', desc: 'Rougeurs, tiraillements, réactivité. Votre peau a besoin de douceur et de protection barrière.' },
   { emoji: '💧', type: 'Profil 02', name: 'Peau Grasse',   desc: 'Brillances, pores dilatés, imperfections. Équilibre et légèreté sont vos alliés.' },
-  { emoji: '✨', type: 'Profil 03', name: 'Peau Terne',    desc: 'Manque d\'éclat, teint gris, fatigue visible. La K-Beauty a les solutions pour vous illuminer.' },
+  { emoji: '✨', type: 'Profil 03', name: 'Peau Terne',    desc: 'Manque d\'éclat, teint gris, fatigue visible. Des soins adaptés ont les solutions pour vous illuminer.' },
   { emoji: '🌙', type: 'Profil 04', name: 'Peau Mixte',   desc: 'Zone T brillante, joues sèches. Votre routine doit équilibrer sans agresser.' },
+  { emoji: '💧', type: 'Profil 05', name: 'Peau Grasse',   desc: 'Brillances, pores dilatés, imperfections. Équilibre et légèreté sont vos alliés.' },
 ]
 
 const gridV = { hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }
@@ -46,7 +47,7 @@ export function ProfilesSection({ profiles: profilesOverride }: { profiles?: Pro
           variants={gridV}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5"
         >
           {profilesData.map((p) => (
             <ProfileCard key={p.name} {...p} />

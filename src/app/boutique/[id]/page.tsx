@@ -1,6 +1,5 @@
 import { notFound }   from 'next/navigation'
 import { tursoQuery } from '@/lib/turso'
-import { motion }     from 'framer-motion'
 import { MessageCircle, Star, CheckCircle, ArrowLeft, ArrowRight, Package } from 'lucide-react'
 import { ScrollReveal }   from '@/components/ui/ScrollReveal'
 import { SectionBadge }   from '@/components/ui/SectionBadge'
@@ -20,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   )
   if (!rows.length) return {}
   const p           = rows[0]
-  const title       = `${String(p.name)} ${Number(p.price)} DH — Accessoire K-Beauty Maroc`
+  const title       = `${String(p.name)} ${Number(p.price)} DH — Accessoire Beauté Maroc`
   const description = `${String(p.description).slice(0, 130)} Livraison Maroc. Commander sur WhatsApp.`
   const image       = p.image ? String(p.image) : `${BASE}/images/hero-bg.jpg`
   return {
@@ -177,8 +176,8 @@ export default async function ProduitDetailPage({ params }: { params: Promise<{ 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
               {related.map((r, i) => (
                 <ScrollReveal key={Number(r.id)} delay={i * 0.1}>
-                  <motion.a href={`/boutique/${Number(r.id)}`} whileHover={{ y:-6 }}
-                    className="block bg-white rounded-3xl overflow-hidden border border-[rgba(233,30,140,.08)] shadow-sm hover:shadow-[0_20px_48px_rgba(233,30,140,.12)] transition-shadow duration-300 group">
+                  <a href={`/boutique/${Number(r.id)}`}
+                    className="block bg-white rounded-3xl overflow-hidden border border-[rgba(233,30,140,.08)] shadow-sm hover:shadow-[0_20px_48px_rgba(233,30,140,.12)] hover:-translate-y-1.5 transition-all duration-300 group">
                     <div className="h-48 relative overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={r.image ? String(r.image) : '/images/acc-ice-roller.jpg'} alt={String(r.name)}
@@ -194,7 +193,7 @@ export default async function ProduitDetailPage({ params }: { params: Promise<{ 
                         </span>
                       </div>
                     </div>
-                  </motion.a>
+                  </a>
                 </ScrollReveal>
               ))}
             </div>

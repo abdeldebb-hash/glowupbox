@@ -6,12 +6,12 @@ import type { Metadata } from 'next'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title:       'Nos Coffrets K-Beauty — Boxs Personnalisées par Type de Peau',
-  description: 'Découvrez nos coffrets K-Beauty personnalisés : peau sensible, grasse, mixte, sèche, terne ou anti-âge. Bilan peau gratuit avant chaque commande. Livraison Maroc.',
+  title:       'Nos Coffrets Soins Personnalisés | Glow Up Box Maroc',
+  description: 'Découvrez nos coffrets soins personnalisés : peau sensible, grasse, mixte, sèche, terne ou anti-âge. Bilan peau gratuit avant chaque commande. Livraison Maroc.',
   alternates:  { canonical: 'https://www.glowup-box.com/boxs' },
   openGraph: {
-    title:       'Nos Coffrets K-Beauty | Glow Up Box',
-    description: 'Boxs K-Beauty personnalisées selon votre type de peau. Bilan gratuit inclus.',
+    title:       'Nos Coffrets Soins Personnalisés | Glow Up Box Maroc',
+    description: 'Coffrets soins personnalisés selon votre type de peau. Bilan gratuit inclus.',
     url:         'https://www.glowup-box.com/boxs',
   },
 }

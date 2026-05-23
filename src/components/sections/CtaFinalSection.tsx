@@ -20,7 +20,7 @@ export function CtaFinalSection({ title, subtitle }: { title?: string; subtitle?
             {title ?? 'Prête pour votre transformation ?'}
           </h2>
           <p className="text-white/78 text-[1.05rem] leading-relaxed mb-10">
-            {subtitle ?? <>Votre bilan peau personnalisé est gratuit et sans engagement.<br />Découvrez ce que la K-Beauty peut faire pour vous.</>}
+            {subtitle ?? <>Votre bilan peau personnalisé est gratuit et sans engagement.<br />Découvrez ce que les soins personnalisés peuvent faire pour vous.</>}
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <motion.a

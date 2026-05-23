@@ -62,7 +62,7 @@ export default async function HomePage() {
     title: opts[`process_step${n}_title`] || '',
     desc:  opts[`process_step${n}_desc`]  || '',
   })).filter(s => s.title || s.desc)
-  const profileItems  = [1,2,3,4].map(n => ({
+  const profileItems  = [1,2,3,4,5].map(n => ({
     name: opts[`profile${n}_name`] || '',
     desc: opts[`profile${n}_desc`] || '',
   })).filter(p => p.name || p.desc)

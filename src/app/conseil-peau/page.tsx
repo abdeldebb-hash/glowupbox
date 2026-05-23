@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import { ConseilPeauClient } from './ConseilPeauClient'
 
 export const metadata: Metadata = {
-  title:       'Bilan Peau Gratuit — Conseil Personnalisé K-Beauty sur WhatsApp',
-  description: 'Répondez à 6 questions sur votre peau et recevez une recommandation K-Beauty personnalisée sur WhatsApp. Gratuit, sans engagement. Service Glow Up Box Maroc.',
+  title:       'Bilan Peau Gratuit — Conseil Personnalisé sur WhatsApp | Glow Up Box',
+  description: 'Répondez à 6 questions sur votre peau et recevez une recommandation personnalisée sur WhatsApp. Gratuit, sans engagement.',
   alternates:  { canonical: 'https://www.glowup-box.com/conseil-peau' },
   openGraph: {
     title:       'Bilan Peau Gratuit | Glow Up Box',

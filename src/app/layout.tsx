@@ -12,16 +12,16 @@ const BASE = 'https://www.glowup-box.com'
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
   title: {
-    default:  'Glow Up Box — K-Beauty Maroc | Coffrets & Conseil Peau Gratuit',
+    default:  'Glow Up Box — Soins Personnalisés Maroc | Conseil Peau Gratuit',
     template: '%s | Glow Up Box',
   },
-  description: 'Coffrets K-Beauty personnalisés après bilan peau gratuit. Cosmétique coréenne authentique livrée partout au Maroc.',
-  keywords:    ['K-Beauty Maroc', 'coffret soin coréen', 'cosmétique coréenne Maroc', 'bilan peau gratuit', 'routine coréenne'],
+  description: 'Coffrets soins personnalisés après bilan peau gratuit. Produits sélectionnés livrés partout au Maroc. Conseil humain, recommandation sur mesure.',
+  keywords:    ['K-Beauty Maroc', 'coffret soin', 'soins personnalisés Maroc', 'bilan peau gratuit', 'routine soins'],
   authors:     [{ name: 'Glow Up Box' }],
   openGraph: {
     siteName:    'Glow Up Box',
-    title:       'Glow Up Box — K-Beauty Maroc',
-    description: 'Coffrets K-Beauty personnalisés avec bilan peau gratuit. Livraison Maroc.',
+    title:       'Glow Up Box — Soins Personnalisés Maroc',
+    description: 'Coffrets soins personnalisés avec bilan peau gratuit. Livraison Maroc.',
     type:        'website',
     url:         BASE,
     locale:      'fr_MA',
@@ -43,7 +43,7 @@ const orgSchema = {
   name:        'Glow Up Box',
   url:         BASE,
   logo:        `${BASE}/images/hero-bg.jpg`,
-  description: 'Coffrets K-Beauty personnalisés pour le marché marocain. Bilan peau gratuit, livraison Maroc.',
+  description: 'Coffrets soins personnalisés pour le marché marocain. Bilan peau gratuit, livraison Maroc.',
   address:     { '@type': 'PostalAddress', addressCountry: 'MA' },
   contactPoint: {
     '@type':           'ContactPoint',

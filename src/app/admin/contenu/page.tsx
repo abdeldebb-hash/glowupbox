@@ -2,6 +2,7 @@
 
 import { useState, useEffect, FormEvent } from 'react'
 import { Loader2, Save, Plus, Trash2 } from 'lucide-react'
+import { ImageUpload } from '@/app/admin/components/ImageUpload'
 
 /* ─── Types repeaters ─── */
 type Testimonial  = { quote: string; name: string; meta: string; initial: string }
@@ -51,26 +52,58 @@ const SECTIONS = [
   },
   {
     title: 'Page d\'accueil — Profils peau',
-    hint:  '4 cartes de types de peau',
+    hint:  '5 cartes de types de peau',
     fields: [
       { key: 'profile1_name', label: 'Profil 1 — Nom',         type: 'text',     placeholder: 'Peau Sensible' },
       { key: 'profile1_desc', label: 'Profil 1 — Description', type: 'textarea', placeholder: 'Rougeurs, tiraillements, réactivité...' },
-      { key: 'profile2_name', label: 'Profil 2 — Nom',         type: 'text',     placeholder: 'Peau Grasse' },
-      { key: 'profile2_desc', label: 'Profil 2 — Description', type: 'textarea', placeholder: 'Brillances, pores dilatés...' },
-      { key: 'profile3_name', label: 'Profil 3 — Nom',         type: 'text',     placeholder: 'Peau Terne' },
-      { key: 'profile3_desc', label: 'Profil 3 — Description', type: 'textarea', placeholder: "Manque d'éclat, teint gris..." },
+      { key: 'profile2_name', label: 'Profil 2 — Nom',         type: 'text',     placeholder: 'Peau Terne' },
+      { key: 'profile2_desc', label: 'Profil 2 — Description', type: 'textarea', placeholder: "Manque d'éclat, teint gris..." },
+      { key: 'profile3_name', label: 'Profil 3 — Nom',         type: 'text',     placeholder: 'Peau Sèche' },
+      { key: 'profile3_desc', label: 'Profil 3 — Description', type: 'textarea', placeholder: 'Tiraillements, manque de souplesse...' },
       { key: 'profile4_name', label: 'Profil 4 — Nom',         type: 'text',     placeholder: 'Peau Mixte' },
       { key: 'profile4_desc', label: 'Profil 4 — Description', type: 'textarea', placeholder: 'Zone T brillante, joues sèches...' },
+      { key: 'profile5_name', label: 'Profil 5 — Nom',         type: 'text',     placeholder: 'Peau Grasse' },
+      { key: 'profile5_desc', label: 'Profil 5 — Description', type: 'textarea', placeholder: 'Brillances, pores dilatés, imperfections...' },
     ],
   },
   {
-    title: 'À Propos',
-    hint:  'Page /a-propos',
+    title: 'À Propos — Textes',
+    hint:  'Page /a-propos — textes et contenus',
     fields: [
-      { key: 'about_story',   label: 'Histoire de la marque', type: 'textarea', placeholder: 'En 2022, notre fondatrice...' },
-      { key: 'about_founder', label: 'Nom de la fondatrice',  type: 'text',     placeholder: 'Salma Benali' },
-      { key: 'about_role',    label: 'Rôle',                  type: 'text',     placeholder: 'Fondatrice & Experte K-Beauty' },
-      { key: 'about_bio',     label: 'Bio',                   type: 'textarea', placeholder: 'Passionnée de cosmétologie coréenne depuis 2019...' },
+      { key: 'about_hero_titre',       label: 'Titre hero',                type: 'text',     placeholder: 'Notre histoire' },
+      { key: 'about_hero_sous_titre',  label: 'Sous-titre hero',           type: 'textarea', placeholder: 'Glow Up Box, né de la passion des soins...' },
+      { key: 'about_story',            label: 'Histoire — paragraphe 1',   type: 'textarea', placeholder: 'En 2022, notre fondatrice...' },
+      { key: 'about_histoire_p2',      label: 'Histoire — paragraphe 2',   type: 'textarea', placeholder: 'Aujourd\'hui, Glow Up Box c\'est...' },
+      { key: 'about_citation',         label: 'Citation mise en avant',    type: 'textarea', placeholder: '"Chaque peau mérite un soin personnalisé."' },
+      { key: 'about_founder',          label: 'Nom de la fondatrice',      type: 'text',     placeholder: 'Salma Benali' },
+      { key: 'about_role',             label: 'Rôle',                      type: 'text',     placeholder: 'Fondatrice & Experte en soins personnalisés' },
+      { key: 'about_bio',              label: 'Bio',                       type: 'textarea', placeholder: 'Passionnée de cosmétologie depuis 2019...' },
+    ],
+  },
+  {
+    title: 'À Propos — Stats',
+    hint:  '4 chiffres clés affichés sur la page À Propos',
+    fields: [
+      { key: 'about_stat1_chiffre', label: 'Stat 1 — Chiffre', type: 'text', placeholder: '200+' },
+      { key: 'about_stat1_label',   label: 'Stat 1 — Label',   type: 'text', placeholder: 'Clientes conseillées' },
+      { key: 'about_stat2_chiffre', label: 'Stat 2 — Chiffre', type: 'text', placeholder: '4.9★' },
+      { key: 'about_stat2_label',   label: 'Stat 2 — Label',   type: 'text', placeholder: 'Satisfaction' },
+      { key: 'about_stat3_chiffre', label: 'Stat 3 — Chiffre', type: 'text', placeholder: '3 ans' },
+      { key: 'about_stat3_label',   label: 'Stat 3 — Label',   type: 'text', placeholder: "D'expérience" },
+      { key: 'about_stat4_chiffre', label: 'Stat 4 — Chiffre', type: 'text', placeholder: '100%' },
+      { key: 'about_stat4_label',   label: 'Stat 4 — Label',   type: 'text', placeholder: 'Conseil gratuit' },
+    ],
+  },
+  {
+    title: 'À Propos — Valeurs',
+    hint:  '3 valeurs ou engagements affichés sur la page À Propos',
+    fields: [
+      { key: 'about_valeur1_titre', label: 'Valeur 1 — Titre', type: 'text',     placeholder: 'Conseil personnalisé' },
+      { key: 'about_valeur1_texte', label: 'Valeur 1 — Texte', type: 'textarea', placeholder: 'Chaque recommandation est adaptée à votre peau unique.' },
+      { key: 'about_valeur2_titre', label: 'Valeur 2 — Titre', type: 'text',     placeholder: 'Soins sélectionnés' },
+      { key: 'about_valeur2_texte', label: 'Valeur 2 — Texte', type: 'textarea', placeholder: 'Nous choisissons chaque produit pour son efficacité prouvée.' },
+      { key: 'about_valeur3_titre', label: 'Valeur 3 — Titre', type: 'text',     placeholder: 'Livraison Maroc' },
+      { key: 'about_valeur3_texte', label: 'Valeur 3 — Texte', type: 'textarea', placeholder: 'Livraison rapide partout au Maroc.' },
     ],
   },
   {
@@ -287,6 +320,26 @@ export default function ContenuPage() {
               ))}
             </div>
           ))}
+
+          {/* À Propos — Images */}
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-5">
+            <div className="border-b border-gray-100 pb-3">
+              <h2 className="font-semibold text-[#1A1A2E] text-sm uppercase tracking-wider">À Propos — Images</h2>
+              <p className="text-[#4A4A6A] text-xs mt-0.5">Photos affichées sur la page /a-propos</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <ImageUpload
+                label="Image hero (bannière)"
+                value={data['about_hero_image'] ?? ''}
+                onChange={v => set('about_hero_image', v)}
+              />
+              <ImageUpload
+                label="Photo fondatrice / équipe"
+                value={data['about_fondatrice_image'] ?? ''}
+                onChange={v => set('about_fondatrice_image', v)}
+              />
+            </div>
+          </div>
 
           {/* Ticker */}
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">

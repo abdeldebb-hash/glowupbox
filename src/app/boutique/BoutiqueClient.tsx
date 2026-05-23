@@ -166,7 +166,7 @@ export function BoutiqueClient({ products, crossBoxes }: {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={featured.img} alt={featured.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style={{ minHeight:'260px' }} />
                   </div>
-                  <div className="p-8 flex flex-col justify-center">
+                  <div className="p-8 flex flex-col">
                     <p className="text-coral text-[10px] font-bold uppercase tracking-widest mb-2">{featured.catLabel}</p>
                     <h2 className="font-playfair font-bold italic text-white text-2xl mb-2">{featured.name}</h2>
                     <p className="text-white/55 text-sm leading-relaxed mb-3">{featured.desc}</p>
@@ -183,7 +183,7 @@ export function BoutiqueClient({ products, crossBoxes }: {
                         <span className={`w-1.5 h-1.5 rounded-full ${featured.stock==='ok'?'bg-green-400':'bg-orange-400'}`} />{featured.stockLabel}
                       </span>
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 mt-auto pt-5">
                       <GradientButton href={waUrl(`Bonjour, je souhaite commander ${featured.name} (${featured.price} DH)`, waNum)} size="sm" external className="w-full justify-center">
                         <MessageCircle className="w-4 h-4" />Commander →
                       </GradientButton>
@@ -280,7 +280,7 @@ export function BoutiqueClient({ products, crossBoxes }: {
               <p className="text-white/50 text-sm leading-relaxed mt-3 max-w-sm">Les accessoires sont encore plus efficaces associés à une routine complète.</p>
             </ScrollReveal>
             <ScrollReveal delay={0.1} className="flex gap-3 lg:justify-end flex-wrap">
-              <GradientButton href="/boxs" size="sm">Voir toutes les boxs →</GradientButton>
+              <GradientButton href="/boxs" size="sm">Voir toutes les box →</GradientButton>
               <GradientButton href="/conseil-peau" variant="ghost" size="sm">Mon bilan gratuit</GradientButton>
             </ScrollReveal>
           </div>

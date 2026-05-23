@@ -5,12 +5,12 @@ import { AProposClient } from './AProposClient'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title:       'À Propos — Salma Benali, Fondatrice & Experte K-Beauty Maroc',
-  description: 'Découvrez l\'histoire de Glow Up Box : fondée par Salma Benali, experte K-Beauty depuis 2019. 200+ clientes satisfaites, 4.9 étoiles, conseil peau gratuit au Maroc.',
+  title:       'À Propos — Salma Benali, Fondatrice & Experte en Soins Personnalisés',
+  description: 'Découvrez l\'histoire de Glow Up Box : fondée par Salma Benali, experte en soins depuis 2019. 200+ clientes satisfaites, 4.9 étoiles, conseil peau gratuit au Maroc.',
   alternates:  { canonical: 'https://www.glowup-box.com/a-propos' },
   openGraph: {
     title:       'Notre Histoire | Glow Up Box',
-    description: 'Glow Up Box, la K-Beauty authentique pour le marché marocain.',
+    description: 'Glow Up Box, les soins personnalisés pour le marché marocain.',
     url:         'https://www.glowup-box.com/a-propos',
   },
 }

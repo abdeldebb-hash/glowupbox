@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!rows.length) return {}
   const b = rows[0]
   const title       = `Box ${String(b.name)} — ${String(b.skinLabel)}`
-  const description = `${String(b.description).slice(0, 140)} — Coffret K-Beauty personnalisé, bilan peau gratuit.`
+  const description = `${String(b.description).slice(0, 140)} — Coffret soins personnalisé, bilan peau gratuit.`
   const image       = b.image ? String(b.image) : `${BASE}/images/hero-bg.jpg`
   return {
     title,

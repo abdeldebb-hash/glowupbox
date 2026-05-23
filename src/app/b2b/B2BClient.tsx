@@ -57,7 +57,7 @@ const PACKS = [
     title:    'Pack Grand Compte',
     subtitle: 'Pour les grands événements et cadeaux VIP',
     features: [
-      'Boxs entièrement personnalisées',
+      'Box entièrement personnalisées',
       'Branding entreprise complet',
       'Livraison multi-sites possible',
       'Tarif préférentiel volume',
