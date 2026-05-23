@@ -22,10 +22,12 @@ export default async function AProposPage() {
 
   return (
     <AProposClient
-      founder={opts.about_founder || undefined}
-      role={opts.about_role       || undefined}
-      bio={opts.about_bio         || undefined}
-      story={opts.about_story     || undefined}
+      founder={opts.about_founder       || undefined}
+      role={opts.about_role             || undefined}
+      bio={opts.about_bio               || undefined}
+      story={opts.about_story           || undefined}
+      heroImage={opts.about_hero_image  || undefined}
+      fondatriceImage={opts.about_fondatrice_image || undefined}
     />
   )
 }

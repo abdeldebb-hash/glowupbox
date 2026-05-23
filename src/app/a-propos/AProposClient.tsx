@@ -43,9 +43,9 @@ const ENGAGEMENTS = [
   { num: '04', title: 'Suivi 1 mois WhatsApp',        desc: "Après livraison, on reste disponibles pendant 30 jours. Votre peau évolue, votre routine aussi — on vous accompagne dans cette évolution." },
 ]
 
-type AProposProps = { founder?: string; role?: string; bio?: string; story?: string }
+type AProposProps = { founder?: string; role?: string; bio?: string; story?: string; heroImage?: string; fondatriceImage?: string }
 
-export function AProposClient({ founder, role, bio, story }: AProposProps = {}) {
+export function AProposClient({ founder, role, bio, story, heroImage, fondatriceImage }: AProposProps = {}) {
   const heroRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const imgY = useTransform(scrollYProgress, [0, 1], [0, -60])
@@ -103,8 +103,8 @@ export function AProposClient({ founder, role, bio, story }: AProposProps = {}) 
           >
             <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-[0_40px_80px_rgba(0,0,0,.4)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Fondatrice Glow Up Box avec produits K-Beauty" className="w-full h-full object-cover" />
+              <img src={heroImage ?? "https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=800"}
+                alt="Fondatrice Glow Up Box" className="w-full h-full object-cover" />
               <div className="absolute inset-0" style={{ background:'linear-gradient(to top,rgba(26,26,46,.5) 0%,transparent 50%)' }} />
             </div>
             <motion.div animate={{ y:[0,-8,0] }} transition={{ duration:5, repeat:Infinity, ease:'easeInOut' }}
@@ -239,7 +239,7 @@ export function AProposClient({ founder, role, bio, story }: AProposProps = {}) 
             <div className="bg-white/6 border border-white/10 rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-[auto_1fr] backdrop-blur-sm">
               <div className="w-full md:w-64 h-64 md:h-auto relative overflow-hidden flex-shrink-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.pexels.com/photos/3762875/pexels-photo-3762875.jpeg?auto=compress&cs=tinysrgb&w=400"
+                <img src={fondatriceImage ?? "https://images.pexels.com/photos/3762875/pexels-photo-3762875.jpeg?auto=compress&cs=tinysrgb&w=400"}
                   alt="Salma Benali, fondatrice de Glow Up Box" className="w-full h-full object-cover" />
               </div>
               <div className="p-8 md:p-10 flex flex-col justify-center">
