@@ -34,8 +34,12 @@ async function getData() {
       name:      String(b.name),
       desc:      String(b.description),
       products:  (() => { try { return JSON.parse(String(b.products)) as string[] } catch { return [] } })(),
-      slug:      String(b.slug),
-      waMessage: String(b.waMessage),
+      slug:       String(b.slug),
+      waMessage:  String(b.waMessage),
+      price:      b.price != null ? Number(b.price) : null,
+      oldPrice:   b.oldPrice != null ? Number(b.oldPrice) : null,
+      badgePromo: b.badgePromo ? String(b.badgePromo) : null,
+      showPrice:  Number(b.showPrice) === 1,
     }))
 
     const productItems: ProductItem[] = products.map(p => ({

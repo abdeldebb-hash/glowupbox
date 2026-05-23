@@ -20,6 +20,10 @@ export type BoxData = {
   products:    string[]
   img:         string
   waMessage:   string
+  price?:      number | null
+  oldPrice?:   number | null
+  badgePromo?: string | null
+  showPrice?:  boolean
 }
 
 const FILTERS = [
@@ -214,6 +218,15 @@ function BoxGrid({ boxes, waNum }: { boxes: BoxData[]; waNum: string }) {
                 {box.skinLabel}
               </span>
               <h2 className="font-playfair font-bold text-brand-black text-xl mb-2">{box.name}</h2>
+              {box.showPrice && box.price ? (
+                <div className="flex items-baseline gap-2 mb-3">
+                  <span className="font-playfair font-bold text-fuchsia text-xl">{box.price} DH</span>
+                  {box.oldPrice && <span className="text-brand-gray/40 text-sm line-through">{box.oldPrice} DH</span>}
+                  {box.badgePromo && <span className="text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ backgroundColor: '#FFB347' }}>{box.badgePromo}</span>}
+                </div>
+              ) : (
+                <p className="text-fuchsia text-[12px] font-semibold mb-3">✦ Prix après bilan peau gratuit</p>
+              )}
               <p className="text-brand-gray text-sm leading-relaxed mb-4 line-clamp-4 flex-1">{box.description}</p>
               <ul className="space-y-1.5 mb-5">
                 {box.products.map(p => (

@@ -5,9 +5,27 @@ import { useRouter }           from 'next/navigation'
 import { Loader2, ArrowLeft, Save } from 'lucide-react'
 import { ImageUpload }  from '../components/ImageUpload'
 import { TagsInput }    from '../components/TagsInput'
-import type { Box }     from '@prisma/client'
 
-interface Props { box?: Box }
+type BoxData = {
+  id?:          number
+  name?:        string
+  description?: string
+  skinType?:    string
+  skinLabel?:   string
+  tag?:         string
+  accroche?:    string
+  image?:       string | null
+  active?:      boolean
+  order?:       number
+  waMessage?:   string
+  products?:    string
+  price?:       number | null
+  oldPrice?:    number | null
+  badgePromo?:  string | null
+  showPrice?:   boolean
+}
+
+interface Props { box?: BoxData }
 
 const SKIN_TYPES = [
   { value: 'sensible',  label: 'Peau sensible' },
@@ -34,6 +52,10 @@ export function BoxForm({ box }: Props) {
     order:       box?.order       ?? 0,
     waMessage:   box?.waMessage   ?? '',
     products:    (() => { try { return JSON.parse(box?.products ?? '[]') as string[] } catch { return [] } })(),
+    price:       box?.price       ?? null as number | null,
+    oldPrice:    box?.oldPrice    ?? null as number | null,
+    badgePromo:  box?.badgePromo  ?? '',
+    showPrice:   box?.showPrice   ?? false,
   })
 
   const [loading, setLoading] = useState(false)
@@ -41,7 +63,18 @@ export function BoxForm({ box }: Props) {
   const [success, setSuccess] = useState(false)
 
   function set(key: string, value: unknown) {
-    setForm(prev => ({ ...prev, [key]: value }))
+    setForm(prev => {
+      const next = { ...prev, [key]: value }
+      // Auto-calcul badge promo si price + oldPrice renseignés et badgePromo vide
+      if ((key === 'price' || key === 'oldPrice') && !prev.badgePromo) {
+        const p  = key === 'price'    ? Number(value) : Number(prev.price)
+        const op = key === 'oldPrice' ? Number(value) : Number(prev.oldPrice)
+        if (p > 0 && op > p) {
+          next.badgePromo = '-' + Math.round((1 - p / op) * 100) + '%'
+        }
+      }
+      return next
+    })
   }
 
   async function handleSubmit(e: FormEvent) {
@@ -49,7 +82,7 @@ export function BoxForm({ box }: Props) {
     setLoading(true)
     setError('')
     try {
-      const url    = isEdit ? `/api/admin/boxes/${box.id}` : '/api/admin/boxes'
+      const url    = isEdit ? `/api/admin/boxes/${box!.id}` : '/api/admin/boxes'
       const method = isEdit ? 'PUT' : 'POST'
       const res    = await fetch(url, {
         method,
@@ -77,7 +110,7 @@ export function BoxForm({ box }: Props) {
           </button>
           <div>
             <h1 className="font-playfair font-bold italic text-[#1A1A2E] text-3xl">
-              {isEdit ? `Modifier "${box.name}"` : 'Nouvelle box'}
+              {isEdit ? `Modifier "${box!.name}"` : 'Nouvelle box'}
             </h1>
             <p className="text-[#4A4A6A] text-sm">Les modifications sont visibles immédiatement sur le site</p>
           </div>
@@ -144,10 +177,55 @@ export function BoxForm({ box }: Props) {
               label="Produits" placeholder="Ex: Nettoyant centella..." />
           </div>
 
+          {/* Prix */}
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-5">
+            <h2 className="font-semibold text-[#1A1A2E] text-sm uppercase tracking-wider border-b border-gray-100 pb-3">Prix</h2>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-[#1A1A2E] text-sm font-semibold mb-1.5">Prix (DH)</label>
+                <input type="number" min={0}
+                  value={form.price ?? ''}
+                  onChange={e => set('price', e.target.value === '' ? null : Number(e.target.value))}
+                  placeholder="Ex : 299"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 text-[#1A1A2E] text-sm outline-none focus:border-[#E91E8C] transition-all" />
+              </div>
+              <div>
+                <label className="block text-[#1A1A2E] text-sm font-semibold mb-1.5">Prix barré (DH) <span className="text-[#4A4A6A]/50 font-normal">optionnel</span></label>
+                <input type="number" min={0}
+                  value={form.oldPrice ?? ''}
+                  onChange={e => set('oldPrice', e.target.value === '' ? null : Number(e.target.value))}
+                  placeholder="Ex : 349"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 text-[#1A1A2E] text-sm outline-none focus:border-[#E91E8C] transition-all" />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-[#1A1A2E] text-sm font-semibold mb-1.5">
+                Badge promo <span className="text-[#4A4A6A]/50 font-normal">optionnel — auto-calculé si vide</span>
+              </label>
+              <input value={form.badgePromo ?? ''}
+                onChange={e => set('badgePromo', e.target.value)}
+                placeholder="Ex : -20%"
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 text-[#1A1A2E] text-sm outline-none focus:border-[#E91E8C] transition-all" />
+            </div>
+
+            <div className="flex items-center justify-between p-4 rounded-xl bg-[rgba(233,30,140,.04)] border border-[rgba(233,30,140,.1)]">
+              <div>
+                <p className="text-[#1A1A2E] text-sm font-semibold">Afficher le prix sur le site</p>
+                <p className="text-[#4A4A6A]/60 text-xs mt-0.5">Si désactivé : &quot;Prix après bilan peau gratuit&quot; s&apos;affiche</p>
+              </div>
+              <div className={`relative w-12 h-6 rounded-full transition-colors cursor-pointer ${form.showPrice ? 'bg-[#E91E8C]' : 'bg-gray-200'}`}
+                onClick={() => set('showPrice', !form.showPrice)}>
+                <span className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${form.showPrice ? 'translate-x-6' : 'translate-x-0.5'}`} />
+              </div>
+            </div>
+          </div>
+
           {/* Image */}
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
             <h2 className="font-semibold text-[#1A1A2E] text-sm uppercase tracking-wider border-b border-gray-100 pb-3 mb-5">Image</h2>
-            <ImageUpload value={form.image} onChange={v => set('image', v)} label="Photo de la box" />
+            <ImageUpload value={form.image ?? ''} onChange={v => set('image', v)} label="Photo de la box" />
           </div>
 
           {/* WhatsApp + Paramètres */}
@@ -163,7 +241,7 @@ export function BoxForm({ box }: Props) {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-[#1A1A2E] text-sm font-semibold mb-1.5">Ordre d'affichage</label>
+                <label className="block text-[#1A1A2E] text-sm font-semibold mb-1.5">Ordre d&apos;affichage</label>
                 <input type="number" value={form.order} onChange={e => set('order', e.target.value)}
                   min={0}
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 text-[#1A1A2E] text-sm outline-none focus:border-[#E91E8C] transition-all" />

@@ -12,6 +12,8 @@ export type BoxDetail = {
   id: number; name: string; slug: string; description: string
   skinType: string; skinLabel: string; tag: string; accroche: string
   products: string[]; image: string | null; waMessage: string
+  price?: number | null; oldPrice?: number | null
+  badgePromo?: string | null; showPrice?: boolean
 }
 
 const SUIVIS = [
@@ -87,10 +89,20 @@ export function BoxDetailClient({ box, related }: { box: BoxDetail; related: Box
                     </li>
                   ))}
                 </ul>
-                <div className="bg-white rounded-2xl p-4 mb-5 border border-[rgba(233,30,140,.08)]">
-                  <p className="font-playfair font-bold gradient-text text-3xl">[PRIX] DH</p>
-                  <p className="text-brand-gray text-[11px] mt-1">Prix communiqué après bilan peau gratuit</p>
-                </div>
+                {box.showPrice && box.price ? (
+                  <div className="mb-5">
+                    <div className="flex items-baseline gap-3 flex-wrap">
+                      <span className="font-playfair font-bold gradient-text text-3xl">{box.price} DH</span>
+                      {box.oldPrice && <span className="text-brand-gray/40 text-xl line-through">{box.oldPrice} DH</span>}
+                      {box.badgePromo && <span className="text-white text-[12px] font-bold px-3 py-1 rounded-full" style={{ backgroundColor: '#FFB347' }}>{box.badgePromo}</span>}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="bg-white rounded-2xl p-4 mb-5 border border-[rgba(233,30,140,.08)]">
+                    <p className="font-playfair font-bold gradient-text text-3xl">[PRIX] DH</p>
+                    <p className="text-brand-gray text-[11px] mt-1">Prix communiqué après bilan peau gratuit</p>
+                  </div>
+                )}
                 <div className="space-y-2.5">
                   <GradientButton href={waUrl(box.waMessage, waNum)} size="sm" external className="w-full justify-center">
                     <MessageCircle className="w-4 h-4" />Je veux cette box

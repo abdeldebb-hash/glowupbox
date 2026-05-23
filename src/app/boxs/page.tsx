@@ -29,6 +29,10 @@ async function getBoxes(): Promise<BoxData[]> {
       products:    (() => { try { return JSON.parse(String(b.products)) as string[] } catch { return [] } })(),
       img:         b.image ? String(b.image) : '/images/peau-sensible.jpg',
       waMessage:   String(b.waMessage),
+      price:       b.price != null ? Number(b.price) : null,
+      oldPrice:    b.oldPrice != null ? Number(b.oldPrice) : null,
+      badgePromo:  b.badgePromo ? String(b.badgePromo) : null,
+      showPrice:   Number(b.showPrice) === 1,
     }))
   } catch {
     return []

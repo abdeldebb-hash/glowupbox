@@ -19,8 +19,8 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
     const d = await req.json()
     const products = JSON.stringify(d.products ?? [])
     await tursoExec(
-      `UPDATE Box SET name=?,slug=?,description=?,skinType=?,skinLabel=?,tag=?,accroche=?,products=?,image=?,active=?,"order"=?,waMessage=?,updatedAt=CURRENT_TIMESTAMP WHERE id=?`,
-      [d.name, slugify(d.name), d.description, d.skinType, d.skinLabel, d.tag, d.accroche, products, d.image ?? null, d.active ? 1 : 0, Number(d.order) || 0, d.waMessage, Number(id)]
+      `UPDATE Box SET name=?,slug=?,description=?,skinType=?,skinLabel=?,tag=?,accroche=?,products=?,image=?,active=?,"order"=?,waMessage=?,price=?,oldPrice=?,badgePromo=?,showPrice=?,updatedAt=CURRENT_TIMESTAMP WHERE id=?`,
+      [d.name, slugify(d.name), d.description, d.skinType, d.skinLabel, d.tag, d.accroche, products, d.image ?? null, d.active ? 1 : 0, Number(d.order) || 0, d.waMessage, d.price ?? null, d.oldPrice ?? null, d.badgePromo ?? null, d.showPrice ? 1 : 0, Number(id)]
     )
     return NextResponse.json({ ok: true })
   } catch (e) {

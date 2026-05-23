@@ -37,6 +37,10 @@ function mapBox(b: Record<string, unknown>): BoxDetail {
     products:    (() => { try { return JSON.parse(String(b.products)) as string[] } catch { return [] } })(),
     image:       b.image ? String(b.image) : null,
     waMessage:   String(b.waMessage ?? ''),
+    price:       b.price != null ? Number(b.price) : null,
+    oldPrice:    b.oldPrice != null ? Number(b.oldPrice) : null,
+    badgePromo:  b.badgePromo ? String(b.badgePromo) : null,
+    showPrice:   Number(b.showPrice) === 1,
   }
 }
 

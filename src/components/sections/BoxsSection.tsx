@@ -9,13 +9,17 @@ import { waUrl }          from '@/lib/utils'
 import { useWaNumber }   from '@/lib/wa-context'
 
 export type BoxItem = {
-  img:      string
-  tag:      string
-  name:     string
-  desc:     string
-  products: string[]
-  slug:     string
+  img:       string
+  tag:       string
+  name:      string
+  desc:      string
+  products:  string[]
+  slug:      string
   waMessage: string
+  price?:    number | null
+  oldPrice?: number | null
+  badgePromo?: string | null
+  showPrice?: boolean
 }
 
 const gridV = { hidden: {}, visible: { transition: { staggerChildren: 0.14 } } }
@@ -58,7 +62,7 @@ export function BoxsSection({ boxes }: { boxes: BoxItem[] }) {
   )
 }
 
-function BoxCard({ img, tag, name, desc, products, slug, waMessage }: BoxItem) {
+function BoxCard({ img, tag, name, desc, products, slug, waMessage, price, oldPrice, badgePromo, showPrice }: BoxItem) {
   const waNum = useWaNumber()
   const router = useRouter()
   return (
@@ -77,6 +81,15 @@ function BoxCard({ img, tag, name, desc, products, slug, waMessage }: BoxItem) {
       <div className="p-6 flex flex-col flex-1">
         <span className="inline-flex bg-[rgba(233,30,140,0.1)] text-[#E91E8C] text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-3 self-start">{tag}</span>
         <h3 className="font-playfair font-bold text-[#1A1A2E] text-[1.15rem] mb-2">{name}</h3>
+        {showPrice && price ? (
+          <div className="flex items-baseline gap-2 mb-3">
+            <span className="font-playfair font-bold text-[#E91E8C] text-xl">{price} DH</span>
+            {oldPrice && <span className="text-[#4A4A6A]/40 text-sm line-through">{oldPrice} DH</span>}
+            {badgePromo && <span className="text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ backgroundColor: '#FFB347' }}>{badgePromo}</span>}
+          </div>
+        ) : (
+          <p className="text-[#E91E8C] text-[12px] font-semibold mb-3">✦ Prix après bilan peau gratuit</p>
+        )}
         <p className="text-[#4A4A6A] text-[13.5px] leading-relaxed mb-4 line-clamp-3 flex-1">{desc}</p>
         <div className="flex flex-wrap gap-1.5 mb-4">
           {products.map(p => <span key={p} className="bg-white text-[#4A4A6A] text-[11px] font-medium px-2.5 py-1 rounded-full">{p}</span>)}

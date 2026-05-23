@@ -16,9 +16,9 @@ export async function POST(req: Request) {
     const d = await req.json()
     const products = JSON.stringify(d.products ?? [])
     await tursoExec(
-      `INSERT INTO Box (name,slug,description,skinType,skinLabel,tag,accroche,products,image,active,"order",waMessage,updatedAt)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)`,
-      [d.name, slugify(d.name), d.description ?? '', d.skinType ?? '', d.skinLabel ?? '', d.tag ?? '', d.accroche ?? '', products, d.image ?? null, d.active ? 1 : 0, d.order ?? 0, d.waMessage ?? '']
+      `INSERT INTO Box (name,slug,description,skinType,skinLabel,tag,accroche,products,image,active,"order",waMessage,price,oldPrice,badgePromo,showPrice,updatedAt)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)`,
+      [d.name, slugify(d.name), d.description ?? '', d.skinType ?? '', d.skinLabel ?? '', d.tag ?? '', d.accroche ?? '', products, d.image ?? null, d.active ? 1 : 0, d.order ?? 0, d.waMessage ?? '', d.price ?? null, d.oldPrice ?? null, d.badgePromo ?? null, d.showPrice ? 1 : 0]
     )
     return NextResponse.json({ ok: true }, { status: 201 })
   } catch (e) {

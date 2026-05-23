@@ -22,10 +22,11 @@ export default async function EditBoxPage({ params }: { params: Promise<{ id: st
     active:      Number(b.active) === 1,
     order:       Number(b.order ?? 0),
     waMessage:   String(b.waMessage ?? ''),
-    createdAt:   new Date(String(b.createdAt)),
-    updatedAt:   new Date(String(b.updatedAt)),
+    price:       b.price != null ? Number(b.price) : null,
+    oldPrice:    b.oldPrice != null ? Number(b.oldPrice) : null,
+    badgePromo:  b.badgePromo ? String(b.badgePromo) : null,
+    showPrice:   Number(b.showPrice) === 1,
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return <BoxForm box={box as any} />
+  return <BoxForm box={box} />
 }
