@@ -1,22 +1,22 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { SESSION_COOKIE, verifySessionToken } from '@/lib/session'
 
-const SECRET        = process.env.ADMIN_SECRET ?? 'glow-secret-bo-2025'
-const SESSION_TOKEN = Buffer.from(SECRET).toString('base64')
-
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
 
-  if (!pathname.startsWith('/admin') || pathname.startsWith('/admin/login')) {
+  // Seules exceptions publiques : la page de login et l'endpoint de connexion
+  if (pathname.startsWith('/admin/login') || pathname === '/api/admin/auth') {
     return NextResponse.next()
   }
 
-  const session = req.cookies.get('admin_session')
-  if (!session || session.value !== SESSION_TOKEN) {
-    return NextResponse.redirect(new URL('/admin/login', req.url))
-  }
+  const ok = await verifySessionToken(req.cookies.get(SESSION_COOKIE)?.value)
+  if (ok) return NextResponse.next()
 
-  return NextResponse.next()
+  if (pathname.startsWith('/api/')) {
+    return NextResponse.json({ error: 'Non autorisé' }, { status: 401 })
+  }
+  return NextResponse.redirect(new URL('/admin/login', req.url))
 }
 
-export const config = { matcher: ['/admin/:path*'] }
+export const config = { matcher: ['/admin/:path*', '/api/admin/:path*'] }

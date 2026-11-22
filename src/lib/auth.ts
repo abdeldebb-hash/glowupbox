@@ -1,25 +1,20 @@
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-
-const SESSION_COOKIE = 'admin_session'
-const SECRET        = process.env.ADMIN_SECRET ?? 'glow-secret-bo-2025'
-
-export function getSessionToken(): string {
-  return Buffer.from(SECRET).toString('base64')
-}
-
-export async function requireAuth() {
-  const store  = await cookies()
-  const cookie = store.get(SESSION_COOKIE)
-  if (!cookie || cookie.value !== getSessionToken()) {
-    redirect('/admin/login')
-  }
-}
+import { NextResponse } from 'next/server'
+import { SESSION_COOKIE, verifySessionToken } from '@/lib/session'
 
 export async function isAuthenticated(): Promise<boolean> {
-  const store  = await cookies()
-  const cookie = store.get(SESSION_COOKIE)
-  return !!(cookie && cookie.value === getSessionToken())
+  const store = await cookies()
+  return verifySessionToken(store.get(SESSION_COOKIE)?.value)
 }
 
-export function SESSION_COOKIE_NAME() { return SESSION_COOKIE }
+// Pour les pages serveur : redirige vers le login
+export async function requireAuth() {
+  if (!(await isAuthenticated())) redirect('/admin/login')
+}
+
+// Pour les routes API : renvoie une 401 si non connecté, sinon null
+export async function requireApiAuth(): Promise<NextResponse | null> {
+  if (await isAuthenticated()) return null
+  return NextResponse.json({ error: 'Non autorisé' }, { status: 401 })
+}
