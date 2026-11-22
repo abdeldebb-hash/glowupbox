@@ -1,8 +1,9 @@
 import { createClient } from '@libsql/client'
 
 const client = createClient({
-  url:       'libsql://glowupbox-abdeldebb-hash.aws-eu-west-1.turso.io',
-  authToken: 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3NzgzMjMwMjAsImlkIjoiMDE5ZTBjNGYtNTgwMS03MDY4LWEzOWUtMDM2NzFiNzBiMDU5IiwicmlkIjoiOGU4OTZkNTgtOThhNy00MmYyLWJjOGMtZTgxY2Y2NzU2YTQ5In0.7-E-B7CTL-qcJRJr7IDnBcGKGAPrz_JbHMjbXou7PSJURvo6AEbm6vsJRQNRe4san8eRQGVtBSzYrgiQ2y6mBA',
+  // Lus depuis l'environnement (ex. `npx tsx --env-file=.env.local scripts/turso-setup.ts`)
+  url:       process.env.TURSO_DATABASE_URL!,
+  authToken: process.env.TURSO_AUTH_TOKEN!,
 })
 
 const SCHEMA = [
